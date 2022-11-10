@@ -133,7 +133,14 @@
     - [Hash Tables](#hash-tables)
     - [`hashCode()`](#hashcode)
     - [Overriding](#overriding)
-- [Lect 17: `Comparable` & `compareTo()` - Abstraction](#lect-17-comparable--compareto---abstraction)
+- [Lect 17: `Comparable` & `compareTo()` - Abstraction & Interfaces](#lect-17-comparable--compareto---abstraction--interfaces)
+  - [`Comparable` & `compareTo()`](#comparable--compareto)
+    - [`compareTo()`](#compareto)
+  - [Abstract Classes & Methods](#abstract-classes--methods)
+    - [Abstract Classes](#abstract-classes)
+    - [Abstract Methods](#abstract-methods)
+    - [Summary](#summary)
+  - [Interface](#interface)
 
 
 # Week 1
@@ -1804,7 +1811,7 @@ If it still seems wrong then submit the form.
 Term test papers are returned in lab next week.
 
 ## Obligatory Methods
-These are methods that you receive no matter what kind of class or subclass.
+These are methods that you receive no matter what kind of class or subclass you create.
 
 These methods have a particular implementation that originates from the `Object` class or another class that you're extending.
 
@@ -1895,4 +1902,182 @@ Overriding is hard so instead we just use `Objects.hash()`,
 feed it all the attributes,
 and return the result.
 
-# Lect 17: `Comparable` & `compareTo()` - Abstraction
+# Lect 17: `Comparable` & `compareTo()` - Abstraction & Interfaces
+## `Comparable` & `compareTo()`
+Primitives are easily compared using `< > ==`.
+
+To compare objects (user-defined or otherwise):
+- define a way to order them
+  - what makes one object larger/higher/better or smaller/lower/worse than another in sorting
+- implement a method that compares the two objects in that respect
+  - `compareTo()`
+
+### `compareTo()`
+```java
+obj1.compareTo(obj2);
+```
+Returns:
+- -ve # when `obj1` < `obj2`
+- +ve # when `obj1` > `obj2`
+- 0 when `obj1` = `obj2`
+
+`compareTo()` is n `abstract` method that is defined in the `Comparable` `interface`.
+
+Objects that have `compareTo()` have an IS-A relationship with `Comparable`.
+The class will `implements` `Comparable`.
+
+```java
+class x implements Comparable {
+  public int compareTo(Object obj) { }
+}
+```
+
+## Abstract Classes & Methods
+### Abstract Classes
+Some `superclass`es should never be instantiated.
+Even though they may have a constructor.
+
+Their code is useful and common enough to be made into a `superclass` however they aren't useful on their own.
+
+![week 9 slide 9](https://cdn.discordapp.com/attachments/513923474239127553/1040285177240371250/image.png)
+
+- an `Animal` class helps us not reuse code for `Dog`, `Cat` or `Owl` but we don't need to instantiate an `Animal` object
+  - a general animal isn't specific enough to be useful in most situations but the idea of an animal is useful enough to keep around as an `abstract` concept
+
+These `superclass`es that:
+- are never instantiated
+- serve more as blueprints for the subclasses than classes in themselves
+
+are called `abstract` classes.
+
+Abstract classes can also inherit other abstract classes.
+
+The `extends` keyword is used to inherit an abstract class.
+
+---
+
+we use the `abstract` keyword after the access modifier and the `class` keyword in the class signature when defining an abstract class.
+
+```java
+public abstract class Animal {
+  public String name;
+  public String picturePath;
+}
+```
+```java
+Animal [] zoo = new Animal [100]; // 1
+Animal animal = new Animal();     // 2
+Animal herCat = new Cat();        // 3
+Dog myPet = new Dog();            // 4
+```
+
+Statements 4 and 3 are valid since we aren't making an object of `Animal`.
+
+Statement 2 is invalid since we are attempting to make an object of `Animal`.
+
+Statement 1 is valid as we can set the declared type of the objects of the array as `Animal`,
+however we don't ever make an object of `Animal` instead filling it subclasses (`Dog`, `Cat`, `Owl`, etc).
+
+This is made possible through polymorphism.
+
+---
+
+### Abstract Methods
+
+Abstract methods are defined by using the `abstract` keyword in the method signature after the access modifier and before the return type.
+
+These methods have no body and have their method signatures instead finished by `;`.
+
+Abstract methods can only exist in abstract classes but abstract classes can have both abstract and non-abstract methods.
+
+```java
+abstract class Shape {
+  int centerX;
+  int centerY;
+  public final void clearScr() {
+    System.out.println("Clear screen is in process....");
+    centerX = 0;
+    centerY = 0;
+  }
+// <access modifier> abstract <return type> <method name>();
+  public abstract void draw();
+  public abstract double area();
+  public abstract double perimeter();
+// this method isn't an abstract method so we proceed as normal
+  public void moveToCenter() {
+    clearScr();
+    this.draw();
+  }
+} 
+```
+
+All abstract methods should be overridden as soon as they are inherited by a concrete(non-abstract) class.
+
+### Summary
+Abstract classes help us make full use of the inheritance structure.
+
+Concrete(non-abstract) classes are specific enough such that:
+- their attributes get meaningful values
+- their methods can be fully implemented
+
+Abstract classes have no meaningful functionality aside from:
+- being extended
+- used for polymorphism
+- for static methods
+  - if it has that
+
+Abstract classes must be extended to be useful.
+
+## Interface
+Suppose we have a pre-existing inheritance hierarchy.
+We want to add some new functionality to a subclass or specific subclasses but not to other subclasses.
+
+In these cases we make an interface.
+
+---
+
+There are ways that we could try to get around it but these all have their advantages and disadvantages.
+
+Design 1: add the new functionalities to the superclass.
+- +:
+  - all relevant subclasses will inherit the new functionalities
+  - function will be passed down the hierarchy
+  - subclasses can override the method to fir their purpose
+  - we can (usually) use polymorphism
+- -:
+  - subclasses that shouldn't have it now have it
+
+Design 2: add the new functionalities to the superclass and make the superclass abstract.
+- +:
+  - subclasses that need it get, override, and pass it on
+  - we can use polymorphism more often
+- -:
+  - subclasses that shouldn't have it now have it
+
+Design 3: add the new functionalities to the superclass, make the methods and the superclass abstract.
+- +:
+  - subclasses that need it get, override, and pass it on
+  - we can use polymorphism always
+- -:
+  - subclasses that shouldn't have it now have it
+
+Design 4: add the new functionalities to the subclasses that they belong to.
+- +:
+  - subclasses that need it get, override, and pass it on
+  - subclasses that shouldn't have it won't have it
+- -:
+  - we have to write mor ecode
+  - sibling classes that fall under the same category will have to follow the same protocol for consistent design
+    - an impossible ask
+  - can't use polymorphism
+
+Design 5: make an intermediary step in the hierarchy
+- +:
+  - the specific subclasses we want get the functionality
+- -:
+  - we're writing a whole new class just to accommodate 
+
+---
+
+Interface is the way we get around the lack of multiple inheritance in java.
+
