@@ -1,0 +1,2929 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css" integrity="sha384-L+Gq2Cso/Y2x8fX4wausgiZT8z0QPZz7OqPuz4YqAycQJyrJT9NRLpjFBD6zlOia" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" crossorigin="anonymous">
+<meta charset="utf-8">
+<title>cs 2030 notes.md</title>
+<style>
+body {
+  font-family: Josefin Sans Light;
+}
+code {
+  font-family: "Source Code Pro", monospace;
+}
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+html{
+  line-height:1.15;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+}
+
+main{
+  display:block;
+}
+
+h1{
+  font-size:2em;
+  margin:0.67em 0;
+}
+
+hr{
+  box-sizing:content-box;
+  height:0;
+  overflow:visible;
+}
+
+pre{
+  font-family:monospace, monospace;
+  font-size:1em;
+}
+
+a{
+  background-color:transparent;
+}
+
+abbr[title]{
+  border-bottom:none;
+  text-decoration:underline;
+  text-decoration:underline dotted;
+}
+
+b,
+strong{
+  font-weight:bolder;
+}
+
+code,
+kbd,
+samp{
+  font-family:monospace, monospace;
+  font-size:1em;
+}
+
+small{
+  font-size:80%;
+}
+
+sub,
+sup{
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline;
+}
+
+sub{
+  bottom:-0.25em;
+}
+
+sup{
+  top:-0.5em;
+}
+
+img{
+  border-style:none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea{
+  font-family:inherit;
+  font-size:100%;
+  line-height:1.15;
+  margin:0;
+}
+
+button,
+input{
+  overflow:visible;
+}
+
+button,
+select{
+  text-transform:none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"]{
+  -webkit-appearance:button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner{
+  border-style:none;
+  padding:0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring{
+  outline:1px dotted ButtonText;
+}
+
+fieldset{
+  padding:0.35em 0.75em 0.625em;
+}
+
+legend{
+  box-sizing:border-box;
+  color:inherit;
+  display:table;
+  max-width:100%;
+  padding:0;
+  white-space:normal;
+}
+
+progress{
+  vertical-align:baseline;
+}
+
+textarea{
+  overflow:auto;
+}
+
+[type="checkbox"],
+[type="radio"]{
+  box-sizing:border-box;
+  padding:0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button{
+  height:auto;
+}
+
+[type="search"]{
+  -webkit-appearance:textfield;
+  outline-offset:-2px;
+}
+
+[type="search"]::-webkit-search-decoration{
+  -webkit-appearance:none;
+}
+
+::-webkit-file-upload-button{
+  -webkit-appearance:button;
+  font:inherit;
+}
+
+details{
+  display:block;
+}
+
+summary{
+  display:list-item;
+}
+
+template{
+  display:none;
+}
+
+[hidden]{
+  display:none;
+}
+fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mermaid .labelBox{stroke:#666 !important}.mermaid svg{height:auto}.markdown-body .songbook .charter-header{position:relative;min-height:65px;margin-bottom:1em}.markdown-body .songbook .charter-title{font-size:1.5em;font-weight:bold;margin:0;padding:0}.markdown-body .songbook .charter-logo{text-align:right;height:70px}.markdown-body .songbook .charter-artist,.markdown-body .songbook .charter-subtitle,.markdown-body .songbook .charter-key{font-weight:normal;margin:0 0 3px 0;padding:0}.markdown-body .songbook .charter-artist{font-size:.8em;font-size:.9em}.markdown-body .songbook .charter-subtitle{font-size:.8em;font-size:.9em}.markdown-body .songbook .charter-key{font-weight:bold;font-size:.9em;font-size:1em}.markdown-body .songbook .charter-header-logo{position:absolute;top:0;right:0;float:right}.markdown-body .songbook .charter-header::after{content:"";clear:both;display:table}.markdown-body .songbook .charter-logo-tagline{font-size:.7em}.markdown-body .songbook .charter-section{margin-bottom:2em;page-break-inside:avoid;margin-bottom:1em}.markdown-body .songbook .charter-section-title{font-weight:bold;text-transform:uppercase;font-size:1.1em;color:#888}.markdown-body .songbook .charter-section-body{margin-left:20px}.markdown-body .songbook .charter-comment{font-style:italic}.markdown-body .songbook td.charter-chord:not(:empty){font-weight:bold;vertical-align:bottom;padding-right:14px;padding-right:8px}.markdown-body .songbook td.charter-lyric{white-space:nowrap;padding-right:2px;margin-bottom:.2em;padding-bottom:.3em;padding-right:.2em}.markdown-body .songbook th,.markdown-body .songbook td{line-height:unset;padding:0}.markdown-body .songbook td{border-top:0}.markdown-body .songbook .charter-body{margin-top:15px}.markdown-body .songbook .charter-chart{margin-bottom:.3em}.markdown-body .songbook .charter-chart td,.markdown-body .songbook .charter-chart tr{border:0}.markdown-body{box-sizing:border-box;margin:0 auto;max-width:700px;padding:30px;color:#444;line-height:1.4;position:relative;word-wrap:break-word;color:#ddd}/*!
+  Theme: Tomorrow Night
+  Author: Chris Kempson (http://chriskempson.com)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.05.0
+*/pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{color:#ccc;background:#2d2d2d}.hljs ::selection{color:#515151}.hljs-comment{color:#999}.hljs-tag{color:#b4b7b4}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#ccc}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#f2777a}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#f99157}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#fc6}.hljs-strong{font-weight:700;color:#fc6}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#9c9}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#6cc}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#69c}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#c9c}.hljs-emphasis{color:#c9c;font-style:italic}.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#a3685a}.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700}.preview-error{box-shadow:0 0 10px 2px rgba(0,0,0,.3);display:none;font-family:monospace;left:0;margin:0;position:absolute;top:0}.preview-error-wrap{position:relative}.preview-error-wrap .icon-stack{left:-1.25em;position:absolute;top:-15px;z-index:10}.preview-error-wrap .icon-invert{color:#fff}.preview-error-wrap:hover .preview-error{display:block}.markdown-body h1{font-size:2.7em;margin-block-end:.6em;margin-block-start:.6em}.markdown-body h2{font-size:2.3em}.markdown-body h3{font-size:2em}.markdown-body h4{font-size:1.8em}.markdown-body h5{font-size:1.5em}.markdown-body h6{font-size:1.2em}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{color:#111;font-weight:900;margin-block-end:1.6rem;margin-block-start:1.6rem;color:#bbb}.markdown-body hr{border:0;border-bottom:1px dashed #aaa;border-bottom-color:#666}.markdown-body img{max-width:100%}.markdown-body a{color:#4fa1cc;text-decoration:none;color:#10feff}.markdown-body a:hover{color:#226ca1;text-decoration:underline;color:#8effff}.markdown-body abbr[title]{cursor:help;text-decoration:underline dotted;text-underline-position:under}.markdown-body pre{background-color:#fafafa;border:1px solid #bbb;border-radius:3px;padding:6px 10px;white-space:pre-wrap;word-break:break-word;background-color:#282828;border-color:#444}.markdown-body code{background-color:#eaeaea;color:#cd2e47;font-size:.75em;padding:1px 2px;background-color:#444;border-radius:2px;color:#ff657d}.markdown-body pre code{background-color:inherit;color:inherit;padding:0;background-color:initial}.markdown-body dt{font-weight:bold;margin-top:1em}.markdown-body .table-wrapper{margin-left:0;margin-right:0;overflow-x:auto}.markdown-body table{border-collapse:collapse;margin-bottom:20px;transform-origin:left}.markdown-body th{text-align:left}.markdown-body th,.markdown-body td{border-left:1px solid #ccc;line-height:1.5;padding:8px}.markdown-body th:first-of-type,.markdown-body td:first-of-type{border-left:0}.markdown-body td{border-top:1px solid #ccc;border-top-color:#666}.markdown-body .task-list-item label{cursor:pointer}.markdown-body .task-list-item-checkbox{margin-right:5px}.markdown-body input[type=checkbox]{appearance:none;background-color:#fff;border:1px solid #888;border-radius:3px;cursor:pointer;height:13px;position:relative;width:13px;background-color:#111;border-color:#666}.markdown-body input[type=checkbox]:active{border-color:#333;border-color:#888}.markdown-body input[type=checkbox]:focus{outline:none}.markdown-body input[type=checkbox]:focus-visible{outline:2px solid tomato;outline-color:#f1f1bb}.markdown-body input[type=checkbox]:checked{background-color:#66f;border-color:#5151c8;background-color:#7878ea;border-color:#b2b2ff}.markdown-body input[type=checkbox]:checked:active{background-color:#8a8aff;background-color:#b2b2ff}.markdown-body input[type=checkbox]:checked::after{border-color:#fff;border-style:solid;border-width:0 0 2px 2px;bottom:5px;box-shadow:-1.5px 1.5px 1px 0 rgba(0,0,0,.4);content:"";display:block;height:3px;position:absolute;right:1px;transform:rotate(-45deg);width:7px}.markdown-body ol,.markdown-body ul{padding-inline-start:1.7em}.markdown-body ul>li::marker{font-size:1.4em}.markdown-body .text-align-center{text-align:center}.markdown-body mark{background:linear-gradient(-100deg, rgba(240, 255, 0, 0.4), rgba(240, 255, 50, 0.6) 95%, rgba(240, 255, 50, 0.1));border-radius:1em .1em;margin:0 -0.1rem;padding:.4rem .1rem;background:#cccc1a;border-radius:.2em}.markdown-body .tab circle{paint-order:stroke;stroke:#fff !important;stroke-width:2;stroke:#222 !important;stroke-width:4 !important}.rtl pre,.rtl .songbook,.rtl .abc svg,.rtl .tab svg,.rtl .mermaid svg{direction:ltr}.visually-hidden:not(:focus):not(:active){clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}.markdown-body .abc path,.markdown-body .abc text{fill:#ccc !important}.markdown-body .abc .abcjs-staff{fill:#999 !important}.markdown-body .abc .abcjs-ending{stroke:#ccc !important}.markdown-body .tab circle,.markdown-body .tab text,.markdown-body .tab text tspan{fill:#ccc !important}.markdown-body .tab path{fill:#ccc !important;stroke:#ccc !important}.markdown-body .tab .staff,.markdown-body .tab .string{stroke:#888 !important}.markdown-body .tab .fret-position,.markdown-body .tab .string-marker{stroke:#ccc !important}.markdown-body .tab .contrast-text{stroke:#222 !important}.markdown-body .tab .fingering-text tspan{fill:#000 !important}.mermaid .er.attributeBoxOdd{fill:#000 !important}.mermaid .er.attributeBoxEven{fill:none !important}.mermaid .cluster rect{fill:#333 !important}.mermaid .section.section0{fill:#888 !important}.mermaid .section.section2{fill:#080808 !important}body{background-color:#222;color:#eee}
+</style>
+</head>
+<body>
+<div class="markdown-body">
+<h1 id="table-of-contents">Table of contents</h1>
+<ul>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#week-1">Week 1</a>
+<ul>
+<li><a href="#mark-breakdown">Mark Breakdown</a></li>
+<li><a href="#review">Review</a>
+<ul>
+<li><a href="#java-structure">Java Structure</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#memory-model">Memory Model</a>
+<ul>
+<li><a href="#data-types--addresses">Data Types &amp; Addresses</a></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#primitives">Primitives</a></li>
+<li><a href="#non-primitivesreferences-arrays">Non-Primitives/References: Arrays</a></li>
+</ul>
+</li>
+<li><a href="#function-calls">Function Calls</a>
+<ul>
+<li><a href="#pass-by-value">Pass by Value</a></li>
+<li><a href="#pass-by-reference">Pass by Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#documentation---javadoc">Documentation - JavaDoc</a></li>
+<li><a href="#testing--junit">Testing &amp; JUnit</a></li>
+<li><a href="#design-by-contract">Design by Contract</a></li>
+</ul>
+</li>
+<li><a href="#lect-3-intro-to-recursion">Lect 3: intro to recursion</a>
+<ul>
+<li><a href="#function-calls-and-stack-frames">Function Calls and Stack Frames</a></li>
+<li><a href="#recursion">Recursion</a></li>
+<li><a href="#tracing-a-recursive-algo-w-examples">Tracing a Recursive Algo w/ Examples</a>
+<ul>
+<li><a href="#ex-is-the-input-a-palindrome">Ex: Is the input a palindrome?</a></li>
+</ul>
+</li>
+<li><a href="#basics-of-recursion">Basics of Recursion</a></li>
+<li><a href="#how-to-design-a-recursive-algo">How to Design a Recursive Algo</a></li>
+</ul>
+</li>
+<li><a href="#lect-4-recursion-contd">Lect 4: Recursion Cont’d</a>
+<ul>
+<li><a href="#divide-and-conquer---find-the-sum-of-all-the-entries-of-an-array">Divide and Conquer - Find the sum of all the entries of an array</a></li>
+<li><a href="#recursion-is-not-always-the-best-soln">Recursion is not always the best sol’n</a></li>
+<li><a href="#misc-recursion-notes">Misc recursion notes</a></li>
+<li><a href="#closing">Closing</a></li>
+</ul>
+</li>
+<li><a href="#lecture-5-finally-advanced-object-oriented-programming">Lecture 5: Finally Advanced Object-Oriented Programming</a>
+<ul>
+<li><a href="#variable-types">Variable Types</a>
+<ul>
+<li><a href="#non-primitives">Non-primitives</a></li>
+</ul>
+</li>
+<li><a href="#classes">Classes</a>
+<ul>
+<li><a href="#presenting-a-class">Presenting a Class</a>
+<ul>
+<li><a href="#creation-of-a-class">Creation of a Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#objects">Objects</a></li>
+</ul>
+</li>
+<li><a href="#lect-6-constructors--encapsulation">Lect 6: Constructors &amp; Encapsulation</a>
+<ul>
+<li><a href="#overloaded-constructors--constructor-chaining">Overloaded Constructors &amp; Constructor Chaining</a></li>
+<li><a href="#clonecopy-constructor">Clone/Copy Constructor</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a>
+<ul>
+<li><a href="#slide-25">Slide 25</a></li>
+<li><a href="#slide-26">Slide 26</a></li>
+</ul>
+</li>
+<li><a href="#garbage-collection-mechanism">Garbage Collection Mechanism</a></li>
+<li><a href="#in-class-activity">In-Class Activity</a></li>
+<li><a href="#encapsulation">Encapsulation</a>
+<ul>
+<li><a href="#access-modifiers">Access Modifiers</a></li>
+<li><a href="#setters--getters">Setters &amp; Getters</a></li>
+<li><a href="#how-do-i-know-what-to-make-private">how do I know what to make private?</a></li>
+<li><a href="#uml">UML</a></li>
+</ul>
+</li>
+<li><a href="#why-oop">Why OOP?</a></li>
+</ul>
+</li>
+<li><a href="#lect-7-static-vs-non-statics">Lect 7: Static vs Non-Statics</a>
+<ul>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#static-factory-method">Static Factory Method</a>
+<ul>
+<li><a href="#why">Why?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-8-statics-vs-non-statics-contd">Lect 8: Statics vs Non-Statics cont’d</a>
+<ul>
+<li><a href="#class-invariants">Class Invariants</a></li>
+<li><a href="#design-by-contract-dbc-and-exception">Design by Contract (DBC) and Exception</a>
+<ul>
+<li><a href="#ex-unchecked-exception">Ex: unchecked exception</a></li>
+</ul>
+</li>
+<li><a href="#try-catch-statement">Try… Catch statement</a></li>
+<li><a href="#junits-and-exceptions">Junits and Exceptions</a></li>
+</ul>
+</li>
+<li><a href="#lect-9-aggregations-and-compositions">Lect 9: Aggregations and Compositions</a>
+<ul>
+<li><a href="#aliasing">Aliasing</a></li>
+<li><a href="#deep-copy">Deep Copy</a></li>
+<li><a href="#immutability">Immutability</a></li>
+<li><a href="#shallow-copying">Shallow Copying</a></li>
+</ul>
+</li>
+<li><a href="#lect-10-aggregations-and-compositions-contd">Lect 10: Aggregations and Compositions Cont’d</a>
+<ul>
+<li><a href="#review">Review</a></li>
+<li><a href="#aliasing">Aliasing</a></li>
+<li><a href="#deep-copy">Deep copy</a></li>
+<li><a href="#shallow-copy">Shallow copy</a></li>
+<li><a href="#object-relationships">Object Relationships</a>
+<ul>
+<li><a href="#has-a-relationships">Has-a relationships</a>
+<ul>
+<li><a href="#aggregation">Aggregation</a>
+<ul>
+<li><a href="#uml">UML</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#composition">Composition</a>
+<ul>
+<li><a href="#uml">UML</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#privacy-leak">Privacy Leak</a>
+<ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-11-inheritance">Lect 11: Inheritance</a>
+<ul>
+<li><a href="#uml">UML</a></li>
+</ul>
+</li>
+<li><a href="#lect-12-inheritance-contd">Lect 12: Inheritance Cont’d</a>
+<ul>
+<li><a href="#overridden-methods">Overridden Methods</a>
+<ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#how-to-recognise-an-inheritance-relationship">How to Recognise an Inheritance Relationship</a></li>
+<li><a href="#inheritance-and-access-modifiers">Inheritance and Access Modifiers</a></li>
+<li><a href="#designing">Designing</a></li>
+<li><a href="#non-extendable-classes">Non-Extendable Classes</a></li>
+<li><a href="#single-inheritance---deadly-diamond-of-death">Single Inheritance - Deadly Diamond of Death</a></li>
+<li><a href="#inheritance-summary">Inheritance Summary</a></li>
+<li><a href="#overriding-vs-overloading-methods">Overriding vs Overloading Methods</a></li>
+<li><a href="#in-class">in-class</a></li>
+<li><a href="#queues">Queues</a></li>
+<li><a href="#object-class"><code>Object</code> Class</a></li>
+</ul>
+</li>
+<li><a href="#lect-13-polymorphism">Lect 13: Polymorphism</a>
+<ul>
+<li><a href="#polymorphism">Polymorphism</a>
+<ul>
+<li><a href="#avoiding-errors">avoiding errors</a>
+<ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#polymorphism-summary">Polymorphism Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-14-static--dynamic-binding---dbc--inheritance--polymorphism">Lect 14: Static &amp; Dynamic Binding - DBC &amp; Inheritance &amp; Polymorphism</a>
+<ul>
+<li><a href="#dynamic-binding">Dynamic Binding</a></li>
+<li><a href="#static-binding">Static Binding</a></li>
+<li><a href="#dbc---inheritance--polymorphism">DBC - Inheritance &amp; Polymorphism</a>
+<ul>
+<li><a href="#recall">Recall:</a></li>
+<li><a href="#inheritance--polymorphism">Inheritance &amp; Polymorphism</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-15-exceptions">Lect 15: Exceptions</a>
+<ul>
+<li><a href="#exceptions">Exceptions</a>
+<ul>
+<li><a href="#what-if-an-exception-happens">What if an Exception happens?</a></li>
+<li><a href="#how-do-we-make-exceptions-help-us">How Do We Make Exceptions Help Us?</a></li>
+<li><a href="#making-an-exception">Making An Exception</a></li>
+<li><a href="#handling-exceptions">Handling Exceptions</a>
+<ul>
+<li><a href="#throw-catch"><code>throw-catch</code></a></li>
+<li><a href="#throw-without-catching">throw without catching</a></li>
+</ul>
+</li>
+<li><a href="#user-defined-vs-java-exceptions">User-Defined vs Java Exceptions</a></li>
+<li><a href="#exceptions-and-inheritance">Exceptions and Inheritance</a></li>
+<li><a href="#misc-exception-tips">Misc Exception Tips</a></li>
+<li><a href="#exceptions-and-program-termination">Exceptions and Program Termination</a></li>
+</ul>
+</li>
+<li><a href="#object-class-contd"><code>Object</code> Class Cont’d</a>
+<ul>
+<li><a href="#tostring"><code>toString</code></a></li>
+<li><a href="#equals"><code>equals()</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-16-obligatory-methods-object-class">Lect 16: Obligatory Methods (<code>Object</code> class)</a>
+<ul>
+<li><a href="#housekeeping">Housekeeping</a></li>
+<li><a href="#obligatory-methods">Obligatory Methods</a>
+<ul>
+<li><a href="#equals"><code>equals()</code></a>
+<ul>
+<li><a href="#overriding">Overriding</a></li>
+<li><a href="#checking-classtype---getclass">Checking Classtype - <code>getClass()</code></a></li>
+<li><a href="#applications---searching-techniques">Applications - Searching Techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#hashcode"><code>hashCode()</code></a>
+<ul>
+<li><a href="#hash-tables">Hash Tables</a></li>
+<li><a href="#hashcode"><code>hashCode()</code></a></li>
+<li><a href="#overriding">Overriding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lect-17-comparable--compareto---abstraction--interfaces">Lect 17: <code>Comparable</code> &amp; <code>compareTo()</code> - Abstraction &amp; Interfaces</a>
+<ul>
+<li><a href="#comparable--compareto"><code>Comparable</code> &amp; <code>compareTo()</code></a>
+<ul>
+<li><a href="#compareto"><code>compareTo()</code></a></li>
+</ul>
+</li>
+<li><a href="#abstract-classes--methods">Abstract Classes &amp; Methods</a>
+<ul>
+<li><a href="#abstract-classes">Abstract Classes</a></li>
+<li><a href="#abstract-methods">Abstract Methods</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+<li><a href="#interface">Interface</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="week-1">Week 1</h1>
+<h2 id="mark-breakdown">Mark Breakdown</h2>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th></th>
+<th>weight</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in-class (iCocker)</td>
+<td>10%</td>
+<td>opens during lecture, usually open till midnight</td>
+</tr>
+<tr>
+<td>Labs</td>
+<td>10%</td>
+<td>10 labs, 1%/each, take home, 1 week</td>
+</tr>
+<tr>
+<td>Programming Exams</td>
+<td>40%</td>
+<td>2 exams, 20%/each, take home, 1 week</td>
+</tr>
+<tr>
+<td>Term test</td>
+<td>20%</td>
+<td>in-person, written, closed-book</td>
+</tr>
+<tr>
+<td>Final exam</td>
+<td>^</td>
+<td>^</td>
+</tr>
+</tbody>
+</table>
+</figure><p>50% rule:
+Earn at least 50% in written assessments.</p>
+<p>Can be cumulative 50% across both written exams.</p>
+<h2 id="review">Review</h2>
+<h3 id="java-structure">Java Structure</h3>
+<p>For this section we’ll use an example program called <code>myProgram</code>.</p>
+<pre><code class="language-java"><span class="hljs-comment">//myProgram.java</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">myProgram</span>{
+  variable_type variable_name;
+  
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>{
+    <span class="hljs-comment">//code</span>
+  } <span class="hljs-comment">//end of main</span>
+} <span class="hljs-comment">// end of class</span>
+</code></pre>
+<p>This concludes java structure basics.</p>
+<h3 id="packages">Packages</h3>
+<p>A package creates a space for a set of classes to exist in together,
+a name space.</p>
+<p>This allows us to have different classes/methods with the same name,
+we can just put them into a different package.</p>
+<p>Packages can contain subpackages that are accessed using the dot, <code>.</code>, operator.</p>
+<ul>
+<li><code>package_name.sub_package_name</code></li>
+<li><code>Java.lang</code></li>
+<li><code>Java.io</code></li>
+</ul>
+<h3 id="memory-model">Memory Model</h3>
+<h4 id="data-types-%26-addresses">Data Types &amp; Addresses</h4>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>size(bits)</th>
+<th>size(bytes)</th>
+<th>value range</th>
+<th style="text-align:center">operators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>8</td>
+<td>1</td>
+<td>(-128)-(127)</td>
+<td style="text-align:center">+ - * /</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16</td>
+<td>2</td>
+<td>(-32,768)-(32,767)</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32</td>
+<td>4</td>
+<td>(-2^31)-( (2^31) -1)</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64</td>
+<td>8</td>
+<td>(-2^63)-( (2^63) -1)</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32</td>
+<td>4</td>
+<td>floats are approximations and can only be so precise</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64</td>
+<td>8</td>
+<td>not going into this</td>
+<td style="text-align:center">^</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1</td>
+<td></td>
+<td>true or false (0 or 1)</td>
+<td style="text-align:center">&amp;&amp; (the two lines) !</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16</td>
+<td>2</td>
+<td>unicode 0-65535</td>
+<td style="text-align:center">&lt; &lt;= &gt; &gt;= == !=</td>
+</tr>
+</tbody>
+</table>
+</figure><p>There are 8 bits in a byte
+and
+each byte takes up an address.
+If a data type is too big to fit in 1 address then it takes up however many addresses it needs.
+If a data type is too small to fill out a whole address it still occupies that whole address.</p>
+<p>When a variable of a certain data type is defined,
+the correct amount of spaces are reserved to accomodate the data.</p>
+<h4 id="examples">Examples</h4>
+<h5 id="primitives">Primitives</h5>
+<p>Code:</p>
+<pre><code class="language-java"><span class="hljs-type">int</span> <span class="hljs-variable">height</span> <span class="hljs-operator">=</span> <span class="hljs-number">165</span>;
+<span class="hljs-type">double</span> <span class="hljs-variable">weight</span> <span class="hljs-operator">=</span> <span class="hljs-number">58.5</span>;
+<span class="hljs-type">char</span> <span class="hljs-variable">initial</span> <span class="hljs-operator">=</span> <span class="hljs-string">'D'</span>;
+<span class="hljs-type">boolean</span> <span class="hljs-variable">found</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>var name</th>
+<th>memory address</th>
+<th>memory spaces</th>
+<th>size(bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>100</td>
+<td>165</td>
+<td>4</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>104</td>
+<td>58</td>
+<td>8</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>112</td>
+<td>‘D’</td>
+<td>2</td>
+</tr>
+<tr>
+<td>found</td>
+<td>114</td>
+<td>true</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</figure><h5 id="non-primitives%2Freferences%3A-arrays">Non-Primitives/References: Arrays</h5>
+<p>With non-primitives/references we’re actually pointing to another object in the memory elsewhere in the garbage collectible heap.</p>
+<pre><code class="language-java"><span class="hljs-type">int</span> [] height = {<span class="hljs-number">165</span>, <span class="hljs-number">170</span>};
+<span class="hljs-type">double</span> [] weight = {<span class="hljs-number">58.5</span>, <span class="hljs-number">70.4</span>};
+<span class="hljs-type">char</span> [] initial = {‘D’, ‘A’};
+<span class="hljs-type">boolean</span> [] found = {<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>};
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>var name</th>
+<th>memory address</th>
+<th>memory spaces</th>
+<th>memory area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>100</td>
+<td>200a</td>
+<td>Stack</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>*</td>
+<td>*208a</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td></td>
+<td>200</td>
+<td></td>
+<td>GCH</td>
+</tr>
+</tbody>
+</table>
+</figure><p>*In the case of non-primitive reference types like arrays
+there’s no universal amount of reserved space for storing the addresses.
+In lieu of that certainty we just use notation to denote that these are separate objects in the memory, which objects belong to who, and that everything that is a reference type is in the garbage collectible heap.</p>
+<p>For the variables <code>height[]</code> and <code>weight[]</code> we store the address where the actual data is stored as opposed to the actual data.
+This is mainly because the size of the actual data may change and having that in the main stack is a headache.
+The address that we store points to somewhere within the GCH.</p>
+<h4 id="function-calls">Function Calls</h4>
+<p>Whenever a function is called in Java,
+a new memory space is created on the stack that we refer to as the function stack.
+Any variables created inside of there,
+no matter what we do with them,
+are deleted from the function stack once the function call is over.
+They get deleted along with the rest of that memory stack.</p>
+<p>Most of the time we pass an argument into function or method call.
+Different things happen (pass by value vs reference) from a memory perspective depending on the data type (primitive vs non-primitive).</p>
+<h5 id="pass-by-value">Pass by Value</h5>
+<p>When we pass in a primitive like an <code>int</code> or <code>double</code> as an argument to a function
+Java will copy that primitive into a memory address inside of the function stack.
+That object exists in the main stack as well as the function stacks.</p>
+<h5 id="pass-by-reference">Pass by Reference</h5>
+<p>When we pass in a non-primitive like an <code>array</code> as an argument to a function
+Java will copy the reference stored in the main stack into a memory address inside of the function stack.
+That object exists in the GCH however there are two variables that point to its address during the function call,
+the variable on the main stack and the variable inside of the function stack.</p>
+<h2 id="documentation---javadoc">Documentation - JavaDoc</h2>
+<p>here are some non-documentation pro-tips:</p>
+<ul>
+<li>give your variables meaningful names that explain their use
+<ul>
+<li><code>student_age</code></li>
+</ul>
+</li>
+<li>follow conventions
+<ul>
+<li>use for loops to scan an array instead of a recursive function</li>
+</ul>
+</li>
+<li>write comments for when code becomes complex</li>
+<li>you can mark where a large piece of code ends and another begins</li>
+</ul>
+<p>Documentation is when we write shit down to make sure we know what the fuck is going on.</p>
+<p>In Java we make use of JavaDoc.</p>
+<p>To use JavaDoc for a method, function, or class you create a block comment on the line above your method with the first line being <code>/**</code></p>
+<p>Here are the most common/useful bits:</p>
+<ul>
+<li><code>@author</code> and <code>@version</code> state the obvious</li>
+<li><code>@param</code> describes inputs</li>
+<li><code>@return</code> describes the output</li>
+<li>JavaDoc makes use of some html style syntax
+<ul>
+<li><code>&lt;p&gt; &lt;/p&gt;</code> makes a paragraph</li>
+<li><code>&lt;code&gt; &lt;/code&gt;</code> will put a different typeface on export to show that you are referring to a piece of code</li>
+</ul>
+</li>
+</ul>
+<p>Many java focused IDEs,
+as well as general use IDEs with the help of plugins,
+have an option to generate JavaDoc block comments for your code as well as export an html api.</p>
+<h2 id="testing-%26-junit">Testing &amp; JUnit</h2>
+<p>Testing is when we run shit around to make sure we know it actually fucking works.</p>
+<p>There are 3 types of errors</p>
+<ul>
+<li>compiler errors
+<ul>
+<li>syntax errors</li>
+</ul>
+</li>
+<li>run time errors
+<ul>
+<li>dividing by zero</li>
+</ul>
+</li>
+<li>logical errors
+<ul>
+<li>skill issue</li>
+</ul>
+</li>
+</ul>
+<p>Since the dawn of programming we have used the time tested technique of calling a function in main and seeing what we can throw at it.
+This requires a human to write tests and verify results making for a time intensive, error-prone mess of a process.</p>
+<p>Instead we automate using JUnit tests.</p>
+<p>Unit testing is the practice of testing the smallest functional units of your code (individual methods and functions) using tests that run automatically and automatically return human readable outputs.</p>
+<p>JUnit is a unit testing framework for Java.
+To use it you have to define a class (just like everything in Java),
+import the libraries relevant to your testing,
+and write a method under the test that is called.</p>
+<p>Most Java focused IDEs have an option to generate a test file automatically.</p>
+<p>Unit testing still requires a human to write tests.</p>
+<h2 id="design-by-contract">Design by Contract</h2>
+<p>DBC is the idea that there is a contract between the coder/implementer(you) and the user/client.</p>
+<p>The contract states:</p>
+<ul>
+<li>The code will only work if:
+<ol>
+<li>The client passes the methods expected by the implementer (pre-condition)</li>
+<li>the output is what’s expected by the client (post-condition)</li>
+</ol>
+</li>
+</ul>
+<p>You write the contract beforehand and you don’t have to say shit when they try to pass <code>"two"</code> into <code>fast_bitsqrt()</code> when the pre-condition said to only pass in doubles.</p>
+<hr>
+<p>I deleted the lecture 1 and 2 lecture notes so the above are a recreation.</p>
+<hr>
+<h1 id="lect-3%3A-intro-to-recursion">Lect 3: intro to recursion</h1>
+<h2 id="function-calls-and-stack-frames">Function Calls and Stack Frames</h2>
+<p>When a function is called,
+a new stack frame is created for the local variables to be stored.
+When the function is returned or otherwise finishes,
+the stack frame is deleted and the memory is freed up again for other programs to use.</p>
+<p>Once a memory space is gone,
+it’s gone forever.
+People die when they are killed</p>
+<h2 id="recursion">Recursion</h2>
+<p>Recursion is when a function calls itself.
+With each call we have a new stack frame.
+Stack overflow occurs when there is too many frames for the memory to handle (infinite recursion).
+Recursion requires that each case eventually move towards the base case so that we stop creating stacks.
+Once we stop creating stacks we can go back and start popping off the stacks we created beforehand.</p>
+<p>Some problems are recursive in nature (repeating a process with slightly different inputs over and over again, those inputs being the outputs of previous iterations and the ultimate answer resulting from going back and using all the results together).
+Therefore it is easier and more understandable to present with them with recursion.</p>
+<p>It’s a new mode of thinking.</p>
+<p>Factorials,
+finding greatest commmon divisor,
+search and sort algos,
+folders containing other folders,
+fractals,
+and many other things are examples of things that are just recursive in nature.</p>
+<h2 id="tracing-a-recursive-algo-w%2F-examples">Tracing a Recursive Algo w/ Examples</h2>
+<h3 id="ex%3A-is-the-input-a-palindrome%3F">Ex: Is the input a palindrome?</h3>
+<p>Plaindrome -
+a word that is spelt the same left to right as it is right to left</p>
+<p>Empty and single character strings are palindromes(albeit crappy palindromes).</p>
+<p>“racecar” is still “racecar” backwards.</p>
+<p>“racer” isn’t.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(String input)</span> {
+	<span class="hljs-type">boolean</span> <span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+	<span class="hljs-keyword">if</span> (input.length() &lt;= <span class="hljs-number">1</span> )
+		palindrome = <span class="hljs-literal">true</span>;
+	<span class="hljs-type">else</span>
+		<span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> (input.charAt(<span class="hljs-number">0</span>) == input.charAt(input.length()-<span class="hljs-number">1</span>)) &amp;&amp; isPalindrome(input.substring(<span class="hljs-number">1</span>, input.length()-<span class="hljs-number">1</span>));
+	<span class="hljs-keyword">return</span> palindrome;
+</code></pre>
+<h2 id="basics-of-recursion">Basics of Recursion</h2>
+<p>In a recursive function there are 2 kinds of cases.
+A base case and a recursive case.</p>
+<p>A recursive function must have at least one of each.</p>
+<p>If there is no recursive case then it’s just an if-else gate.</p>
+<p>If there is no base case then we’ll keep recursing until we run out of memory.</p>
+<p>Every recursive case has to move towards the base case at some point or at least move towards a different recursive case that will meet the base case at some point.</p>
+<h2 id="how-to-design-a-recursive-algo">How to Design a Recursive Algo</h2>
+<p>Divide &amp; Conquer (top-down approach):</p>
+<ul>
+<li>1 &amp; n-1 (buttom up)
+<ul>
+<li>solve the problem for n input, using the sol’n for the n-1 input</li>
+</ul>
+</li>
+<li>find out how to solve the smallest/easiest case w/o recursion
+<ul>
+<li>summing up an array of n-elements?</li>
+<li>summing up an array of 1 element is easy</li>
+<li>make recursive cases making the arrays smaller and smaller until we hit the base case</li>
+</ul>
+</li>
+</ul>
+<h1 id="lect-4%3A-recursion-cont%E2%80%99d">Lect 4: Recursion Cont’d</h1>
+<h2 id="divide-and-conquer---find-the-sum-of-all-the-entries-of-an-array">Divide and Conquer - Find the sum of all the entries of an array</h2>
+<p>If the array is 1 element then the sum of all the elements is that element</p>
+<p>If the array is 2 elements then the sum of all the elements is the first element plus the second element.</p>
+<p>We could also divide the array in 2 in this case then add the first element of each array to one another.</p>
+<p>If the array is <code>n</code> elements long,
+divide the <code>n</code> elemnt long array into 2 subarrays,
+add their first terms,
+if there are any remaining whose sum cannot be taken by our first rule then divide those arrays in 2 once more adding their first terms.</p>
+<p>we can divide the problem space in 2 in order to make it smaller and smaller (divide and conquer)</p>
+<h2 id="recursion-is-not-always-the-best-sol%E2%80%99n">Recursion is not always the best sol’n</h2>
+<p>Recursing requires the reservation of a lot of memory and the cost of memory as we go deeper into the recursion scales steeply.</p>
+<p>Especially when compared to other more straightforward sol’ns that don’t require recursion and/or as much memory reservation.</p>
+<p>Recursion is also a pain in the ass to grapple with and design.</p>
+<h2 id="misc-recursion-notes">Misc recursion notes</h2>
+<p>Recursion is a different mode of thinking so it’s hard to come up with a sol’n right away.</p>
+<p>It is possible to have more than one base and/or recursive case</p>
+<p>Problems solved via recursion can be solved iteratively as well</p>
+<ul>
+<li>for loops</li>
+<li>while loops</li>
+</ul>
+<p>Sometimes you neeed a helper function for recursion.</p>
+<p>Even if a problem is recursive in nature,
+you don’t necessarily need to resort to recursion.</p>
+<h2 id="closing">Closing</h2>
+<p>Every recursion must have a base case and a recursive case</p>
+<p>Use divide and conquer and bottom up methods</p>
+<p>Linear recursion calls itself once in every iteration.
+Binary recursion calls itself twice in every interation.</p>
+<h1 id="lecture-5%3A-finally-advanced-object-oriented-programming">Lecture 5: Finally Advanced Object-Oriented Programming</h1>
+<p>Adv oop is more about concepts.
+We already know all the base concepts and required syntax.</p>
+<h2 id="variable-types">Variable Types</h2>
+<p>Java cares about the type.
+<strong>Java is a strongly typed language.</strong></p>
+<p>WHen you create a variable in Java,
+memory has to be reserved in order to store that variable.
+If you want an integer then java sets aside 4 bytes,
+if you want a double then java sets aside 8 bytes,
+and so on.</p>
+<p>Some data types are flexible in size like arrays.
+At compile time java doesn’t know the total required memory space for these data types.
+At runtime it fucks around and finds out.</p>
+<p>Examples:</p>
+<ul>
+<li>Strings
+<ul>
+<li><code>userName</code> could be any number of charcters long</li>
+</ul>
+</li>
+</ul>
+<p>THese are nonprimitives</p>
+<h3 id="non-primitives">Non-primitives</h3>
+<p>Data types that have flexible memory sizes that aren’t known at compile time.</p>
+<p>Examples:</p>
+<ul>
+<li>String</li>
+<li>Math</li>
+<li>Scanner</li>
+<li>ArrayList</li>
+<li>Vector</li>
+<li>StringBuilder</li>
+<li>StringBuffer</li>
+</ul>
+<p><code>ArrayList</code> and <code>Vector</code> have similar functionality but are very different.
+Same with <code>StringBuilder</code> and <code>StringBuffer</code>.</p>
+<p>Non-primitive types are also called <code>reference types</code>.
+They don’t actually hold the data related to them,
+they hold the memory address for where the heap of the actual data is.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span> <span class="hljs-params">(String[] args)</span> {
+	<span class="hljs-type">double</span> <span class="hljs-variable">grade</span> <span class="hljs-operator">=</span> <span class="hljs-number">98.4</span>;
+	<span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Marzieh"</span>;
+}
+</code></pre>
+<p>the <code>double grade</code> stores the <code>98.5</code> in the fixed memory aka program stack.
+<code>grade</code> actually holds the value.</p>
+<p>The <code>String name</code> stores the <code>"Marzieh"</code> in the growable memory spaces aka garbage collectible heap.
+<code>name</code> holds the address where the data is stored.</p>
+<p>Reference types have zero or more states
+(represented by their <code>instance variables</code> aka <code>fields</code> or <code>attributes</code>).
+These associated instant variables make up the “state” of the reference type variable.</p>
+<p>There are zero or more behaviours associated with the non-primitives.</p>
+<h2 id="classes">Classes</h2>
+<p>A <code>class</code> is a bundle of instance variables and methods.
+Bundling together functions and information.</p>
+<p>It’s also a non-primitive data-type and so has the same traits as other non-primitives.
+Flexible memory allocation,
+unknown required memory allocation at compile time,
+zero or more states,
+and zero or more behaviours.
+When we write a <code>class</code> in java we’re creating a blueprint for creating an <code>instance</code> of that class,
+this is called an <code>object</code>.
+You can’t use the class on it’s own,
+you have to make an <code>instance</code>.</p>
+<h3 id="presenting-a-class">Presenting a Class</h3>
+<p>To present a class we use notation called <strong>Unified Modelling Language (UML)</strong></p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Class Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance variables</td>
+</tr>
+<tr>
+<td>------------------</td>
+</tr>
+<tr>
+<td>methods</td>
+</tr>
+</tbody>
+</table>
+</figure><figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>selfDrivingCar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make: String</td>
+</tr>
+<tr>
+<td>Model: String</td>
+</tr>
+<tr>
+<td>color: int</td>
+</tr>
+<tr>
+<td>plateNumber: char[]</td>
+</tr>
+<tr>
+<td>---------------------</td>
+</tr>
+<tr>
+<td>start(): boolean</td>
+</tr>
+<tr>
+<td>accelerate(int): void</td>
+</tr>
+<tr>
+<td>changeGear(int): void</td>
+</tr>
+<tr>
+<td>brake(): boolean</td>
+</tr>
+<tr>
+<td>turn(char): void</td>
+</tr>
+</tbody>
+</table>
+</figure><p>When the designer (us) makes this,
+they can then give it to the programmer (also us) to be created easily.</p>
+<h4 id="creation-of-a-class">Creation of a Class</h4>
+<p><em><strong>Recall: <code>public</code> classes are accessible by everyone and everything.</strong></em>
+Access modifiers and static vs non-static is covered later</p>
+<pre><code class="language-java">[<span class="hljs-keyword">public</span>] <span class="hljs-keyword">class</span> <span class="hljs-title class_">className</span> {
+
+	type variable_name;
+	
+	[access modifier][<span class="hljs-keyword">static</span>] returnType/<span class="hljs-keyword">void</span> <span class="hljs-title function_">methodsName</span><span class="hljs-params">(type name, …)</span>{
+	} <span class="hljs-comment">// end of method</span>
+
+}<span class="hljs-comment">// end of class</span>
+</code></pre>
+<h2 id="objects">Objects</h2>
+<p>to make an <code>object</code> (<code>instance</code> of a class):</p>
+<pre><code class="language-java"><span class="hljs-comment">//&amp;lt;class name&gt; &amp;lt;variable name&gt; = new &amp;lt;class name&gt;();</span>
+<span class="hljs-type">person</span> <span class="hljs-variable">jane</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">person</span>();
+</code></pre>
+<p>Accessing the <code>object</code>’s property (<code>field</code>s and <code>method</code>s) uses the <code>dot</code> “.” operator.</p>
+<pre><code class="language-java">System.out.println(jane.name)
+</code></pre>
+<p><code>jane</code> is stored in the stack but what she stores is a memory address.
+That memory address points to the <code>GCH</code>(garbage collectible heap).
+At the address all the data is stored.</p>
+<p>read about constructors</p>
+<h1 id="lect-6%3A-constructors-%26-encapsulation">Lect 6: Constructors &amp; Encapsulation</h1>
+<p>Constructors are special methods:</p>
+<ul>
+<li>they return no value</li>
+<li>they are not void</li>
+<li>it is the same name as the class</li>
+<li>it is used to initialize the instance variables</li>
+</ul>
+<p>We can initialize instance variables by making a constructor that accepts several arguments.
+In doing so we can avoid rewriting similar lines of code over and over again.</p>
+<p>When writing class methods (even and especially the constructor) <code>this</code> allows us to refer to the current object.
+<code>this</code> followed by the <code>dot</code> <code>.</code> operator will allow us to take variables and methods from the current object specifically.</p>
+<p>When making an instance of an object whose code makes use of <code>this.</code> then it gets translated in a way.
+An instance of the class <code>student</code> that we call <code>jade</code> will turn statements like <code>this.name</code> into <code>jade.name</code>.
+<em><strong>This refers to the <code>object</code> not the <code>class</code>.</strong></em></p>
+<h2 id="overloaded-constructors-%26-constructor-chaining">Overloaded Constructors &amp; Constructor Chaining</h2>
+<p>A class can have multiple constructors in order to give flexibility in creating an object.
+Sometimes you don’t have to specify a certain aspect of an object or don’t want to, in these cases we can have constructors that take more or less or different arguments.
+When we use those specific constructors then we can easily differentiate it in our use cases.
+This is called <em><strong>overloading constructors</strong></em>.</p>
+<p>If we have duplicate code b/w all of our constructors then we can call other constructors inside of our constructor.
+A basic constructor then other more advanced/specialized constructors depening on the args.
+We can call a constructor inside a <code>class</code>’s code by using <code>this(arg1, arg2, arg3, ..., argN)</code> where the list of args are the required args for the constructor we want.
+This is called <em><strong>constructor chaining</strong></em>.</p>
+<h2 id="clone%2Fcopy-constructor">Clone/Copy Constructor</h2>
+<p>A <code>class</code> constructor that takes an existing <code>object</code> instance of the <code>class</code> as the input argument then copies over the attributes to a new instance of the class,
+creating a new <code>object</code> in the process.</p>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<h3 id="slide-25">Slide 25</h3>
+<p>Class code:</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">Student</span> <span class="hljs-params">(Student st)</span> {
+<span class="hljs-built_in">this</span>.initial = st.initial;
+<span class="hljs-built_in">this</span>.studentId = st.studentId;
+<span class="hljs-built_in">this</span>.enrolmentYear = st.enrolmentYear;
+}
+</code></pre>
+<p>Our code using the <code>Student</code> class:</p>
+<pre><code class="language-java"><span class="hljs-type">Student</span> <span class="hljs-variable">alice</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">'A'</span>, <span class="hljs-number">1256</span>, <span class="hljs-number">2016</span>);
+<span class="hljs-type">Student</span> <span class="hljs-variable">rose</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(alice);
+System.out.println(alice.initial);
+System.out.println(rose.initial);
+alice.initial = <span class="hljs-string">'#'</span>;
+System.out.println(alice.initial);
+System.out.println(rose.initial);
+</code></pre>
+<p>memory diagram:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>2000a</td>
+<td>alice</td>
+</tr>
+<tr>
+<td></td>
+<td>3000a</td>
+<td>rose</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>A</td>
+<td>initial</td>
+</tr>
+<tr>
+<td></td>
+<td>1256</td>
+<td>studnetId</td>
+</tr>
+<tr>
+<td></td>
+<td>2016</td>
+<td>enrolmentYear</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>R</td>
+<td>intial</td>
+</tr>
+<tr>
+<td></td>
+<td>1256</td>
+<td>studentId</td>
+</tr>
+<tr>
+<td></td>
+<td>2016</td>
+<td>enrolmentYear</td>
+</tr>
+</tbody>
+</table>
+</figure><h3 id="slide-26">Slide 26</h3>
+<pre><code class="language-java"><span class="hljs-comment">// rose is an object of Student</span>
+rose.initial = <span class="hljs-string">'R'</span>;
+rose.studentId = <span class="hljs-number">1000</span>;
+rose.enrolmentYear = <span class="hljs-number">2020</span>;
+<span class="hljs-type">Student</span> <span class="hljs-variable">julia</span> <span class="hljs-operator">=</span> rose;
+System.out.println(julia.initial);
+System.out.println(rose.initial);
+rose.initial = <span class="hljs-string">'#'</span>;
+System.out.println(julia.initial);
+System.out.println(rose.initial);
+</code></pre>
+<p>memory diagram:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>2000a</td>
+<td>rose</td>
+</tr>
+<tr>
+<td></td>
+<td>2000a</td>
+<td>julia</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>A</td>
+<td>initial</td>
+</tr>
+<tr>
+<td></td>
+<td>1256</td>
+<td>studnetId</td>
+</tr>
+<tr>
+<td></td>
+<td>2016</td>
+<td>enrolmentYear</td>
+</tr>
+</tbody>
+</table>
+</figure><p>We didn’t use the keyword <code>new</code> and just directly assigned an <code>object</code> to another <code>object</code>.
+New memory space was not reserved so they just point to the same point in memory.</p>
+<h2 id="garbage-collection-mechanism">Garbage Collection Mechanism</h2>
+<p>If we have something stored in the GCH but isn’t referenced by any variable then it’s no longer needed.
+Java will get rid of this for us so that we can free up memory.
+C and C++ don’t do this.</p>
+<p>Active references point to a memory address,
+null references don’t point to anything.
+Reachable objects give access to their components in memory,
+non reachable can’t be reached by their objects, they aren’t being pointed to so they can be garbage collected.</p>
+<p>Garbage collector finds these unreachables and declares them as free space</p>
+<p>Let’s take a look at this code:</p>
+<pre><code class="language-java"><span class="hljs-type">Student</span> <span class="hljs-variable">john</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>();
+<span class="hljs-type">Student</span> <span class="hljs-variable">jane</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>();
+john = jane;
+jane = <span class="hljs-literal">null</span>;
+</code></pre>
+<p>Line 1:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>2000a</td>
+<td>object <code>john</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>&lt;all of <code>john</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><p>Line 2:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>2000a</td>
+<td>object <code>john</code></td>
+</tr>
+<tr>
+<td></td>
+<td>3000a</td>
+<td>object <code>jane</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>&lt;all of <code>john</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>&lt;all of <code>jane</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><p>Line3:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>3000a</td>
+<td>object <code>john</code></td>
+</tr>
+<tr>
+<td></td>
+<td>3000a</td>
+<td>object <code>jane</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>&lt;all of <code>john</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>&lt;all of <code>jane</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><p>Line4:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>3000a</td>
+<td>object <code>john</code></td>
+</tr>
+<tr>
+<td></td>
+<td>null</td>
+<td>object <code>jane</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>&lt;all of <code>john</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>&lt;all of <code>jane</code>’s stuff&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><p>we find that the data stored in <code>2000</code> which was <code>john</code>’s old data is unreachable so it’s garbage collectable.</p>
+<h2 id="in-class-activity">In-Class Activity</h2>
+<pre><code class="language-java"><span class="hljs-type">Car</span> <span class="hljs-variable">herCar</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>();
+<span class="hljs-type">Car</span> <span class="hljs-variable">hisCar</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>();
+
+<span class="hljs-type">Car</span> <span class="hljs-variable">myCar</span> <span class="hljs-operator">=</span> hisCar;
+hisCar = <span class="hljs-literal">null</span>;
+myCar = herCar;
+herCar = hisCar;
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>stored</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>null</td>
+<td>herCar</td>
+</tr>
+<tr>
+<td></td>
+<td>null</td>
+<td>hisCar</td>
+</tr>
+<tr>
+<td></td>
+<td>2000a</td>
+<td>myCar</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2000a</td>
+<td>&lt;<code>herCar</code> stuff&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3000a</td>
+<td>&lt;<code>hisCar</code> stuff&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><h2 id="encapsulation">Encapsulation</h2>
+<p>Data encapsulation refers to hiding the internal states of an object in oop.
+An <code>implementer</code> controls the <code>clients</code> access to the instance variables.</p>
+<p>We have to make these instance variables inaccessible to the clients.</p>
+<p>THis can be done by choosing the correct access modifiers.</p>
+<h3 id="access-modifiers">Access Modifiers</h3>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Access Modifier</th>
+<th>class</th>
+<th>Subclass Same Package</th>
+<th>Subclass Outside Package</th>
+<th>package</th>
+<th>World (outside the package)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>no access modifier</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>private</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</figure><p><code>public</code> means anyone can access it</p>
+<p><code>protected</code> means that we can’t access it in other classes whether they’re in the same package or other packages. Only accessible by subclasses</p>
+<p><code>no access modifier</code> just means you write nothing.
+Accessibly by any other class in package as well as subclasses in the same package.</p>
+<p><code>private</code> makes it inaccessible outside of the class.</p>
+<h3 id="setters-%26-getters">Setters &amp; Getters</h3>
+<p><code>get&amp;lt;Var&gt;</code> <code>&amp;lt;set&gt;Var</code></p>
+<p>When data is encapsulated,
+the only way you can get access is via the object methods.</p>
+<p>Accessors (getters): return the value of the instance variable.</p>
+<p>Mutators (setters): updates the value of the instance variable.</p>
+<h3 id="how-do-i-know-what-to-make-private%3F">how do I know what to make private?</h3>
+<p>I don’t konw.</p>
+<p>It’s up to the programmer/designer/contractor/boss’s discretion.</p>
+<p>If you are not sure how sensitive a data is, make the variable invisible and provide the access by mutator and accessor methods.</p>
+<p>It’s easier to change things that way.</p>
+<h3 id="uml">UML</h3>
+<p>In UML public members are shown by <code>+</code> while private are shown by <code>-</code></p>
+<h2 id="why-oop%3F">Why OOP?</h2>
+<p>Bundling code into individual softare objects provides a number of benefits, including:</p>
+<ul>
+<li>modularity</li>
+<li>information-hiding</li>
+<li>code re-use</li>
+<li>pluggability and debugging ease</li>
+</ul>
+<h1 id="lect-7%3A-static-vs-non-statics">Lect 7: Static vs Non-Statics</h1>
+<p><em><strong>Was late so I have to go look at the video.</strong></em></p>
+<h2 id="variables">Variables</h2>
+<p>When we place variable declaration outside of any methods or constructors in a class,
+they become instance variables when we make an instance of the class.
+Suppose we wanted a counter of how many instances of that class we’ve created,
+in this case we use the <code>static</code> keyword in declaration.
+Otherwise a copy of the variable gets copied to the new instance’s memory space.</p>
+<p>Using <code>static</code> makes the variable belong to the <code>class</code>, a class variable, as opposed to an individual <code>object</code>.</p>
+<p>These are normally used as a counter of the objects created but there are other use cases.</p>
+<p>The static variable is only initialized when the class is first loaded.</p>
+<p>If you do not initialize the static variable, it will get the default value:</p>
+<ul>
+<li>Primitive integers → 0</li>
+<li>Primitive floating point → 0.0</li>
+<li>boolean → false</li>
+<li>Object reference → null</li>
+</ul>
+<p>Only make static variables with good reason.</p>
+<p>These variables can be accessed using the <code>dot</code>, <code>.</code>, operator on the <code>class</code> or any given <code>object</code> of the class.</p>
+<pre><code class="language-java"><span class="hljs-comment">//objectName is an object of className</span>
+System.out.println(className.staticVar);
+System.out.println(objectName.staticVar);
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>object</th>
+<th>var</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><h2 id="methods">Methods</h2>
+<p><code>static</code> methods function the same on all instances.</p>
+<p><code>Math.sqrt(a)</code>, <code>Math.pow(a,b)</code>, and <code>Math.min(a,b)</code> all function the same no matter what kind of <code>Math</code> class you create.
+They only function based off of the arguments and class variables rather than the instance variables.</p>
+<p><code>static</code> methods like <code>static</code> variables can be called with the <code>dot</code>, <code>.</code>, operator next to the class name or an object.</p>
+<pre><code class="language-java">className.methodName(arg1, arg2);
+objectName.methodName(arg1, arg2);
+<span class="hljs-comment">//will return the same result</span>
+</code></pre>
+<p><em><strong>Static methods cannot use non-static instance variables or call non-static methods.</strong></em></p>
+<h3 id="static-factory-method">Static Factory Method</h3>
+<p>A method that creates a new <code>object</code> of the class in which the static method is defined and returns it.</p>
+<p>Normally the name is <code>getInstance()</code>.</p>
+<h4 id="why%3F">Why?</h4>
+<p>This is useful for instances where we have 2 constructors who only differ in a single variable but those variables don’t differ in type,
+making it impossible for the compiler to figure out which constructor is being called.</p>
+<p>In this case we can use different versions of <code>getInstance()</code> and a private constructor method.</p>
+<p>Suppose we want a class that can only have one instance.
+We could make the constructor private and only have a <code>getInstance()</code> that throws an exception if it already exists.</p>
+<h1 id="lect-8%3A-statics-vs-non-statics-cont%E2%80%99d">Lect 8: Statics vs Non-Statics cont’d</h1>
+<p>This became online all of a sudden for some reason.
+I didn’t pay attention.
+Video starts at slide 23/39.</p>
+<p><code>toString()</code> returns the address of any object that it’s called for.</p>
+<h2 id="class-invariants">Class Invariants</h2>
+<p>Recall <em>Design by Contract</em>:</p>
+<ul>
+<li>clients (users) guarantee the preconditions</li>
+<li>implementers (coders) guarantee the postconditions</li>
+<li>we design with this contract in mind and assume that it will always be fulfilled</li>
+</ul>
+<p>Invariants is another component of design by contract.</p>
+<p>An invariant is a statement that is true during a certain point in a program’s execution.</p>
+<p>Generally,
+an invariant is a certain property that is assumed to be true on the entry of a method and guaranteed to be true on the exit of the method.</p>
+<p>Invariants are used for program correctness.</p>
+<p>example:
+<img src="https://cdn.discordapp.com/attachments/513923474239127553/1026868566621962320/unknown.png" alt="@inv" title="slide 23/39"></p>
+<p>Here we see that the invariant is that the string should remain unchanged.
+If our invariant is changed then we know the program is incorrect.</p>
+<h2 id="design-by-contract-(dbc)-and-exception">Design by Contract (DBC) and Exception</h2>
+<p>If the pre-condition isn’t met by the client then we want to do something about it.
+We design by contract and the contract has been violated.</p>
+<p>We can throw an exception to stop the program from executing and generate a message about the problem that occured.</p>
+<p>3 types of error:</p>
+<ul>
+<li>compiler/syntax error</li>
+<li>logical error</li>
+<li>runtime error</li>
+</ul>
+<p>We use these exceptions to catch runtime errors.</p>
+<h3 id="ex%3A-unchecked-exception">Ex: unchecked exception</h3>
+<pre><code class="language-java"><span class="hljs-comment">/**
+ * This method computes the area of a circle, whose radius is geven
+ * <span class="hljs-doctag">@param</span> radius is the radiusof a circle
+ * <span class="hljs-doctag">@return</span> the area of the circle
+ * <span class="hljs-doctag">@pre</span> radius shold be a number
+ * <span class="hljs-doctag">@pre</span> radius should be positive. Zero is accepted
+ * <span class="hljs-doctag">@exception</span> throws NumberFormatException
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getArea</span> <span class="hljs-params">(<span class="hljs-type">double</span> radius)</span> {
+	<span class="hljs-keyword">if</span> (((Double) radius).isNaN()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberFormatException</span>();
+	<span class="hljs-keyword">return</span> radius*radius*Math.PI;
+</code></pre>
+<p>Entering a non-number or a negative number violates the contract so we throw an exception.</p>
+<h2 id="try%E2%80%A6-catch-statement">Try… Catch statement</h2>
+<p>Previously we identified the exception and just threw it to shutdown the program.</p>
+<p>We can also decide to handle the exception by using a try-catch statement.</p>
+<pre><code class="language-java"><span class="hljs-keyword">try</span> {
+	<span class="hljs-comment">// the rsiky code that may produce a run time error goes here.</span>
+} <span class="hljs-keyword">catch</span> (Exception e) {
+	<span class="hljs-comment">// ma proper error message or any other statement that should be run in case exception happens goes here</span>
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">/**
+ * This method squares the value of the `array` at the given `index`
+ * <span class="hljs-doctag">@param</span> array a double array
+ * <span class="hljs-doctag">@param</span> index an index of the array
+ * <span class="hljs-doctag">@exception</span> ArrayIndexOutofBoundsException is thrown in case the index is not in the range of zero to array.length()-1
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">squareIt</span><span class="hljs-params">(<span class="hljs-type">double</span>[] array, <span class="hljs-type">int</span> index)</span> {
+	<span class="hljs-keyword">try</span> {
+		array[index] = Math.pow(array[index], <span class="hljs-number">2</span>);
+	} <span class="hljs-keyword">catch</span> (ArrayIndexOutofBoundsException e) {
+		System.out.println(<span class="hljs-string">"Invalid index!"</span>);
+	}
+}
+</code></pre>
+<h2 id="junits-and-exceptions">Junits and Exceptions</h2>
+<p>Recall:</p>
+<ul>
+<li>there should be a test case from every categary of epected input</li>
+<li>there should be boundary/edge cases</li>
+</ul>
+<p>Now we need to also add at least one test case to check the exception.</p>
+<p>Normal test cases look like so:</p>
+<pre><code class="language-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> {
+	<span class="hljs-type">String</span> <span class="hljs-variable">expected</span> <span class="hljs-operator">=</span> <span class="hljs-string">"rightAnswer"</span>;
+	<span class="hljs-type">String</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> testedClass.testedMethod(arg);
+	assertEquals(expected, actual);	<span class="hljs-comment">//we assert that expected is equal to actual or else the test fails</span>
+}
+</code></pre>
+<p>Testing for exceptions looks like this:</p>
+<pre><code class="language-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">void</span> <span class="hljs-title function_">testException</span><span class="hljs-params">()</span> {
+	assertThrows(&lt;name of exception&gt;.class, ()-&gt; testedClass.testedMethod(arg));
+}
+</code></pre>
+<p>There are a lot of different kinds of exceptions that you will have to throw or attempt to handle.</p>
+<p><code>()-&gt;</code> is lambda syntax and allows us to not do a fuck ton more typing than we need to.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1026876218139754496/unknown.png" alt="lambda demo"></p>
+<h1 id="lect-9%3A-aggregations-and-compositions">Lect 9: Aggregations and Compositions</h1>
+<p>With <code>reference</code> data types there is aliasing and deep copying that you need to contend with when it comes to making copies.</p>
+<p>This doesn’t exist for <code>primitive</code>s (<code>int</code>, <code>double</code>, etc) since they store the data itself at their memory address as opposed to a reference to a memory address.</p>
+<h2 id="aliasing">Aliasing</h2>
+<p>Aliasing is the creation of a second copy of a <code>reference</code> variable using <code>assignment</code> operator.</p>
+<p>They are both <code>reference</code>s but point to the same data in the memory.</p>
+<pre><code class="language-java"><span class="hljs-type">int</span>[] arr = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>};
+<span class="hljs-type">int</span>[] arrClone = name;
+</code></pre>
+<p>Memory diagram:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>mem. address</th>
+<th>data</th>
+<th>what is being stored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>100a</td>
+<td>Address of data for <code>arr</code></td>
+</tr>
+<tr>
+<td></td>
+<td>100a</td>
+<td>Address of data for <code>arrClone</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>100a</td>
+<td>1</td>
+<td>data for <code>arr</code></td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><h2 id="deep-copy">Deep Copy</h2>
+<p>Deep copying is making a new <code>reference</code>, reserving a new space in the memory, then filling that space with identical data to the data in the memory space referenced by the reference being copied.</p>
+<pre><code class="language-java"><span class="hljs-type">String</span> <span class="hljs-variable">arr</span> <span class="hljs-operator">=</span> <span class="hljs-string">"John"</span>;
+<span class="hljs-type">String</span> <span class="hljs-variable">arrClone</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[arr.length];
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arr.length; i++)
+	arrClone[i] = arr[i];
+</code></pre>
+<p>Memory diagram:</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>mem. address</th>
+<th>data</th>
+<th>what is being stored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>100a</td>
+<td>Address of data for <code>arr</code></td>
+</tr>
+<tr>
+<td></td>
+<td>200a</td>
+<td>Address of data for <code>arrClone</code></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>100a</td>
+<td>1</td>
+<td>data for <code>arr</code></td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>200a</td>
+<td>1</td>
+<td>data for <code>arrClone</code> (copy of <code>arr</code> data)</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><h2 id="immutability">Immutability</h2>
+<p>If the state of an object cannot change after it is constructed, it is said that the
+object is immutable.</p>
+<p>You can create an immutable object if you do not let any method change the state of the object.</p>
+<ul>
+<li>no mutator methods</li>
+<li>deep copy the reference variables in the accessor methods
+<ul>
+<li>no accessor method should return a reference to an instance variable</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-type">char</span> [] getPlatNumber() {
+	<span class="hljs-type">char</span> [] plateNumberCopy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-built_in">this</span>.plateNumber.length];
+	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.plateNumber.length; i++)
+		plateNumberCopy[i] = <span class="hljs-built_in">this</span>.plateNumber[i];
+	<span class="hljs-keyword">return</span> plateNumberCopy;
+</code></pre>
+<h2 id="shallow-copying">Shallow Copying</h2>
+<p>Shallow copy clones an <code>object</code> and it’s components but not it’s sub-components.</p>
+<h1 id="lect-10%3A-aggregations-and-compositions-cont%E2%80%99d">Lect 10: Aggregations and Compositions Cont’d</h1>
+<h2 id="review-1">Review</h2>
+<p>Suppose we have an object <code>ob1</code> with <code>data1</code> that points to <code>a100</code></p>
+<h2 id="aliasing-1">Aliasing</h2>
+<p><code>ob2</code> is an alias of <code>ob1</code>.
+It points to <code>a100</code> which has <code>data1</code></p>
+<h2 id="deep-copy-1">Deep copy</h2>
+<p><code>ob2</code> is a deep copy of <code>ob1</code>.
+It points to <code>a200</code> which has <code>data2</code>.
+<code>data1</code> and <code>data2</code> are identical.</p>
+<p>SUppose that <code>data1</code> is something like an arraylist that further references somewhere else <code>r100</code>.</p>
+<h2 id="shallow-copy">Shallow copy</h2>
+<p><code>ob2</code> is a shallow copy of <code>ob1</code>.
+It points to <code>a200</code> which has <code>data2</code>.
+<code>data1</code> and <code>data2</code> point to <code>r100</code>.</p>
+<h2 id="object-relationships">Object Relationships</h2>
+<p>Objects have relationships with one another in oop.
+This makes code reuse possible.</p>
+<p>Types of relationships:</p>
+<ul>
+<li>Aggregation: Has-a relationship</li>
+<li>Composition: Has-a relationship</li>
+<li>Inheritence: Is-a relationship</li>
+</ul>
+<h3 id="has-a-relationships">Has-a relationships</h3>
+<p>Has-a relationship -
+When an object of type <code>A</code> uses the properties (instance variables and methods) of an object of type <code>B</code></p>
+<p>We’re describing a situation where an object has an <em>instance variable</em> whose type is non-primitive.</p>
+<p>There are two types of these relationships:</p>
+<ul>
+<li>aggregation: weak association - the components can exist independent of the object</li>
+<li>composition: strong association - the components cannot exist independent of the object as they are owned by the owner object</li>
+</ul>
+<p>Difference in programming (providing access to the components of the class):</p>
+<ul>
+<li>Aggregation uses aliases or shallow copy to create the object</li>
+<li>composition: uses deep copy to crate the object</li>
+</ul>
+<h4 id="aggregation">Aggregation</h4>
+<p>The relationship between objects is weak:</p>
+<ul>
+<li>a student has associated courses
+<ul>
+<li>what happens when they graduate?
+<ul>
+<li>the course still exist</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>a doctor has patients
+<ul>
+<li>what happens when they retire?
+<ul>
+<li>the patients still exist</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Aggregation means that the object does not own its component.</p>
+<p>The component exists independently of the object.</p>
+<p>Once the object is gone(cleaned up from the memory),
+the component is still there.</p>
+<h5 id="uml-1">UML</h5>
+<p><img src="https://media.discordapp.net/attachments/513923474239127553/1034466928829407312/unknown.png?width=881&amp;height=382" alt="aggregation uml">
+draw a line from the component to the class ending with a hollow diamond and marked with the number of that class belonging to the other class or an <code>*</code> if the number can be more than one.</p>
+<h5 id="example">Example</h5>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Patient</span> {
+	String name;
+	Calendar dob;
+	
+	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Patient</span><span class="hljs-params">(String name, Calendar dob)</span> {
+		<span class="hljs-built_in">this</span>.name = name;
+		<span class="hljs-built_in">this</span>.dob = dob;
+	}
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Doctor</span> {
+	<span class="hljs-keyword">private</span> String name;
+	<span class="hljs-keyword">private</span> ArrayList&lt;Patient&gt; patient;
+	
+	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span><span class="hljs-params">(String name, ArrayList&lt;Patient&gt; patient)</span> {
+		<span class="hljs-built_in">this</span>.name = name;
+		<span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
+		
+	}
+	
+	<span class="hljs-comment">// Aliasing/shallow copy</span>
+	<span class="hljs-comment">// we don't want to make a new patient, this patient just exists</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span> <span class="hljs-params">(Doctor doctor)</span> {
+		<span class="hljs-built_in">this</span>.name = doctor.name;
+		<span class="hljs-built_in">this</span>.patient = doctor.patient;
+	}
+	
+	<span class="hljs-comment">//Mutators</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
+		<span class="hljs-built_in">this</span>.name = name;
+	}
+	
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPatient</span><span class="hljs-params">(ArrayList&lt;Patient&gt; patient)</span> {
+		<span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
+		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; patient.size(); i++)
+			<span class="hljs-built_in">this</span>.patient.add(patient.get(i));
+	}
+	
+	<span class="hljs-comment">//Accessors</span>
+	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+	}
+	
+	Public ArrayList&lt;Patient&gt; <span class="hljs-title function_">getPatient</span><span class="hljs-params">()</span> {
+		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.patient;
+	}
+}
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>objects</th>
+<th>what is stored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>doctor</td>
+<td>100a</td>
+</tr>
+<tr>
+<td></td>
+<td>patient1</td>
+<td>200a</td>
+</tr>
+<tr>
+<td></td>
+<td>patient2</td>
+<td>300a</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>N</td>
+<td>patientN</td>
+<td>N00a</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>100</td>
+<td>patient</td>
+<td>1000a (ArrayList)</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>patient1(alias)</td>
+<td>200a</td>
+</tr>
+<tr>
+<td></td>
+<td>patient2(alias)</td>
+<td>300a</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>100N</td>
+<td>patientN(alias)</td>
+<td>N00a</td>
+</tr>
+</tbody>
+</table>
+</figure><p>for mutators (setters) we use shallow copy</p>
+<p>For getters (accessors) we use aliasing</p>
+<h4 id="composition">Composition</h4>
+<p>The relationship between objects is strong:</p>
+<ul>
+<li>the object owns its components</li>
+<li>the object has exclusive access to its component</li>
+<li>the components cannot live independent of the object
+<ul>
+<li>fun fact: “kill” is a technical word in the world of programming and computers
+<ul>
+<li>we kill a process</li>
+<li>we kill something in the memory</li>
+<li>we kill an object</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>if the object is cleaned up from the memory
+<ul>
+<li>all of the components will be gone too</li>
+</ul>
+</li>
+</ul>
+<p>examples:</p>
+<ul>
+<li>a <code>house</code> has-a couple of <code>room</code>s
+<ul>
+<li>do the <code>room</code>s exist when the <code>house</code> is demolished?</li>
+</ul>
+</li>
+<li>a <code>client</code> at a bank has-a couple of <code>account</code>s
+<ul>
+<li>the <code>account</code>s are gone when the <code>customer</code> leaves</li>
+</ul>
+</li>
+</ul>
+<h5 id="uml-2">UML</h5>
+<p><img src="https://media.discordapp.net/attachments/513923474239127553/1034467075101560853/unknown.png?width=881&amp;height=382" alt="composition uml">
+draw a line from the component to the class ending with a solid diamond and marked with the number of that class belonging to the other class or an <code>*</code> if the number can be more than one.</p>
+<h5 id="example-1">Example</h5>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span> {
+	<span class="hljs-type">char</span> accoutnType;
+	<span class="hljs-type">int</span> accountNumber;
+	<span class="hljs-type">double</span> balance;
+	Date dateOpened;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span> {
+	String name;
+	Calendar dob;
+	ArrayList&lt;Account&gt; account;
+	
+	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Customer</span><span class="hljs-params">(String custName, Calendar dofb, ArrayList&lt;Account&gt; acc)</span> {
+		<span class="hljs-built_in">this</span>.name = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span> (custName);
+		<span class="hljs-built_in">this</span>.dob = Calendar.getInstance();
+		<span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendary.YEAR), dofb.get(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
+		<span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
+			<span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
+	}
+	
+	<span class="hljs-comment">//Mutators</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
+		<span class="hljs-built_in">this</span>.name = name; <span class="hljs-comment">//String is an immutable so we didn't have to make a new object</span>
+	}
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDob</span><span class="hljs-params">(Calendary dofb)</span> {
+		<span class="hljs-built_in">this</span>.dob = Calendar.getInstance(); <span class="hljs-comment">//make a new calendar object</span>
+		<span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendar.YEAR), dofbget(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
+	}
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">(ArrayList&lt;Account&gt; acc)</span> {
+		<span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
+			<span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
+	}
+	
+	<span class="hljs-comment">//Accessors</span>
+	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+	}
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getDob</span><span class="hljs-params">()</span> {
+		<span class="hljs-type">Calendar</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> Calendar.getInstance();
+		db.set(<span class="hljs-built_in">this</span>.dob.get(Calendar.YEAR), <span class="hljs-built_in">this</span>.dobget(Calendar.MONTH), <span class="hljs-built_in">this</span>.dob.get(Calendar.DAY_OF_MONTH));
+	}
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">()</span> {
+		ArrayList&lt;account&gt; acc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.account.size(); i++)
+			acc.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(<span class="hljs-built_in">this</span>.account.get(i)));
+		<span class="hljs-keyword">return</span> acc;
+	}
+}
+</code></pre>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>address</th>
+<th>objects</th>
+<th>what is stored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>customer</td>
+<td>100a</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>100</td>
+<td>account</td>
+<td>1000a (arrayList)</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>acc1</td>
+<td>10000a (all the properties)</td>
+</tr>
+<tr>
+<td></td>
+<td>acc2</td>
+<td>20000a (all the properties)</td>
+</tr>
+<tr>
+<td></td>
+<td>acc3</td>
+<td>30000a (all the properties)</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>N000</td>
+<td>accN</td>
+<td>N0000a (all the properties)</td>
+</tr>
+</tbody>
+</table>
+</figure><p>if <code>customer</code> gets cleaned up from the memory then it cleans up everything that it’s pointing too as well.
+So the <code>account</code> array list variable is gone and all of the accounts inside of it (<code>acc1</code>, <code>acc2</code>, <code>acc3</code>,…<code>accN</code>).</p>
+<p>In <code>setName()</code> we didn’t have to create a new string object because even though <code>String</code> is non-primitive it is immutable.</p>
+<p>If a non-primitive is immutable (if we made <code>ArrayList</code>, <code>Account</code>, and <code>Calendar</code> immutable) then we could do the same thing as well.</p>
+<h2 id="privacy-leak">Privacy Leak</h2>
+<p>a situation where a client get access to the data that they should not get access to it.</p>
+<p>Privacy leak happens when a class exposes a reference to an attribute, which was not supposed to be public.</p>
+<p>This only applies to non-primitive attributes.
+Primitive and immutable attributes are privacy leak resistance.</p>
+<h3 id="example-2">Example</h3>
+<p>We have the existing patient objects in the memory.
+We make a private list of patients for the doctor class.</p>
+<p>If we implement the relationship b/w the doctor and patients as an aggregation (doctor owns an alias of the patients) then we get a privacy leak.</p>
+<p>We now know all of the new things happening with the patients just by looking at the patient objects that are existing in the memory already.</p>
+<p>We have to implement as a composition so that we can protect the information regarding the new things happening with the patients.</p>
+<h1 id="lect-11%3A-inheritance">Lect 11: Inheritance</h1>
+<p>This is a continuation of the last week’s lecture with object relationships</p>
+<p>Inheritance is the other type of object relationship, an Is-A relationship.</p>
+<p>Different kinds of objects often have a certain amount in common with each other.
+Shapes all have a perimeter and an area.
+Medical practitioners all have names, registration numbers, and the ability to get hte history on a patient.</p>
+<p>With inheritance we can create a piece of code that objects have in common then reuse that code for a ton of other objects.
+We place this common code in a class called <code>superclass</code> or <code>base class</code>.
+The specific states and behaviors of an object stays in their own class, which is now called a <code>subclass</code> or <code>derived class</code>.</p>
+<p>When two(or more objects) share some attributes and methods, an IS-A relationship is created:</p>
+<ul>
+<li><code>subclass</code> IS-A type of <code>superclass</code></li>
+</ul>
+<p>Subclasses inherit all the public and protected attributes and methods of their superclass.</p>
+<h2 id="uml-3">UML</h2>
+<p>ALl the attributes an dmethods are written in UML as before.</p>
+<p><code>+</code> and <code>-</code> are used for public and private access modifiers.</p>
+<p><em>Protected</em> features are shown with <em>#</em>.</p>
+<ul>
+<li>protected features are visible to and usuable by:
+<ul>
+<li>the same package subclass</li>
+<li>same package non-subclasses</li>
+<li>different package subclasses</li>
+</ul>
+</li>
+<li>but not by a different package non-subclass</li>
+</ul>
+<h1 id="lect-12%3A-inheritance-cont%E2%80%99d">Lect 12: Inheritance Cont’d</h1>
+<h2 id="overridden-methods">Overridden Methods</h2>
+<p>Subclasses can make their own methods that have the same name as the superclass’ methods but have different functionality to better suit it.</p>
+<p>The overridden method has the same method signature (you write the header the same) as the original method.
+We mark this using the <code>@override</code> tag in our code.</p>
+<p>You can even call the superclass method using <code>super.superClassMethod</code> inside of the overriding method.</p>
+<p>If a method defined as <code>final</code> then it cannot be overridden.</p>
+<p>Subclasses get more and more specific as you go down the inheritance hierarchy.</p>
+<h3 id="example-3">Example</h3>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1034469101067829388/unknown.png" alt="uml"></p>
+<p><code>AudioDevice</code> overrides <code>workWithBatter()</code>, inherits <code>sleepMode()</code>, and adds <code>play()</code>.</p>
+<p><code>MP4Player</code> overrides play and inherits <code>workWithBatter()</code> and <code>sleepMode()</code>.</p>
+<pre><code class="language-java"><span class="hljs-type">MP4Player</span> <span class="hljs-variable">myPlayer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MP4Player</span>();
+myPlayer.play();
+myPlayer.workWithBattery();
+myPlayer.sleepMode();
+</code></pre>
+<p>When you call a method from a subclass then it assumes that it’s the overridden method by default.</p>
+<h2 id="how-to-recognise-an-inheritance-relationship">How to Recognise an Inheritance Relationship</h2>
+<p>X IS-A Y means:</p>
+<ul>
+<li>X has all of Y’s methods if not more</li>
+<li>X has all the instance variables and attributes that Y has if not more</li>
+<li>Therefore X is a subclass and Y is a superclass</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>A surgeon is-a doctor
+<ul>
+<li>they have the <code>doSurgery()</code> method ig idk</li>
+</ul>
+</li>
+<li>A square is-a shape
+<ul>
+<li>they have the <code>int area</code> instance variable</li>
+</ul>
+</li>
+<li>a mountain bike is-a bicycle
+<ul>
+<li><code>canRide(Terrain terrain)</code> is overridden to behave differently with <code>Terrain mountain</code> as an argument</li>
+</ul>
+</li>
+</ul>
+<h2 id="inheritance-and-access-modifiers">Inheritance and Access Modifiers</h2>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Access Modifier</th>
+<th>class</th>
+<th><mark>Subclass Same Package</mark></th>
+<th><mark>Subclass Outside Package</mark></th>
+<th>package</th>
+<th>World (outside the package)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>no access modifier</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>private</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</figure><p><code>private</code> doesn’t pass on anything.
+It’s only for that class.</p>
+<p><code>no access modifier</code> or <code>package</code> passes on for subclasses in the same package and lets others in the package look.</p>
+<p><code>protected</code> passes on for all the subclasses.</p>
+<p><code>public</code> just lets anyone in on it.</p>
+<h2 id="designing">Designing</h2>
+<ol>
+<li>find all the common things
+<ul>
+<li>what do all of these classes have in common?</li>
+</ul>
+</li>
+<li>make the superclass
+<ul>
+<li>design a class that represents all those common things</li>
+</ul>
+</li>
+<li>decide if a subclass needs additional behaviours(methods) or attributes
+<ul>
+<li>designing subclasses</li>
+</ul>
+</li>
+<li>draw the class hierarchy to make sense of what is inherited
+<ul>
+<li>some features in the superclass should not be inherited
+<ul>
+<li>make those <code>private</code></li>
+</ul>
+</li>
+<li>sometimes things shouldn’t be overridden
+<ul>
+<li>make those <code>final</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>sometimes inheritance is used when there is no is-A relationship</li>
+</ol>
+<ul>
+<li>super class and subclass have many things incommon</li>
+<li>the source code of superclass is hidden and
+<ul>
+<li>you need to override its method or add methods/attributes for your needs</li>
+<li>only make an instance for this purpose if ALL of the inherited things make sense for what you need</li>
+</ul>
+</li>
+<li>This is not always a good idea but sometimes there’s already code ready for use that you want to take advantage of</li>
+</ul>
+<h2 id="non-extendable-classes">Non-Extendable Classes</h2>
+<p>If a class is defined <code>final</code> then it can’t be <code>extends</code> by a different class.</p>
+<p>Access modifier rules still apply when defining classes.
+If a class is not <code>public</code>,
+classes in different packages can not extend that cass.</p>
+<p>If a class only has private constructors then we can’t even make an instance of it.</p>
+<h2 id="single-inheritance---deadly-diamond-of-death">Single Inheritance - Deadly Diamond of Death</h2>
+<p>Java does not allow classes to extend or inherit from multiple other classes.</p>
+<p>If a class has two parents that have different methods of the same name then the subclass won’t know which one to inherit.</p>
+<h2 id="inheritance-summary">Inheritance Summary</h2>
+<p>A subclass:</p>
+<ul>
+<li>extends a superclass</li>
+<li>inherits everything from a superclass</li>
+<li>can override inherited methods
+<ul>
+<li>lowest overriden method wins the call</li>
+</ul>
+</li>
+<li>doesn’t remove anything</li>
+<li>only has one direct superclass</li>
+<li>can be and do everything the superclass can if not more</li>
+</ul>
+<p>Use the is-a test to verify that the inheritance hierarchy is correct</p>
+<ul>
+<li>If ZX extends Y, then X is-a Y must make sense</li>
+</ul>
+<p>The IS-A relationship works one way only.
+A dog is an animal but not all animals are a dog.</p>
+<p>The superclass:</p>
+<ul>
+<li>does not know about the existence of any subclass</li>
+<li>can have an unlimited amount of subclasses</li>
+<li>has changes that will effect all of the subclasses</li>
+</ul>
+<h2 id="overriding-vs-overloading-methods">Overriding vs Overloading Methods</h2>
+<p>To override a method:</p>
+<ul>
+<li>the header/signature should be the exact same
+<ul>
+<li>same name</li>
+<li>same arguments</li>
+<li>same return type</li>
+</ul>
+</li>
+<li>write <code>@Override</code> on top of the method</li>
+</ul>
+<p>The access modifier in sub-method should be the same level or with higher access.
+If we don’t do that then the sub-class won’t be able to be/do more than the superclass.</p>
+<p>To overload a method:</p>
+<ul>
+<li>the name must be the same</li>
+<li>there has to be some difference in the header/signature
+<ul>
+<li>different argument
+<ul>
+<li>quantity or type</li>
+</ul>
+</li>
+<li>different return type</li>
+</ul>
+</li>
+</ul>
+<p>The access modifier can be anything independent of the super method.</p>
+<h2 id="in-class">in-class</h2>
+<p>If you’re calling a superclass and a line of code uses the <code>this</code> keyword then it will refer to the actual class (the subclass) instead of that superclass.</p>
+<h2 id="queues">Queues</h2>
+<p>A queue is a structure that goes with FIFO (first in first out) principles.</p>
+<p>You can only remove elements from the head and add elements to the tail.</p>
+<p>A queue can be empty or have a large number of elements in it.</p>
+<p>Queues are popular in computing (CPU scheduling algos, WSC Tim Horton’s, etc).</p>
+<p>It’s easier to implement this with a jank ArrayList if you don’t want to do it with the actual queue data structure.</p>
+<p>It would be better to do this is a has-a relationship as opposed to an is-A relationship.</p>
+<p>It’s not like a queue is a version of an ArrayList.
+If we want to treat an ArrayList like a queue we can just encapsulate an ArrayList inside of our own Queue class and only allow the kinds of interactions we want it to have (dequeue or look from the the top, add to the bottom, and get the size).</p>
+<p>Even if there’s prewritten code you want it might be better to do a has-a relationship instead of is-a.
+Especially if its an opaque blackbox.</p>
+<h2 id="object-class"><code>Object</code> Class</h2>
+<p><code>Object</code> is a class that is the ancestor (superclass) of all the classes that are defined in java.</p>
+<p>It’s where <code>toString()</code> comes from.
+Dastardly, mysterious motherfucker.</p>
+<h1 id="lect-13%3A-polymorphism">Lect 13: Polymorphism</h1>
+<h2 id="polymorphism">Polymorphism</h2>
+<p>Polymorphism is a feature in java that allows us to put an object of a <code>subclass</code> instead of an object of that subclass’ <code>superclass</code>.</p>
+<p>You have a method that expects a <code>superclass</code> object as an argument but can take an object of a <code>subclass</code> of that <code>superclass</code> instead.</p>
+<p><img src="https://media.discordapp.net/attachments/513923474239127553/1035195352711692358/unknown.png?width=279&amp;height=319" alt="week 7 slides 4 5"></p>
+<p><code>giveShotToDog()</code> only takes the <code>Dog</code> type which IS-An <code>Animal</code>.
+But by using polymorphism we can just make a universal <code>giveShot(Animal a)</code>.</p>
+<p>This works for defining an object:</p>
+<pre><code class="language-java"><span class="hljs-type">Animal</span> <span class="hljs-variable">theDog</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Dog</span>();
+</code></pre>
+<p>When an object is passed into a method:</p>
+<pre><code class="language-java"><span class="hljs-type">Vet</span> <span class="hljs-variable">theVet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vet</span>(<span class="hljs-string">"Jane"</span>);
+theVet.giveShot(theDog);
+</code></pre>
+<p>And when an object is returned from a method:</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">giveBirth</span><span class="hljs-params">(Animal animal)</span>
+
+<span class="hljs-type">Animal</span> <span class="hljs-variable">puppy1</span> <span class="hljs-operator">=</span> theVet.giveBirth(theDog); <span class="hljs-comment">//this is risky since if we passed in a different animal type we would run into a runtime error</span>
+<span class="hljs-type">Dog</span> <span class="hljs-variable">puppy2</span> <span class="hljs-operator">=</span> (Dog) theVet.giveBrith(theDog);
+</code></pre>
+<p><code>puppy1</code> is a variable of type <code>Animal</code> but points to an object of type <code>Dog</code>.</p>
+<p><code>puppy2</code> is a variable of type <code>Dog</code> and points type <code>Dog</code>.</p>
+<h3 id="avoiding-errors">avoiding errors</h3>
+<p>You can cast a <code>superclass</code> object to a <code>subclass</code> object.
+You cannot cast an <code>child</code> object to a <code>sibling</code> (<code>child</code> of the same <code>parent class</code>) object.</p>
+<p>Suppose this is a new implementation of <code>giveBirth()</code></p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> Animal <span class="hljs-title function_">giveBirth</span><span class="hljs-params">(Animal animal)</span> {
+  animal.makeNoise();
+  <span class="hljs-type">Animal</span> <span class="hljs-variable">baby</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();
+  <span class="hljs-keyword">return</span> baby;
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-type">Animal</span> <span class="hljs-variable">puppy</span> <span class="hljs-operator">=</span> theVet.giveBirth(theDog); <span class="hljs-comment">//this would be fine</span>
+
+<span class="hljs-type">Dog</span> <span class="hljs-variable">puppy</span> <span class="hljs-operator">=</span> (Dog) theVet.giveBirth(theDog); <span class="hljs-comment">//this would be better since we actually have the variable type and object type the same</span>
+
+<span class="hljs-type">Cat</span> <span class="hljs-variable">puppy</span> <span class="hljs-operator">=</span> (Cat) theVet.giveBirth(theDog); <span class="hljs-comment">//this would work but it's not what you want</span>
+</code></pre>
+<h4 id="examples-1">Examples</h4>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1035202018391887923/unknown.png" alt="week 7 slide 11"></p>
+<p><code>vect.add(0)</code> is the correct one</p>
+<hr>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1035202281513160744/unknown.png" alt="week 7 slide 12"></p>
+<p>List has <code>add()</code> and <code>contains()</code>.
+<code>E</code> is a generic type that will be covered later,
+we pretend for now that <code>E</code> is just <code>Object</code>.</p>
+<p>When we go to use <code>vect.contains(intValue)</code> it would work since we’re calling an inherited method inherited from <code>List</code> and feeding it an object of type <code>int</code> which is a subclass of <code>Object</code></p>
+<hr>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1035203109359718461/unknown.png" alt="week 7 slide 13"></p>
+<p>When we wrote</p>
+<pre><code class="language-java">List&lt;Integer&gt; subList = vect.subList(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>);
+</code></pre>
+<p><code>vect.subList(0, 5);</code> actually returns a <code>Vector</code> but it works out since <code>subList</code> is a <code>List</code>.</p>
+<h3 id="polymorphism-summary">Polymorphism Summary</h3>
+<p>Another principle of oop.</p>
+<p>A <code>subtype</code> can be presented when the <code>supertype</code> is expected.</p>
+<p>This is only possible with the inheritance relationship.</p>
+<p>With polymorphism the behavior of a method is changed depending on the object that it works on.
+This is possible do to <code>Late/Dynamic Binding</code> which is covered later on.</p>
+<p>Phrase borrowed from biology,
+means “borrowed form”.</p>
+<p>You can have a variable of <code>supertype</code> pointing to a <code>subtype</code> (<code>Animal puppy1</code> pointing to <code>Dog</code>).</p>
+<p>But using the <code>.</code> you can only get acess to methods defined in <code>supertype</code> or overriden in <code>subtype</code> but not all new methods in <code>subtype</code> .</p>
+<p>So if there was a unique method like <code>rollOver()</code> then you can’t call that using <code>puppy1</code>. But you can call <code>toString()</code> because every class has that method or <code>makeNoise()</code> because it inherited and overwrote it.</p>
+<p>This is because <code>puppy1</code> thinks it’s pointing to an <code>Animal</code> instead of a <code>Dog</code>.</p>
+<h1 id="lect-14%3A-static-%26-dynamic-binding---dbc-%26-inheritance-%26-polymorphism">Lect 14: Static &amp; Dynamic Binding - DBC &amp; Inheritance &amp; Polymorphism</h1>
+<p>The behaviour of a method changing depending on the object it works on
+(overriding a superclass’ method in the subclass)
+is possible due to Late/Dynamic binding.</p>
+<p>In an inheritance hierarchy there are different versions of a method that may be overridden at different points in the hierarchy.
+Binding is when Java decides which method definition to use for execution.</p>
+<p>Depending on the time that this decision is made we describe it differently</p>
+<ul>
+<li>compile time - early/static binding</li>
+<li>run time - late/dynamic</li>
+</ul>
+<h2 id="dynamic-binding">Dynamic Binding</h2>
+<p>This occurs when our actual type(supertype) and our declared type(subtype) are different then we call a method that is overridden by the subtype.</p>
+<pre><code class="language-java"><span class="hljs-type">Shape</span> <span class="hljs-variable">aShape</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Shape</span>();
+<span class="hljs-type">Shape</span> <span class="hljs-variable">firstShape</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Circle</span>(<span class="hljs-number">4</span>,  <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+<span class="hljs-type">Shape</span> <span class="hljs-variable">secondShape</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rectangle</span>(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
+
+System.out.println(aShape.toString());
+System.out.println(firstShape.toString());
+System.out.println(secondShape.toString());
+</code></pre>
+<p>Here our declared type is <code>Shape</code> but we have three different actual types(<code>Shape</code>, <code>Circle</code>, and <code>Rectangle</code>).</p>
+<p>Suppose that later on in our main we use <code>toString()</code>.
+In <code>Shape</code>, <code>toString()</code> returns “a shape”.
+Contrast to the specific <code>Shape</code> subclasses that will return the name of that shape.</p>
+<p>Compiling this code we pass through easily,
+it makes sense to Java since <code>Shape</code> has a <code>toString()</code> method.
+At run time Java will look at the actual type and determine that it should use the actual type’s method definition for <code>toString()</code>.</p>
+<p>The definition to be used is determined at run-time,
+therefore we have dynamic binding.</p>
+<h2 id="static-binding">Static Binding</h2>
+<p>At compile time the binding between a method call and method definition is determined.</p>
+<p>If a method is <code>final</code> or <code>private</code> it cannot be overridden by the derived classes.</p>
+<p>This also occurs with <code>static</code>,
+the <code>static</code> method is chosen at compile time.
+So it would use the <code>static</code> definition belonging to the declared type.</p>
+<h2 id="dbc---inheritance-%26-polymorphism">DBC - Inheritance &amp; Polymorphism</h2>
+<h3 id="recall%3A">Recall:</h3>
+<p><code>precondition</code> is the conditions that need to be true before a method is called in order for the method to work properly.</p>
+<p><code>postcondition</code> is the condition that will be true if the <code>precondition</code> is true.</p>
+<p><code>invariant</code> is a condition that should be true before and after a method is called.</p>
+<p>These conditions can be represented with assertions and/or logical expressions and/or other some such.</p>
+<p>Inheritance: subclass is-a superclass</p>
+<p>Polymorphism: subclass is-substitutable for a superclass</p>
+<p>Whatever a superclass can do, the subclass can do too (even more)</p>
+<h3 id="inheritance-%26-polymorphism">Inheritance &amp; Polymorphism</h3>
+<p><code>invariant</code>s inherited from the superclass must be either the same or have <em><strong>more</strong></em> restrictions than the superclass
+<img src="https://media.discordapp.net/attachments/513923474239127553/1037017752285753434/unknown.png?width=881&amp;height=318" alt="slide 30"></p>
+<p><code>precondition</code>s inherited from the superclass must either be the same or have <em><strong>less</strong></em> restrictions.
+This allows the subclass to do the same things that the super class can do if not even more.</p>
+<p><code>postcondition</code>s inherited from the superclass must either be the same or have <em><strong>more</strong></em> restrictions than the superclass.</p>
+<h1 id="lect-15%3A-exceptions">Lect 15: Exceptions</h1>
+<h2 id="exceptions">Exceptions</h2>
+<p>There are two types of exceptions:</p>
+<ol>
+<li>Unchecked - runtime exceptions</li>
+<li>Checked - compile time exceptions</li>
+</ol>
+<p>We handle unchecked/runtime exceptions by using a throw-catch block</p>
+<p>In java <code>Exception</code> is a subclass of the <code>Throwable</code> class making all exceptions and their subclasses throwable.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1037733111980630137/unknown.png" alt="week 8 slide 4"></p>
+<h3 id="what-if-an-exception-happens%3F">What if an Exception happens?</h3>
+<p>If you handle an unchecked exception using a throw-catch then you can handle it however you want using the catch block.</p>
+<p>If you don’t handle the unchecked exception then Java will take care of the error.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">wrongMethod1</span><span class="hljs-params">()</span> {
+  ArrayList&lt;Integer&gt; arrayObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();
+  System.out.println(arrayObj.get(<span class="hljs-number">0</span>));
+}
+</code></pre>
+<p>The above code is an example of an unhandled, unchecked exception.</p>
+<p>Java will automatically throw a <code>IndexOutOfBoundsException</code> and stop the code from executing.</p>
+<p>Checked exceptions are already handled as Java will force you to do it.</p>
+<h3 id="how-do-we-make-exceptions-help-us%3F">How Do We Make Exceptions Help Us?</h3>
+<p>To make throwing useful we can:</p>
+<ol>
+<li>handle the exception using a <code>try-catch</code></li>
+<li>make our own exception that let’s us know what’s going on</li>
+</ol>
+<h3 id="making-an-exception">Making An Exception</h3>
+<p>We can make our own exception to give us more specific information about what’s going on.</p>
+<p>When making our own <code>Exception</code> we <code>extend</code> the <code>Exception</code> class (an IS-A relationship).
+We override some of the constructors as well.</p>
+<p>In doing this we get all the stack trace related methods (<code>getStackTrace()</code>, <code>printStackTrace()</code>, <code>getStackTrace(StrackTraceElement[] stackTrace)</code>, etc).
+This shows us precisely where things went wrong and let us have custom messages.</p>
+<h3 id="handling-exceptions">Handling Exceptions</h3>
+<h4 id="throw-catch"><code>throw-catch</code></h4>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMonth</span><span class="hljs-params">(<span class="hljs-type">int</span> month)</span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">if</span> (month &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NegativeNumberExcpetion</span>(<span class="hljs-string">"a negative number is not accepted as a month!"</span>);
+    <span class="hljs-keyword">if</span> (month == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberZeroException</span>(<span class="hljs-string">"Zero is not accepted as a month!"</span>);
+  } <span class="hljs-keyword">catch</span> (Exception e) {
+    System.out.println(e.getMessage());
+  }
+}
+</code></pre>
+<p>We can throw as many exceptions as we want,
+here we throw <code>NegativeNumberException</code> and <code>NumberZeroException</code>.
+Both of these extend the <code>Exception</code> class so we can catch both of them by just asking for an <code>Exception</code> instead of their specific type.
+They’ll both have the <code>getMessage()</code> method so we’re able to grab their respective messages using dynamic/late binding.</p>
+<h4 id="throw-without-catching">throw without catching</h4>
+<p>Consider:</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMonth</span><span class="hljs-params">(<span class="hljs-type">int</span> month)</span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">if</span> (month &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NegativeNumberExcpetion</span>(<span class="hljs-string">"a negative number is not accepted as a month!"</span>);
+    <span class="hljs-keyword">if</span> (month == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberZeroException</span>(<span class="hljs-string">"Zero is not accepted as a month!"</span>);
+  } <span class="hljs-keyword">catch</span> (Exception e) {
+    System.out.println(e.getMessage());
+  }
+}
+</code></pre>
+<p>and</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMonth</span><span class="hljs-params">(<span class="hljs-type">int</span> month)</span> <span class="hljs-keyword">throws</span> NegativeNumberException, NumberZeroException{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">if</span> (month &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NegativeNumberExcpetion</span>(<span class="hljs-string">"a negative number is not accepted as a month!"</span>);
+    <span class="hljs-keyword">if</span> (month == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberZeroException</span>(<span class="hljs-string">"Zero is not accepted as a month!"</span>);
+}
+</code></pre>
+<p>The second piece of code doesn’t handle the exception within itself and instead throws it to the code that calls it.</p>
+<h3 id="user-defined-vs-java-exceptions">User-Defined vs Java Exceptions</h3>
+<p>Java does not care if you do not handle the native exceptions as it knows how to handle them.</p>
+<p>User-defined exceptions (ones that we make ourselves) need to be handled as Java doesn’t know how to.</p>
+<h3 id="exceptions-and-inheritance">Exceptions and Inheritance</h3>
+<p>We need to follow the rules of polymorphism which requires that the subclass needs to do the same as the superclass if not more.</p>
+<p>If a superclass method throws an exception,
+the subclass must throw the same or lower level of exception.</p>
+<p>Compare:</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1037741300293832734/unknown.png" alt="week 8 slide 14"></p>
+<p><code>method1()</code>'s override is correct as it’s the same.</p>
+<p><code>method2()</code>'s override is correct as it imposes less limits.</p>
+<p><code>method3()</code>'s override is wrong because it’s imposing more limits.</p>
+<p><code>method4()</code>'s override is correct as it imposes limits as it only throws a specific kind of limit instead of the whole subclass family of <code>Exception</code>.</p>
+<p><code>method5()</code>'s override is incorrect as it’s the opposite of <code>method4()</code>'s.</p>
+<h3 id="misc-exception-tips">Misc Exception Tips</h3>
+<p>A method that throws an exception in the method signature can throw any subclass of the exception inside the method.</p>
+<p>A method can throw and catch several exceptions.</p>
+<h3 id="exceptions-and-program-termination">Exceptions and Program Termination</h3>
+<p>Handling an exception doesn’t necessarily result in program termination.
+<img src="https://cdn.discordapp.com/attachments/513923474239127553/1037746067942412379/unknown.png" alt="week 8 slide 18"></p>
+<p>on the left we just retry until we get a good input from the user,
+on the right we crash out,
+either way we’re handling the exception.</p>
+<h2 id="object-class-cont%E2%80%99d"><code>Object</code> Class Cont’d</h2>
+<p>Obligatory methods (<code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>) need to be overridden to fit our purposes.</p>
+<h3 id="tostring"><code>toString</code></h3>
+<p>Retrns the name of the class an <code>@</code> then the hashcode of the class in hex (address of the object in the hash table).
+<code>className@[hex]</code></p>
+<p>It’s suggested that you override it to make it useful since most of the time one doesn’t need the address or class name.</p>
+<h3 id="equals()"><code>equals()</code></h3>
+<p>Checks the equality of the object references.</p>
+<p>It sees if these references refer to the same memory address,
+pointing to the same object in the memory.</p>
+<h1 id="lect-16%3A-obligatory-methods-(object-class)">Lect 16: Obligatory Methods (<code>Object</code> class)</h1>
+<h2 id="housekeeping">Housekeeping</h2>
+<p>PE1 slight change of grade.
+(<code>enoughGate6</code> was removed).</p>
+<p>If you didn’t sign the declaration form (declaration that the code you submit it is yours) then you can go to office hours to clear things up.
+(tue 1600-1700)</p>
+<p>Before using the reappraisal form you can try looking at the feedback and using the provided test cases.
+If it still seems wrong then submit the form.</p>
+<p>Term test papers are returned in lab next week.</p>
+<h2 id="obligatory-methods">Obligatory Methods</h2>
+<p>These are methods that you receive no matter what kind of class or subclass you create.</p>
+<p>These methods have a particular implementation that originates from the <code>Object</code> class or another class that you’re extending.</p>
+<p>If the function isn’t what you want then you should overwrite it to make it actually useful for you.</p>
+<h3 id="equals()-1"><code>equals()</code></h3>
+<p><code>Object</code>’s <code>equals()</code> checks for the equality of <code>object references</code>.</p>
+<p>Essentially,
+it checks if two objects are references they check if the references point to the same object.
+More precisely,
+it checks the addresses that’re stored and sees if they’re the same.</p>
+<p>It doesn’t look at similarities in attributes’ values (references or primitives),
+only the references of the objects themselves.</p>
+<p>This isn’t always helpful for us so we can overwrite it.</p>
+<p>For any non-null reference <code>x</code>, <code>y</code>, and <code>z</code>:</p>
+<ul>
+<li>x.equals(x) -&gt; true</li>
+<li>x.equals(y) -&gt; true iff y.equals(x) -&gt; true</li>
+<li>if x.equals(y) -&gt; true &amp; y.equals(z) -&gt; true then x.equals(z) -&gt; true</li>
+<li>no matter how many times you call <code>equals()</code> with two objects it should always be the same</li>
+<li>feeding <code>equals(null)</code> should always return false</li>
+</ul>
+<h4 id="overriding">Overriding</h4>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1039565353166061648/image.png" alt="week 8 slide 27"></p>
+<p>Here we compare all of the attributes from the different objects to see if they’re the same and return <code>true</code> if they are.</p>
+<p>Functions should only have 1 return statement if that so take this example with a grain of salt.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1039565406119153754/image.png" alt="week 8 slide 28"></p>
+<p>Here we do much of the same but for the non-primitive attributes we use <code>compareTo()</code>.
+<code>compareTo()</code> in this context will compare the characters and their order in the two strings and see if they’re the same.
+With number objects (<code>int</code>, <code>double</code>, <code>float</code>, etc.) it compares their number value.</p>
+<p>If they’re the same then <code>compareTo()</code> returns <code>0</code>, if the object is greater than the other object it returns a number greater than 0, otherwise it returns a number lesser than 0.</p>
+<p>Either way,
+we’re comparing the actual value instead of the references by using <code>compareTo()</code>.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1039565490189774999/image.png" alt="week 8 slide 29"></p>
+<p>Here we use the above techniques but since we have a complex non-primitive attribute (an array list),
+we go through all of the attributes within that one and apply <code>compareTo()</code>.</p>
+<p>If a class we’re overriding <code>equals()</code> for has another class object as an attribute then we need to know about that other class’ <code>equals()</code> method in order to implement our own.</p>
+<h4 id="checking-classtype---getclass()">Checking Classtype - <code>getClass()</code></h4>
+<p>Use <code>getClass()</code> at the beginning of your <code>equals()</code> implementation to check if the two objects are even the same class before trying to compare them and their attributes.</p>
+<h4 id="applications---searching-techniques">Applications - Searching Techniques</h4>
+<p><code>equals()</code> makes implementing searching techniques much easier.</p>
+<p>Suppose we have a class that has an <code>ArrayList</code> and its elements are a class of our own definition.</p>
+<p>We can implement <code>equals()</code> within that user-defined to help us better search for that object within our <code>ArrayList</code>.</p>
+<h2 id="hashcode()"><code>hashCode()</code></h2>
+<h3 id="hash-tables">Hash Tables</h3>
+<p>This is a data structure that lets us search for an object faster and use <code>equals()</code> less in our code.</p>
+<p>They’re like dictionaries in Python.
+There are keys and they’re associated values that we can retrieve from them in <code>n(1)</code> time.
+The elements are not stored sequentially,
+we can just retrieve any element and its value in <code>n(1)</code> time if we know the key.</p>
+<p>In java we have hash tables.
+There is a bucket array of size <code>N</code> and a hash function <code>h</code>.
+We feed the hash function an input, an integer like <code>k</code>, and then we get access to the corresponding bucket.
+<code>h(k)=k mod N</code> gives us the location of the object in the bucket array.</p>
+<h3 id="hashcode()-1"><code>hashCode()</code></h3>
+<p>This method returns an integer.
+That integer is the memory address in which the object is stored.</p>
+<h3 id="overriding-1">Overriding</h3>
+<p>A hash code must:</p>
+<ul>
+<li>return the same address when frequently calling <code>obj.hashCode()</code> at one execution</li>
+<li>obj1.equals(obj2) -&gt; obj1.hashcode () == obj2.hashCode()
+<ul>
+<li>it is possible for this to fuck up and break but we learn about this in data structures</li>
+</ul>
+</li>
+</ul>
+<p>Overriding is hard so instead we just use <code>Objects.hash()</code>,
+feed it all the attributes,
+and return the result.</p>
+<h1 id="lect-17%3A-comparable-%26-compareto()---abstraction-%26-interfaces">Lect 17: <code>Comparable</code> &amp; <code>compareTo()</code> - Abstraction &amp; Interfaces</h1>
+<h2 id="comparable-%26-compareto()"><code>Comparable</code> &amp; <code>compareTo()</code></h2>
+<p>Primitives are easily compared using <code>&lt; &gt; ==</code>.</p>
+<p>To compare objects (user-defined or otherwise):</p>
+<ul>
+<li>define a way to order them
+<ul>
+<li>what makes one object larger/higher/better or smaller/lower/worse than another in sorting</li>
+</ul>
+</li>
+<li>implement a method that compares the two objects in that respect
+<ul>
+<li><code>compareTo()</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="compareto()"><code>compareTo()</code></h3>
+<pre><code class="language-java">obj1.compareTo(obj2);
+</code></pre>
+<p>Returns:</p>
+<ul>
+<li>-ve # when <code>obj1</code> &lt; <code>obj2</code></li>
+<li>+ve # when <code>obj1</code> &gt; <code>obj2</code></li>
+<li>0 when <code>obj1</code> = <code>obj2</code></li>
+</ul>
+<p><code>compareTo()</code> is n <code>abstract</code> method that is defined in the <code>Comparable</code> <code>interface</code>.</p>
+<p>Objects that have <code>compareTo()</code> have an IS-A relationship with <code>Comparable</code>.
+The class will <code>implements</code> <code>Comparable</code>.</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">x</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span> {
+  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Object obj)</span> { }
+}
+</code></pre>
+<h2 id="abstract-classes-%26-methods">Abstract Classes &amp; Methods</h2>
+<h3 id="abstract-classes">Abstract Classes</h3>
+<p>Some <code>superclass</code>es should never be instantiated.
+Even though they may have a constructor.</p>
+<p>Their code is useful and common enough to be made into a <code>superclass</code> however they aren’t useful on their own.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1040285177240371250/image.png" alt="week 9 slide 9"></p>
+<ul>
+<li>an <code>Animal</code> class helps us not reuse code for <code>Dog</code>, <code>Cat</code> or <code>Owl</code> but we don’t need to instantiate an <code>Animal</code> object
+<ul>
+<li>a general animal isn’t specific enough to be useful in most situations but the idea of an animal is useful enough to keep around as an <code>abstract</code> concept</li>
+</ul>
+</li>
+</ul>
+<p>These <code>superclass</code>es that:</p>
+<ul>
+<li>are never instantiated</li>
+<li>serve more as blueprints for the subclasses than classes in themselves</li>
+</ul>
+<p>are called <code>abstract</code> classes.</p>
+<p>Abstract classes can also inherit other abstract classes.</p>
+<p>The <code>extends</code> keyword is used to inherit an abstract class.</p>
+<hr>
+<p>we use the <code>abstract</code> keyword after the access modifier and the <code>class</code> keyword in the class signature when defining an abstract class.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span> {
+  <span class="hljs-keyword">public</span> String name;
+  <span class="hljs-keyword">public</span> String picturePath;
+}
+</code></pre>
+<pre><code class="language-java">Animal [] zoo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span> [<span class="hljs-number">100</span>]; <span class="hljs-comment">// 1</span>
+<span class="hljs-type">Animal</span> <span class="hljs-variable">animal</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Animal</span>();     <span class="hljs-comment">// 2</span>
+<span class="hljs-type">Animal</span> <span class="hljs-variable">herCat</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>();        <span class="hljs-comment">// 3</span>
+<span class="hljs-type">Dog</span> <span class="hljs-variable">myPet</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Dog</span>();            <span class="hljs-comment">// 4</span>
+</code></pre>
+<p>Statements 4 and 3 are valid since we aren’t making an object of <code>Animal</code>.</p>
+<p>Statement 2 is invalid since we are attempting to make an object of <code>Animal</code>.</p>
+<p>Statement 1 is valid as we can set the declared type of the objects of the array as <code>Animal</code>,
+however we don’t ever make an object of <code>Animal</code> instead filling it subclasses (<code>Dog</code>, <code>Cat</code>, <code>Owl</code>, etc).</p>
+<p>This is made possible through polymorphism.</p>
+<hr>
+<h3 id="abstract-methods">Abstract Methods</h3>
+<p>Abstract methods are defined by using the <code>abstract</code> keyword in the method signature after the access modifier and before the return type.</p>
+<p>These methods have no body and have their method signatures instead finished by <code>;</code>.</p>
+<p>Abstract methods can only exist in abstract classes but abstract classes can have both abstract and non-abstract methods.</p>
+<pre><code class="language-java"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+  <span class="hljs-type">int</span> centerX;
+  <span class="hljs-type">int</span> centerY;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">clearScr</span><span class="hljs-params">()</span> {
+    System.out.println(<span class="hljs-string">"Clear screen is in process...."</span>);
+    centerX = <span class="hljs-number">0</span>;
+    centerY = <span class="hljs-number">0</span>;
+  }
+<span class="hljs-comment">// &lt;access modifier&gt; abstract &lt;return type&gt; &lt;method name&gt;();</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">double</span> <span class="hljs-title function_">area</span><span class="hljs-params">()</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">double</span> <span class="hljs-title function_">perimeter</span><span class="hljs-params">()</span>;
+<span class="hljs-comment">// this method isn't an abstract method so we proceed as normal</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">moveToCenter</span><span class="hljs-params">()</span> {
+    clearScr();
+    <span class="hljs-built_in">this</span>.draw();
+  }
+} 
+</code></pre>
+<p>All abstract methods should be overridden as soon as they are inherited by a concrete(non-abstract) class.</p>
+<h3 id="summary">Summary</h3>
+<p>Abstract classes help us make full use of the inheritance structure.</p>
+<p>Concrete(non-abstract) classes are specific enough such that:</p>
+<ul>
+<li>their attributes get meaningful values</li>
+<li>their methods can be fully implemented</li>
+</ul>
+<p>Abstract classes have no meaningful functionality aside from:</p>
+<ul>
+<li>being extended</li>
+<li>used for polymorphism</li>
+<li>for static methods
+<ul>
+<li>if it has that</li>
+</ul>
+</li>
+</ul>
+<p>Abstract classes must be extended to be useful.</p>
+<h2 id="interface">Interface</h2>
+<p>Suppose we have a pre-existing inheritance hierarchy.
+We want to add some new functionality to a subclass or specific subclasses but not to other subclasses.</p>
+<p>In these cases we make an interface.</p>
+<hr>
+<p>There are ways that we could try to get around it but these all have their advantages and disadvantages.</p>
+<p>Design 1: add the new functionalities to the superclass.</p>
+<ul>
+<li>+:
+<ul>
+<li>all relevant subclasses will inherit the new functionalities</li>
+<li>function will be passed down the hierarchy</li>
+<li>subclasses can override the method to fir their purpose</li>
+<li>we can (usually) use polymorphism</li>
+</ul>
+</li>
+<li>-:
+<ul>
+<li>subclasses that shouldn’t have it now have it</li>
+</ul>
+</li>
+</ul>
+<p>Design 2: add the new functionalities to the superclass and make the superclass abstract.</p>
+<ul>
+<li>+:
+<ul>
+<li>subclasses that need it get, override, and pass it on</li>
+<li>we can use polymorphism more often</li>
+</ul>
+</li>
+<li>-:
+<ul>
+<li>subclasses that shouldn’t have it now have it</li>
+</ul>
+</li>
+</ul>
+<p>Design 3: add the new functionalities to the superclass, make the methods and the superclass abstract.</p>
+<ul>
+<li>+:
+<ul>
+<li>subclasses that need it get, override, and pass it on</li>
+<li>we can use polymorphism always</li>
+</ul>
+</li>
+<li>-:
+<ul>
+<li>subclasses that shouldn’t have it now have it</li>
+</ul>
+</li>
+</ul>
+<p>Design 4: add the new functionalities to the subclasses that they belong to.</p>
+<ul>
+<li>+:
+<ul>
+<li>subclasses that need it get, override, and pass it on</li>
+<li>subclasses that shouldn’t have it won’t have it</li>
+</ul>
+</li>
+<li>-:
+<ul>
+<li>we have to write mor ecode</li>
+<li>sibling classes that fall under the same category will have to follow the same protocol for consistent design
+<ul>
+<li>an impossible ask</li>
+</ul>
+</li>
+<li>can’t use polymorphism</li>
+</ul>
+</li>
+</ul>
+<p>Design 5: make an intermediary step in the hierarchy</p>
+<ul>
+<li>+:
+<ul>
+<li>the specific subclasses we want get the functionality</li>
+</ul>
+</li>
+<li>-:
+<ul>
+<li>we’re writing a whole new class just to accommodate</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Interface is the way we get around the lack of multiple inheritance in java.</p>
+
+</div>
+</body>
+</html>
