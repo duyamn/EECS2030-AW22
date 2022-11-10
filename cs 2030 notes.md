@@ -1,5 +1,6 @@
 # Table of contents
-- [Resources](#Resources)
+
+- [Resources](#resources)
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -16,26 +17,26 @@
   - [Documentation - JavaDoc](#documentation---javadoc)
   - [Testing & JUnit](#testing--junit)
   - [Design by Contract](#design-by-contract)
-- [--- Lect 3: intro to recursion ---](#----lect-3-intro-to-recursion----)
+- [Lect 3: intro to recursion](#lect-3-intro-to-recursion)
   - [Function Calls and Stack Frames](#function-calls-and-stack-frames)
   - [Recursion](#recursion)
   - [Tracing a Recursive Algo w/ Examples](#tracing-a-recursive-algo-w-examples)
     - [Ex: Is the input a palindrome?](#ex-is-the-input-a-palindrome)
   - [Basics of Recursion](#basics-of-recursion)
   - [How to Design a Recursive Algo](#how-to-design-a-recursive-algo)
-- [--- Lect 4: Recursion Cont'd ---](#----lect-4-recursion-contd----)
+- [Lect 4: Recursion Cont'd](#lect-4-recursion-contd)
   - [Divide and Conquer - Find the sum of all the entries of an array](#divide-and-conquer---find-the-sum-of-all-the-entries-of-an-array)
   - [Recursion is not always the best sol'n](#recursion-is-not-always-the-best-soln)
   - [Misc recursion notes](#misc-recursion-notes)
   - [Closing](#closing)
-- [--- Lecture 5: Finally Advanced Object-Oriented Programming ---](#----lecture-5-finally-advanced-object-oriented-programming----)
+- [Lecture 5: Finally Advanced Object-Oriented Programming](#lecture-5-finally-advanced-object-oriented-programming)
   - [Variable Types](#variable-types)
     - [Non-primitives](#non-primitives)
   - [Classes](#classes)
     - [Presenting a Class](#presenting-a-class)
       - [Creation of a Class](#creation-of-a-class)
   - [Objects](#objects)
-- [--- Lect 6: Constructors & Encapsulation ---](#----lect-6-constructors--encapsulation----)
+- [Lect 6: Constructors & Encapsulation](#lect-6-constructors--encapsulation)
   - [Overloaded Constructors & Constructor Chaining](#overloaded-constructors--constructor-chaining)
   - [Clone/Copy Constructor](#clonecopy-constructor)
   - [Memory Diagrams](#memory-diagrams)
@@ -49,27 +50,27 @@
     - [how do I know what to make private?](#how-do-i-know-what-to-make-private)
     - [UML](#uml)
   - [Why OOP?](#why-oop)
-- [--- Lect 7: Static vs Non-Statics  ---](#----lect-7-static-vs-non-statics-----)
+- [Lect 7: Static vs Non-Statics](#lect-7-static-vs-non-statics)
   - [Variables](#variables)
   - [Methods](#methods)
     - [Static Factory Method](#static-factory-method)
       - [Why?](#why)
-- [--- Lect 8: Statics vs Non-Statics cont'd ---](#----lect-8-statics-vs-non-statics-contd----)
+- [Lect 8: Statics vs Non-Statics cont'd](#lect-8-statics-vs-non-statics-contd)
   - [Class Invariants](#class-invariants)
   - [Design by Contract (DBC) and Exception](#design-by-contract-dbc-and-exception)
     - [Ex: unchecked exception](#ex-unchecked-exception)
   - [Try... Catch statement](#try-catch-statement)
   - [Junits and Exceptions](#junits-and-exceptions)
-- [--- Lect 9: Aggregations and Compositions ---](#----lect-9-aggregations-and-compositions----)
+- [Lect 9: Aggregations and Compositions](#lect-9-aggregations-and-compositions)
   - [Aliasing](#aliasing)
   - [Deep Copy](#deep-copy)
   - [Immutability](#immutability)
   - [Shallow Copying](#shallow-copying)
-- [--- Lect 10: Aggregations and Compositions Cont'd ---](#----lect-10-aggregations-and-compositions-contd----)
+- [Lect 10: Aggregations and Compositions Cont'd](#lect-10-aggregations-and-compositions-contd)
   - [Review](#review)
   - [Aliasing](#aliasing)
   - [Deep copy](#deep-copy)
-  - [SHallow copy](#shallow-copy)
+  - [Shallow copy](#shallow-copy)
   - [Object Relationships](#object-relationships)
     - [Has-a relationships](#has-a-relationships)
       - [Aggregation](#aggregation)
@@ -78,15 +79,13 @@
       - [Composition](#composition)
         - [UML](#uml)
         - [Example](#example)
-      - [Composition](#composition)
-        - [UML](#uml)
-        - [Example](#example)
   - [Privacy Leak](#privacy-leak)
     - [Example](#example)
-- [--- Lect 11: Inheritance ---](#----lect-11-inheritance----)
+- [Lect 11: Inheritance](#lect-11-inheritance)
   - [UML](#uml)
-- [--- Lect 12: Inheritance Cont'd ---](#----lect-12-inheritance-contd----)
+- [Lect 12: Inheritance Cont'd](#lect-12-inheritance-contd)
   - [Overridden Methods](#overridden-methods)
+    - [Example](#example)
   - [How to Recognise an Inheritance Relationship](#how-to-recognise-an-inheritance-relationship)
   - [Inheritance and Access Modifiers](#inheritance-and-access-modifiers)
   - [Designing](#designing)
@@ -96,19 +95,19 @@
   - [Overriding vs Overloading Methods](#overriding-vs-overloading-methods)
   - [in-class](#in-class)
   - [Queues](#queues)
-  - [Class Object](#class-object)
-- [--- Lect 13: Polymorphism, Static & Dynamic Binding ---](#----lect-13-polymorphism-static--dynamic-binding----)
+  - [`Object` Class](#object-class)
+- [Lect 13: Polymorphism](#lect-13-polymorphism)
   - [Polymorphism](#polymorphism)
     - [avoiding errors](#avoiding-errors)
       - [Examples](#examples)
     - [Polymorphism Summary](#polymorphism-summary)
-- [--- Lect 14: Static & Dynamic Binding,  DBC & Inheritance & Polymorphism ---](#----lect-14-static--dynamic-binding--dbc--inheritance--polymorphism----)
+- [Lect 14: Static & Dynamic Binding - DBC & Inheritance & Polymorphism](#lect-14-static--dynamic-binding---dbc--inheritance--polymorphism)
   - [Dynamic Binding](#dynamic-binding)
   - [Static Binding](#static-binding)
   - [DBC - Inheritance & Polymorphism](#dbc---inheritance--polymorphism)
     - [Recall:](#recall)
     - [Inheritance & Polymorphism](#inheritance--polymorphism)
-- [--- Lect 15: Exceptions ---](#----lect-15-exceptions----)
+- [Lect 15: Exceptions](#lect-15-exceptions)
   - [Exceptions](#exceptions)
     - [What if an Exception happens?](#what-if-an-exception-happens)
     - [How Do We Make Exceptions Help Us?](#how-do-we-make-exceptions-help-us)
@@ -123,20 +122,19 @@
   - [`Object` Class Cont'd](#object-class-contd)
     - [`toString`](#tostring)
     - [`equals()`](#equals)
-- [--- Lect 16: Obligatory Methods (`Object` class) ---](#----lect-16-obligatory-methods-object-class----)
+- [Lect 16: Obligatory Methods (`Object` class)](#lect-16-obligatory-methods-object-class)
   - [Housekeeping](#housekeeping)
   - [Obligatory Methods](#obligatory-methods)
+    - [`equals()`](#equals)
+      - [Overriding](#overriding)
+      - [Checking Classtype - `getClass()`](#checking-classtype---getclass)
+      - [Applications - Searching Techniques](#applications---searching-techniques)
   - [`hashCode()`](#hashcode)
-# Resources
-Basics:
-- [Oracle's Javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html)
-- [W3Schools](https://www.w3schools.com/)
-- [GeeksforGeeks](https://www.geeksforgeeks.org/)
-- [Tutorials Point](https://www.tutorialspoint.com/index.htm)
+    - [Hash Tables](#hash-tables)
+    - [`hashCode()`](#hashcode)
+    - [Overriding](#overriding)
+- [Lect 17: `Comparable` & `compareTo()` - Abstraction](#lect-17-comparable--compareto---abstraction)
 
-Ajay's Resources:
-- [Jackie's Lectures](https://www.eecs.yorku.ca/~jackie/teaching/lectures/index.html#EECS2030_F17)
-- [Marzieh's Lectures (AW2020)](https://pastebin.com/jtUk62Qs)
 
 # Week 1
 ## Mark Breakdown
@@ -323,14 +321,11 @@ You write the contract beforehand and you don't have to say shit when they try t
 
 ---
 
-The above notes were made before the first term test after the creation of the below notes.
-
-A version of the above existed once upon a time.
-Don't know what happened to that.
+I deleted the lecture 1 and 2 lecture notes so the above are a recreation.
 
 ---
 
-# --- Lect 3: intro to recursion ---
+# Lect 3: intro to recursion
 
 ## Function Calls and Stack Frames
 
@@ -407,7 +402,7 @@ Divide & Conquer (top-down approach):
    - summing up an array of 1 element is easy
    - make recursive cases making the arrays smaller and smaller until we hit the base case
 
-# --- Lect 4: Recursion Cont'd ---
+# Lect 4: Recursion Cont'd
 ## Divide and Conquer - Find the sum of all the entries of an array
 If the array is 1 element then the sum of all the elements is that element
 
@@ -454,7 +449,7 @@ Use divide and conquer and bottom up methods
 Linear recursion calls itself once in every iteration.
 Binary recursion calls itself twice in every interation.
 
-# --- Lecture 5: Finally Advanced Object-Oriented Programming ---
+# Lecture 5: Finally Advanced Object-Oriented Programming
 
 Adv oop is more about concepts.
 We already know all the base concepts and required syntax.
@@ -593,7 +588,7 @@ At the address all the data is stored.
 
 read about constructors
 
-# --- Lect 6: Constructors & Encapsulation ---
+# Lect 6: Constructors & Encapsulation
 
 Constructors are special methods:
  - they return no value
@@ -821,7 +816,7 @@ Bundling code into individual softare objects provides a number of benefits, inc
  - code re-use
  - pluggability and debugging ease
 
-# --- Lect 7: Static vs Non-Statics  ---
+# Lect 7: Static vs Non-Statics
 ___Was late so I have to go look at the video.___
 ## Variables
 When we place variable declaration outside of any methods or constructors in a class,
@@ -885,7 +880,7 @@ In this case we can use different versions of `getInstance()` and a private cons
 Suppose we want a class that can only have one instance.
 We could make the constructor private and only have a `getInstance()` that throws an exception if it already exists.
 
-# --- Lect 8: Statics vs Non-Statics cont'd ---
+# Lect 8: Statics vs Non-Statics cont'd
 This became online all of a sudden for some reason.
 I didn't pay attention.
 Video starts at slide 23/39.
@@ -1000,7 +995,7 @@ There are a lot of different kinds of exceptions that you will have to throw or 
 
 ![lambda demo](https://cdn.discordapp.com/attachments/513923474239127553/1026876218139754496/unknown.png)
 
-# --- Lect 9: Aggregations and Compositions ---
+# Lect 9: Aggregations and Compositions
 With `reference` data types there is aliasing and deep copying that you need to contend with when it comes to making copies.
 
 This doesn't exist for `primitive`s (`int`, `double`, etc) since they store the data itself at their memory address as opposed to a reference to a memory address.
@@ -1068,7 +1063,7 @@ public char [] getPlatNumber() {
 ## Shallow Copying
 Shallow copy clones an `object` and it's components but not it's sub-components.
 
-# --- Lect 10: Aggregations and Compositions Cont'd ---
+# Lect 10: Aggregations and Compositions Cont'd
 ## Review
 Suppose we have an object `ob1` with `data1` that points to `a100`
 
@@ -1307,7 +1302,7 @@ If we implement the relationship b/w the doctor and patients as an aggregation (
 We now know all of the new things happening with the patients just by looking at the patient objects that are existing in the memory already.
 
 We have to implement as a composition so that we can protect the information regarding the new things happening with the patients.
-# --- Lect 11: Inheritance ---
+# Lect 11: Inheritance
 This is a continuation of the last week's lecture with object relationships
 
 Inheritance is the other type of object relationship, an Is-A relationship.
@@ -1336,7 +1331,7 @@ _Protected_ features are shown with _#_.
 	 - different package subclasses
  - but not by a different package non-subclass
 
-# --- Lect 12: Inheritance Cont'd ---
+# Lect 12: Inheritance Cont'd
 ## Overridden Methods
 Subclasses can make their own methods that have the same name as the superclass' methods but have different functionality to better suit it.
 
@@ -1350,6 +1345,7 @@ If a method defined as `final` then it cannot be overridden.
 Subclasses get more and more specific as you go down the inheritance hierarchy.
 ### Example
 ![uml](https://cdn.discordapp.com/attachments/513923474239127553/1034469101067829388/unknown.png)
+
 `AudioDevice` overrides `workWithBatter()`, inherits `sleepMode()`, and adds `play()`.
 
 `MP4Player` overrides play and inherits `workWithBatter()` and `sleepMode()`.
@@ -1494,7 +1490,7 @@ Especially if its an opaque blackbox.
 It's where `toString()` comes from.
 Dastardly, mysterious motherfucker.
 
-# --- Lect 13: Polymorphism ---
+# Lect 13: Polymorphism
 ## Polymorphism
 Polymorphism is a feature in java that allows us to put an object of a `subclass` instead of an object of that subclass' `superclass`.
 
@@ -1591,7 +1587,7 @@ So if there was a unique method like `rollOver()` then you can't call that using
 
 This is because `puppy1` thinks it's pointing to an `Animal` instead of a `Dog`.
 
-# --- Lect 14: Static & Dynamic Binding,  DBC & Inheritance & Polymorphism ---
+# Lect 14: Static & Dynamic Binding - DBC & Inheritance & Polymorphism
 The behaviour of a method changing depending on the object it works on
 (overriding a superclass' method in the subclass)
 is possible due to Late/Dynamic binding.
@@ -1663,7 +1659,7 @@ This allows the subclass to do the same things that the super class can do if no
 
 `postcondition`s inherited from the superclass must either be the same or have ___more___ restrictions than the superclass.
 
-# --- Lect 15: Exceptions ---
+# Lect 15: Exceptions
 ## Exceptions
 There are two types of exceptions:
 1. Unchecked - runtime exceptions
@@ -1794,7 +1790,7 @@ Checks the equality of the object references.
 It sees if these references refer to the same memory address,
 pointing to the same object in the memory.
 
-# --- Lect 16: Obligatory Methods (`Object` class) --- 
+# Lect 16: Obligatory Methods (`Object` class)
 ## Housekeeping
 PE1 slight change of grade.
 (`enoughGate6` was removed).
@@ -1898,3 +1894,5 @@ A hash code must:
 Overriding is hard so instead we just use `Objects.hash()`,
 feed it all the attributes,
 and return the result.
+
+# Lect 17: `Comparable` & `compareTo()` - Abstraction
