@@ -1,1 +1,1 @@
-[Lecture Notes](cs 2030 notes.md)
+[Lecture Notes](cs%202030%20notes.md)
