@@ -1,1 +1,1 @@
-[Lecture Notes](cs_2030_notes.md)
+[Lecture Notes](cs 2030 notes.md)
