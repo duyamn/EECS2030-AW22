@@ -1,5 +1,5 @@
 # Table of contents
-
+- [Resources](#Resources)
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -127,6 +127,16 @@
   - [Housekeeping](#housekeeping)
   - [Obligatory Methods](#obligatory-methods)
   - [`hashCode()`](#hashcode)
+# Resources
+Basics:
+- [Oracle's Javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html)
+- [W3Schools](https://www.w3schools.com/)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/)
+- [Tutorials Point](https://www.geeksforgeeks.org/)
+
+Ajay's Resources:
+- [Jackie's Lectures](https://www.eecs.yorku.ca/~jackie/teaching/lectures/index.html#EECS2030_F17)
+- [Marzieh's Lectures (AW2020)](https://pastebin.com/jtUk62Qs)
 
 # Week 1
 ## Mark Breakdown
@@ -1746,6 +1756,7 @@ If a superclass method throws an exception,
 the subclass must throw the same or lower level of exception.
 
 Compare:
+
 ![week 8 slide 14](https://cdn.discordapp.com/attachments/513923474239127553/1037741300293832734/unknown.png)
 
 `method1()`'s override is correct as it's the same.
