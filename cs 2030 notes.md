@@ -132,7 +132,7 @@ Basics:
 - [Oracle's Javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html)
 - [W3Schools](https://www.w3schools.com/)
 - [GeeksforGeeks](https://www.geeksforgeeks.org/)
-- [Tutorials Point](https://www.geeksforgeeks.org/)
+- [Tutorials Point](https://www.tutorialspoint.com/index.htm)
 
 Ajay's Resources:
 - [Jackie's Lectures](https://www.eecs.yorku.ca/~jackie/teaching/lectures/index.html#EECS2030_F17)
