@@ -1,6 +1,5 @@
 # Table of contents
-
-- [Resources](#resources)
+- [Table of contents](#table-of-contents)
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -133,15 +132,15 @@
     - [Hash Tables](#hash-tables)
     - [`hashCode()`](#hashcode)
     - [Overriding](#overriding)
-- [Lect 17: `Comparable` & `compareTo()` - Abstraction & Interfaces](#lect-17-comparable--compareto---abstraction--interfaces)
-  - [`Comparable` & `compareTo()`](#comparable--compareto)
-    - [`compareTo()`](#compareto)
+- [Lect 17: Abstraction & Interfaces](#lect-17-abstraction--interfaces)
   - [Abstract Classes & Methods](#abstract-classes--methods)
     - [Abstract Classes](#abstract-classes)
     - [Abstract Methods](#abstract-methods)
     - [Summary](#summary)
-  - [Interface](#interface)
-
+- [Lect 18: `Interface`, `Comparable`, and `compareTo()`](#lect-18-interface-comparable-and-compareto)
+  - [`Interface`](#interface)
+  - [`Comparable`](#comparable)
+    - [`compareTo()`](#compareto)
 
 # Week 1
 ## Mark Breakdown
@@ -562,15 +561,25 @@ they can then give it to the programmer (also us) to be created easily.
 
 #### Creation of a Class
 ___Recall: `public` classes are accessible by everyone and everything.___
+
 Access modifiers and static vs non-static is covered later
 
 ```java
-[public] class className {
+public class className {
 
-	type variable_name;
+  // declare instance and class variables
 	
-	[access modifier][static] returnType/void methodsName(type name, …){
-	} // end of method
+  // make a constructor method, there can be more than one
+  // <access modifier> <className>(<arg1 type> <arg1 name>, etc.)
+  public className(){
+    // constructor code
+  }
+  
+  // instantiate methods
+  // <access modifier> <static> <returnType/void> <method name>(<arg1 type> <arg1 name>, …)
+  pubic static int getNum(){
+    //method code
+  } // end of method
 
 }// end of class
 ```
@@ -599,7 +608,7 @@ read about constructors
 
 Constructors are special methods:
  - they return no value
- - they are not void
+   - they are not void
  - it is the same name as the class
  - it is used to initialize the instance variables
 
@@ -621,7 +630,7 @@ When we use those specific constructors then we can easily differentiate it in o
 This is called ___overloading constructors___.
 
 If we have duplicate code b/w all of our constructors then we can call other constructors inside of our constructor.
-A basic constructor then other more advanced/specialized constructors depening on the args.
+A basic constructor then other more advanced/specialized constructors depending on the args.
 We can call a constructor inside a `class`'s code by using `this(arg1, arg2, arg3, ..., argN)` where the list of args are the required args for the constructor we want.
 This is called ___constructor chaining___.
 
@@ -1902,36 +1911,8 @@ Overriding is hard so instead we just use `Objects.hash()`,
 feed it all the attributes,
 and return the result.
 
-# Lect 17: `Comparable` & `compareTo()` - Abstraction & Interfaces
-## `Comparable` & `compareTo()`
-Primitives are easily compared using `< > ==`.
-
-To compare objects (user-defined or otherwise):
-- define a way to order them
-  - what makes one object larger/higher/better or smaller/lower/worse than another in sorting
-- implement a method that compares the two objects in that respect
-  - `compareTo()`
-
-### `compareTo()`
-```java
-obj1.compareTo(obj2);
-```
-Returns:
-- -ve # when `obj1` < `obj2`
-- +ve # when `obj1` > `obj2`
-- 0 when `obj1` = `obj2`
-
-`compareTo()` is n `abstract` method that is defined in the `Comparable` `interface`.
-
-Objects that have `compareTo()` have an IS-A relationship with `Comparable`.
-The class will `implements` `Comparable`.
-
-```java
-class x implements Comparable {
-  public int compareTo(Object obj) { }
-}
-```
-
+# Lect 17: Abstraction & Interfaces
+`Comparable` and `compareTo()` were initially covered here but the coverage was so awful I chose to omit it.
 ## Abstract Classes & Methods
 ### Abstract Classes
 Some `superclass`es should never be instantiated.
@@ -2028,7 +2009,14 @@ Abstract classes have no meaningful functionality aside from:
 
 Abstract classes must be extended to be useful.
 
-## Interface
+---
+
+An attempt was made to cover `Interface` in this lecture.
+
+An attempt.
+
+# Lect 18: `Interface`, `Comparable`, and `compareTo()`
+## `Interface`
 Suppose we have a pre-existing inheritance hierarchy.
 We want to add some new functionality to a subclass or specific subclasses but not to other subclasses.
 
@@ -2037,6 +2025,7 @@ In these cases we make an interface.
 ---
 
 There are ways that we could try to get around it but these all have their advantages and disadvantages.
+***Feel free to skip this section***
 
 Design 1: add the new functionalities to the superclass.
 - +:
@@ -2066,7 +2055,7 @@ Design 4: add the new functionalities to the subclasses that they belong to.
   - subclasses that need it get, override, and pass it on
   - subclasses that shouldn't have it won't have it
 - -:
-  - we have to write mor ecode
+  - we have to write more code
   - sibling classes that fall under the same category will have to follow the same protocol for consistent design
     - an impossible ask
   - can't use polymorphism
@@ -2077,7 +2066,97 @@ Design 5: make an intermediary step in the hierarchy
 - -:
   - we're writing a whole new class just to accommodate 
 
+Basically:
+- if you want to give a subset of subclasses some new functionality then we should use an interface
+
 ---
+
+Suppose we _still_ have that pre-existing inheritance hierarchy.
+We _still_ want to add some new functionality to a subclass or specific subclasses but not to other subclasses.
+
+In these cases we make an interface.
 
 Interface is the way we get around the lack of multiple inheritance in java.
 
+Suppose we still have our pre-existing hierarchy and want to add functionality to a certain subset of the subtypes.
+
+
+![week 9 slide 28](https://cdn.discordapp.com/attachments/513923474239127553/1042082376416772146/image.png)
+
+We define an interface using `interface InterfaceName()` similar to how we would define a class.
+The interface's methods are all `public abstract` even if you don't define it.
+The subclasses need to implement the actual methods themselves,
+overriding them in the class' code.
+Similarly,
+all of the variables defined in an interface are `public static` implicitly
+
+The header for a class like `FacultyMember` which implements the `<<Grader>>` interface will look something like this:
+```java
+//class <className> extends <superclass> implements <interface1>, <interface2>, <interface3>, ... , <interfaceN>
+class FacultyMember extends UniversityMember implements Grader {
+```
+The class it extends (is a subclass of) and the interface it implements after.
+
+***Note that classes can implement more than one interface***
+Deadly Diamond of Death just doesn't happen :)
+
+In order to ensure proper implementation and usage be sure to:
+- make each subclass implement it to fit its purpose
+- each subclass will use the same method signature
+- only implement it on the subclasses that need it
+- to use the interface's methods with polymorphism use the interface as the polymorphic type
+```java
+Grader grader = new TeachingAssistant();
+```
+With the above code we can call all of the methods within `<<Grader>>` and have the new `TeachingAssistant` do it.
+
+## `Comparable`
+Primitives (int, double, float, char, etc.) are easily compared using `< > ==`.
+
+To compare objects (user-defined or otherwise):
+- define a way to order them
+  - what makes one object larger/higher/better or smaller/lower/worse than another in sorting
+- implement a method that compares the two objects in that respect
+  - `compareTo()` that we get from `<<Comparable>>`
+
+### `compareTo()`
+```java
+obj1.compareTo(obj2);
+```
+Returns:
+- -ve # when `obj1` < `obj2`
+- +ve # when `obj1` > `obj2`
+- 0 when `obj1` = `obj2`
+
+`compareTo()` is n `abstract` method that is defined in the `<<Comparable>>` `Interface`.
+
+```java
+class myComparableClass implements Comparable {
+  public int compareTo(Object obj) {
+    // my code
+  }
+}
+```
+
+This method throws 2 exceptions:
+- `NullPointerException` - specified object is null
+- `ClassCastException` specified object's type prevents it from being compared to this object
+
+For objects `obj1`, `obj2`, `obj3` that are comparable to one another,
+if:
+- `obj1.compareTo(obj2) < 0`
+  - then `obj2.compareTo(obj1) > 0`
+    - and vice versa
+- `obj1.compareTo(obj2) == 0`
+  - then `obj2.compareTo(obj1) == 0`
+- `obj1.compareTo(obj2) < 0` && `obj2.compareTo(obj3) < 0`
+  - then `obj1.compareTo(obj3) < 0`
+    - same with `> 0` and `== 0`
+
+Note that if `obj1.cmpareTo(obj2) == 0` then `obj1.equals(obj2)` may or may not be true.
+They are two different methods and may have different code.
+
+If `obj1.compareTo(obj2) == 0 & obj1.equals(obj2)== true` then we say that `compareTo()` and `equals()` are consistent.
+
+This isn't always the case as `equals()` and `compareTo()` will be consistent with each other.
+`equals()`, by default, compares the object references while `compareTo()`, varying by implementation, will typically compare instance variables.
