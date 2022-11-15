@@ -207,7 +207,7 @@ fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mer
 <div class="markdown-body">
 <h1 id="table-of-contents">Table of contents</h1>
 <ul>
-<li><a href="#resources">Resources</a></li>
+<li><a href="#table-of-contents">Table of contents</a></li>
 <li><a href="#week-1">Week 1</a>
 <ul>
 <li><a href="#mark-breakdown">Mark Breakdown</a></li>
@@ -469,13 +469,8 @@ fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mer
 </li>
 </ul>
 </li>
-<li><a href="#lect-17-comparable--compareto---abstraction--interfaces">Lect 17: <code>Comparable</code> &amp; <code>compareTo()</code> - Abstraction &amp; Interfaces</a>
+<li><a href="#lect-17-abstraction--interfaces">Lect 17: Abstraction &amp; Interfaces</a>
 <ul>
-<li><a href="#comparable--compareto"><code>Comparable</code> &amp; <code>compareTo()</code></a>
-<ul>
-<li><a href="#compareto"><code>compareTo()</code></a></li>
-</ul>
-</li>
 <li><a href="#abstract-classes--methods">Abstract Classes &amp; Methods</a>
 <ul>
 <li><a href="#abstract-classes">Abstract Classes</a></li>
@@ -483,7 +478,16 @@ fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mer
 <li><a href="#summary">Summary</a></li>
 </ul>
 </li>
-<li><a href="#interface">Interface</a></li>
+</ul>
+</li>
+<li><a href="#lect-18-interface-comparable-and-compareto">Lect 18: <code>Interface</code>, <code>Comparable</code>, and <code>compareTo()</code></a>
+<ul>
+<li><a href="#interface"><code>Interface</code></a></li>
+<li><a href="#comparable"><code>Comparable</code></a>
+<ul>
+<li><a href="#compareto"><code>compareTo()</code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1039,14 +1043,23 @@ you have to make an <code>instance</code>.</p>
 </figure><p>When the designer (us) makes this,
 they can then give it to the programmer (also us) to be created easily.</p>
 <h4 id="creation-of-a-class">Creation of a Class</h4>
-<p><em><strong>Recall: <code>public</code> classes are accessible by everyone and everything.</strong></em>
-Access modifiers and static vs non-static is covered later</p>
-<pre><code class="language-java">[<span class="hljs-keyword">public</span>] <span class="hljs-keyword">class</span> <span class="hljs-title class_">className</span> {
+<p><em><strong>Recall: <code>public</code> classes are accessible by everyone and everything.</strong></em></p>
+<p>Access modifiers and static vs non-static is covered later</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className</span> {
 
-	type variable_name;
+  <span class="hljs-comment">// declare instance and class variables</span>
 	
-	[access modifier][<span class="hljs-keyword">static</span>] returnType/<span class="hljs-keyword">void</span> <span class="hljs-title function_">methodsName</span><span class="hljs-params">(type name, …)</span>{
-	} <span class="hljs-comment">// end of method</span>
+  <span class="hljs-comment">// make a constructor method, there can be more than one</span>
+  <span class="hljs-comment">// &lt;access modifier&gt; &lt;className&gt;(&lt;arg1 type&gt; &lt;arg1 name&gt;, etc.)</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">className</span><span class="hljs-params">()</span>{
+    <span class="hljs-comment">// constructor code</span>
+  }
+  
+  <span class="hljs-comment">// instantiate methods</span>
+  <span class="hljs-comment">// &lt;access modifier&gt; &lt;static&gt; &lt;returnType/void&gt; &lt;method name&gt;(&lt;arg1 type&gt; &lt;arg1 name&gt;, …)</span>
+  pubic <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getNum</span><span class="hljs-params">()</span>{
+    <span class="hljs-comment">//method code</span>
+  } <span class="hljs-comment">// end of method</span>
 
 }<span class="hljs-comment">// end of class</span>
 </code></pre>
@@ -1065,8 +1078,11 @@ At the address all the data is stored.</p>
 <h1 id="lect-6%3A-constructors-%26-encapsulation">Lect 6: Constructors &amp; Encapsulation</h1>
 <p>Constructors are special methods:</p>
 <ul>
-<li>they return no value</li>
+<li>they return no value
+<ul>
 <li>they are not void</li>
+</ul>
+</li>
 <li>it is the same name as the class</li>
 <li>it is used to initialize the instance variables</li>
 </ul>
@@ -1083,7 +1099,7 @@ Sometimes you don’t have to specify a certain aspect of an object or don’t w
 When we use those specific constructors then we can easily differentiate it in our use cases.
 This is called <em><strong>overloading constructors</strong></em>.</p>
 <p>If we have duplicate code b/w all of our constructors then we can call other constructors inside of our constructor.
-A basic constructor then other more advanced/specialized constructors depening on the args.
+A basic constructor then other more advanced/specialized constructors depending on the args.
 We can call a constructor inside a <code>class</code>’s code by using <code>this(arg1, arg2, arg3, ..., argN)</code> where the list of args are the required args for the constructor we want.
 This is called <em><strong>constructor chaining</strong></em>.</p>
 <h2 id="clone%2Fcopy-constructor">Clone/Copy Constructor</h2>
@@ -2725,38 +2741,8 @@ That integer is the memory address in which the object is stored.</p>
 <p>Overriding is hard so instead we just use <code>Objects.hash()</code>,
 feed it all the attributes,
 and return the result.</p>
-<h1 id="lect-17%3A-comparable-%26-compareto()---abstraction-%26-interfaces">Lect 17: <code>Comparable</code> &amp; <code>compareTo()</code> - Abstraction &amp; Interfaces</h1>
-<h2 id="comparable-%26-compareto()"><code>Comparable</code> &amp; <code>compareTo()</code></h2>
-<p>Primitives are easily compared using <code>&lt; &gt; ==</code>.</p>
-<p>To compare objects (user-defined or otherwise):</p>
-<ul>
-<li>define a way to order them
-<ul>
-<li>what makes one object larger/higher/better or smaller/lower/worse than another in sorting</li>
-</ul>
-</li>
-<li>implement a method that compares the two objects in that respect
-<ul>
-<li><code>compareTo()</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="compareto()"><code>compareTo()</code></h3>
-<pre><code class="language-java">obj1.compareTo(obj2);
-</code></pre>
-<p>Returns:</p>
-<ul>
-<li>-ve # when <code>obj1</code> &lt; <code>obj2</code></li>
-<li>+ve # when <code>obj1</code> &gt; <code>obj2</code></li>
-<li>0 when <code>obj1</code> = <code>obj2</code></li>
-</ul>
-<p><code>compareTo()</code> is n <code>abstract</code> method that is defined in the <code>Comparable</code> <code>interface</code>.</p>
-<p>Objects that have <code>compareTo()</code> have an IS-A relationship with <code>Comparable</code>.
-The class will <code>implements</code> <code>Comparable</code>.</p>
-<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">x</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span> {
-  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Object obj)</span> { }
-}
-</code></pre>
+<h1 id="lect-17%3A-abstraction-%26-interfaces">Lect 17: Abstraction &amp; Interfaces</h1>
+<p><code>Comparable</code> and <code>compareTo()</code> were initially covered here but the coverage was so awful I chose to omit it.</p>
 <h2 id="abstract-classes-%26-methods">Abstract Classes &amp; Methods</h2>
 <h3 id="abstract-classes">Abstract Classes</h3>
 <p>Some <code>superclass</code>es should never be instantiated.
@@ -2838,12 +2824,17 @@ however we don’t ever make an object of <code>Animal</code> instead filling it
 </li>
 </ul>
 <p>Abstract classes must be extended to be useful.</p>
-<h2 id="interface">Interface</h2>
+<hr>
+<p>An attempt was made to cover <code>Interface</code> in this lecture.</p>
+<p>An attempt.</p>
+<h1 id="lect-18%3A-interface%2C-comparable%2C-and-compareto()">Lect 18: <code>Interface</code>, <code>Comparable</code>, and <code>compareTo()</code></h1>
+<h2 id="interface"><code>Interface</code></h2>
 <p>Suppose we have a pre-existing inheritance hierarchy.
 We want to add some new functionality to a subclass or specific subclasses but not to other subclasses.</p>
 <p>In these cases we make an interface.</p>
 <hr>
-<p>There are ways that we could try to get around it but these all have their advantages and disadvantages.</p>
+<p>There are ways that we could try to get around it but these all have their advantages and disadvantages.
+<em><strong>Feel free to skip this section</strong></em></p>
 <p>Design 1: add the new functionalities to the superclass.</p>
 <ul>
 <li>+:
@@ -2898,7 +2889,7 @@ We want to add some new functionality to a subclass or specific subclasses but n
 </li>
 <li>-:
 <ul>
-<li>we have to write mor ecode</li>
+<li>we have to write more code</li>
 <li>sibling classes that fall under the same category will have to follow the same protocol for consistent design
 <ul>
 <li>an impossible ask</li>
@@ -2921,8 +2912,108 @@ We want to add some new functionality to a subclass or specific subclasses but n
 </ul>
 </li>
 </ul>
+<p>Basically:</p>
+<ul>
+<li>if you want to give a subset of subclasses some new functionality then we should use an interface</li>
+</ul>
 <hr>
+<p>Suppose we <em>still</em> have that pre-existing inheritance hierarchy.
+We <em>still</em> want to add some new functionality to a subclass or specific subclasses but not to other subclasses.</p>
+<p>In these cases we make an interface.</p>
 <p>Interface is the way we get around the lack of multiple inheritance in java.</p>
+<p>Suppose we still have our pre-existing hierarchy and want to add functionality to a certain subset of the subtypes.</p>
+<p><img src="https://cdn.discordapp.com/attachments/513923474239127553/1042082376416772146/image.png" alt="week 9 slide 28"></p>
+<p>We define an interface using <code>interface InterfaceName()</code> similar to how we would define a class.
+The interface’s methods are all <code>public abstract</code> even if you don’t define it.
+The subclasses need to implement the actual methods themselves,
+overriding them in the class’ code.
+Similarly,
+all of the variables defined in an interface are <code>public static</code> implicitly</p>
+<p>The header for a class like <code>FacultyMember</code> which implements the <code>&lt;&lt;Grader&gt;&gt;</code> interface will look something like this:</p>
+<pre><code class="language-java"><span class="hljs-comment">//class &lt;className&gt; extends &lt;superclass&gt; implements &lt;interface1&gt;, &lt;interface2&gt;, &lt;interface3&gt;, ... , &lt;interfaceN&gt;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FacultyMember</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UniversityMember</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Grader</span> {
+</code></pre>
+<p>The class it extends (is a subclass of) and the interface it implements after.</p>
+<p><em><strong>Note that classes can implement more than one interface</strong></em>
+Deadly Diamond of Death just doesn’t happen :)</p>
+<p>In order to ensure proper implementation and usage be sure to:</p>
+<ul>
+<li>make each subclass implement it to fit its purpose</li>
+<li>each subclass will use the same method signature</li>
+<li>only implement it on the subclasses that need it</li>
+<li>to use the interface’s methods with polymorphism use the interface as the polymorphic type</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-type">Grader</span> <span class="hljs-variable">grader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeachingAssistant</span>();
+</code></pre>
+<p>With the above code we can call all of the methods within <code>&lt;&lt;Grader&gt;&gt;</code> and have the new <code>TeachingAssistant</code> do it.</p>
+<h2 id="comparable"><code>Comparable</code></h2>
+<p>Primitives (int, double, float, char, etc.) are easily compared using <code>&lt; &gt; ==</code>.</p>
+<p>To compare objects (user-defined or otherwise):</p>
+<ul>
+<li>define a way to order them
+<ul>
+<li>what makes one object larger/higher/better or smaller/lower/worse than another in sorting</li>
+</ul>
+</li>
+<li>implement a method that compares the two objects in that respect
+<ul>
+<li><code>compareTo()</code> that we get from <code>&lt;&lt;Comparable&gt;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="compareto()"><code>compareTo()</code></h3>
+<pre><code class="language-java">obj1.compareTo(obj2);
+</code></pre>
+<p>Returns:</p>
+<ul>
+<li>-ve # when <code>obj1</code> &lt; <code>obj2</code></li>
+<li>+ve # when <code>obj1</code> &gt; <code>obj2</code></li>
+<li>0 when <code>obj1</code> = <code>obj2</code></li>
+</ul>
+<p><code>compareTo()</code> is n <code>abstract</code> method that is defined in the <code>&lt;&lt;Comparable&gt;&gt;</code> <code>Interface</code>.</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">myComparableClass</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span> {
+  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Object obj)</span> {
+    <span class="hljs-comment">// my code</span>
+  }
+}
+</code></pre>
+<p>This method throws 2 exceptions:</p>
+<ul>
+<li><code>NullPointerException</code> - specified object is null</li>
+<li><code>ClassCastException</code> specified object’s type prevents it from being compared to this object</li>
+</ul>
+<p>For objects <code>obj1</code>, <code>obj2</code>, <code>obj3</code> that are comparable to one another,
+if:</p>
+<ul>
+<li><code>obj1.compareTo(obj2) &lt; 0</code>
+<ul>
+<li>then <code>obj2.compareTo(obj1) &gt; 0</code>
+<ul>
+<li>and vice versa</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>obj1.compareTo(obj2) == 0</code>
+<ul>
+<li>then <code>obj2.compareTo(obj1) == 0</code></li>
+</ul>
+</li>
+<li><code>obj1.compareTo(obj2) &lt; 0</code> &amp;&amp; <code>obj2.compareTo(obj3) &lt; 0</code>
+<ul>
+<li>then <code>obj1.compareTo(obj3) &lt; 0</code>
+<ul>
+<li>same with <code>&gt; 0</code> and <code>== 0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note that if <code>obj1.cmpareTo(obj2) == 0</code> then <code>obj1.equals(obj2)</code> may or may not be true.
+They are two different methods and may have different code.</p>
+<p>If <code>obj1.compareTo(obj2) == 0 &amp; obj1.equals(obj2)== true</code> then we say that <code>compareTo()</code> and <code>equals()</code> are consistent.</p>
+<p>This isn’t always the case as <code>equals()</code> and <code>compareTo()</code> will be consistent with each other.
+<code>equals()</code>, by default, compares the object references while <code>compareTo()</code>, varying by implementation, will typically compare instance variables.</p>
 
 </div>
 </body>
