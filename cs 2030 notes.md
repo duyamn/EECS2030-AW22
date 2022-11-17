@@ -1,5 +1,5 @@
 # Table of contents
-- [Table of contents](#table-of-contents)
+
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -141,6 +141,18 @@
   - [`Interface`](#interface)
   - [`Comparable`](#comparable)
     - [`compareTo()`](#compareto)
+- [Lect 19: Generics](#lect-19-generics)
+  - [Generic Types](#generic-types)
+    - [Why?](#why)
+  - [Inheritance (1)](#inheritance-1)
+    - [Array of Generics](#array-of-generics)
+  - [Inheritance (2)](#inheritance-2)
+  - [Multiple Parameters](#multiple-parameters)
+  - [Parameter Naming Conventions](#parameter-naming-conventions)
+  - [Generic Methods](#generic-methods)
+    - [Wrapper Class](#wrapper-class)
+  - [Generic Method Cont'd](#generic-method-contd)
+- [Note:](#note)
 
 # Week 1
 ## Mark Breakdown
@@ -2160,3 +2172,212 @@ If `obj1.compareTo(obj2) == 0 & obj1.equals(obj2)== true` then we say that `comp
 
 This isn't always the case as `equals()` and `compareTo()` will be consistent with each other.
 `equals()`, by default, compares the object references while `compareTo()`, varying by implementation, will typically compare instance variables.
+
+# Lect 19: Generics
+
+Recall that as programmers we want to rewrite as little code as possible.
+Generics help us to accomplish this.
+
+An example of where we would want generics would be when we use stacks.
+
+Stacks simple data structures that have a few different methods no matter the type (`push(e)`, `pop()`, `isEmpty()`, and `top()`) and are very popular for a variety of applications (memory stacks, undo history in editing software, compiler understanding parenthesis in your code, tag matching in xml or html files, etc.).
+
+All the different applications will require different versions of a stack in order to accomplish what they set out to do(integer stack, string stack, etc.)
+
+Each different version of stack could be a different implementation that deals with a different datatype or we can make a generic class for all of these to use.
+
+We make a generic stack that we can make an integer, string, etc. type stack when we instantiate it.
+
+## Generic Types
+
+Generic types allow us to avoid duplicate code.
+
+A generic type is:
+- a(n):
+  - interface
+  - class
+  - method
+- whose type is determined by a parameter
+
+In the code we pass the type that we want into the generic type instantiation as an argument then at runtime the actual type is replaced by the argument we fed in.
+
+A normal implementation of an integer stack:
+```java
+class IntegerStack {
+  ArrayList<Integer> stack;
+  public IntegerStack() {
+    stack = new ArrayList<Integer>();
+  }
+  public void push (int element) {
+    stack.add(0, element);
+  }
+  public int pop() {
+    return stack.remove(0);
+  }
+  public boolean isEmpty() {
+    return (stack.size() == 0);
+  }
+  public int top() {
+    return stack.get(0);
+  }
+}
+```
+For different implementations of this data structure using a different data type (`String` instead of `int` for example) we would make something similar to the above code except replacing our original data type (int Integer) with the new one (String).
+
+Or we can just make a generic:
+```java
+class Stack <E> {
+  ArrayList<E> stack;
+  public Stack() {
+    stack = new ArrayList<E>();
+  }
+  public void push (E element) {
+    stack.add(0, element);
+  }
+  public E pop() {
+    return stack.remove(0);
+  }
+  public boolean isEmpty() {
+    return (stack.size() == 0);
+  }
+  public E top() {
+    return stack.get(0);
+  }
+}
+
+//below is a main function
+
+Stack<Integer> integerStack = new Stack<Integer>();
+Stack<String> stringStack = new Stack<String>();
+```
+In the above code we ued the `<E>` key-phrase to make `Stack` a generic,
+we could use a different single uppercase letter from `E` as well.
+
+Throughout the class code we use `E` in place of the name of our data type.
+
+When we go to instantiate our generic, `Stack`, we pass in a data type, `Integer` and `String`, in order to make all of the 
+
+Generics are very powerful and can change the types of:
+- instance variables
+- method return types
+- parameters/args for methods
+
+*only non-primitive data types can replace a generic type*
+
+### Why?
+
+Generics are built into java in the form of `List<E>` and `ArrayList<E>`.
+
+We've used clever work arounds before where we declared a variable of type `Object` and used casting to make it point to the actual type that we wanted making use of polymorphism.
+
+However when we use workarounds like these it's rather confusing for ourselves and others given that the casting isn't immediately apparent and passing in an incorrect object type will make us run into an error at runtime.
+Also casting can only go so far but that's neither here nor there.
+
+Generics is more flexible, robust, and easier to read/debug using automated built-in tools and our brains.
+
+We may still use our clever workarounds but when we can help it we should use generics for the reasons above.
+
+## Inheritance (1)
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042826349070536734/image.png)
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042826468981485618/image.png)
+
+The above code is fine.
+
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042826586061295676/image.png)
+
+The above code is not fine.
+
+```java
+String s = objectList.get(0);
+```
+This will attempt to store an `Object` in a `String` variable.
+
+Even if `type1` is a subclass of `type2` we cannot say that an ArrayList of `type1` is a child of an `ArrayList` of `type2`.
+
+If we try to make an `ArrayList` or any other kind of collection data structure out of the data type we can't say that one is a child of another even if their types have an inheritance hierarchy.
+
+This is an interaction pretty specific to generics.
+
+### Array of Generics
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042827918390341732/image.png)
+
+`new` wants to reserve space in memory which depends on the object.
+We don't know how much space a generic type needs to be reserved so we get an error at compile time.
+
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042828310704558100/image.png)
+
+## Inheritance (2)
+```java
+String name = "John";
+Object object = name;
+```
+The above code is fine as you can store a subtype in a variable of supertype.
+
+```java
+String[] names = {"John", "Jane"};
+Object[] objects = names;
+```
+
+Arrays are said to be `covariant`, which means an array of type `T[ ]`, can contain
+objects of `S`, where `S` is a subtype of `T`.
+
+## Multiple Parameters
+A generic can have more than one parameter
+- interface `Map<K,V>`
+- class `HashMap<K,V>`
+
+```java
+class Student <K, V> {
+  K studentId;
+  V studentInfo;
+}
+```
+In the above code we don't know what type `studentId` or `studentInfo` will be.
+`studentId`
+## Parameter Naming Conventions
+| name | use                             |
+|------|---------------------------------|
+| E    | element                         |
+| K    | key for Map                     |
+| V    | value for Map                   |
+| N    | number                          |
+| T    | "type for" 1st "generic param." |
+| S    | "" 2nd ""                       |
+| U    | "" 3rd ""                       |
+| V    | "" 4th ""                       |
+
+Marzieh wrote `ADT` beside map but didn't explain it.
+ADT stands for abstract data type.
+Maps are a thing in different languages,
+what she wrote is just a reference to that fact essentially.
+
+## Generic Methods
+Methods can be defined as generics even if the containing class isn't a generic.
+
+![](https://cdn.discordapp.com/attachments/1042237707289645167/1042831420646768661/image.png)
+
+THe containing class,
+`GenericsMethodExample`,
+isn't generic but the methods,
+`printMiddle()` and `getMiddle()`,
+are generic.
+
+When we instantiate `GenericsMethodExample` we don't need to specify `E`.
+Even when we use `printMiddle()` and `getMiddle()` we don't need to specify as it will see the object we passed in as an argument and take its data type to become the new data type.
+
+### Wrapper Class
+
+Wrapper classes are static factory methods where we put in a primitive literal and get out an object of that class.
+
+This is used for passing objects into functions that require objects (generics) but this is often handled automatically by java through autoboxing.
+
+## Generic Method Cont'd
+
+There are 2 different ways to approach generic methods that we've seen thus far:
+- the class is generic and the generic methods rely on the class' generic type
+- the class isn't generic and the generic methods rely on their own generic types
+
+We can also make generic methods that rely on their own generic types in addition to the class' generic type or don't use the class' generic type altogether.
+
+# Note:
+hi, I'm thinking about remaking some of these notes so look out for that.
