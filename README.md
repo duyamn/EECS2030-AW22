@@ -13,3 +13,7 @@ Lecture Notes:
 - [html preview](https://htmlpreview.github.io/?https://github.com/duyamn/EECS2030-AW22/blob/main/html_lecture_notes.html)
 - [html raw](html_lecture_notes.html)
 - [pdf](pdf_lecture_notes.pdf)
+
+---
+
+I highly recommend that you download the raw markdown files for yourself and use a markdown editor like [marktext](https://github.com/marktext/marktext) to edit as you need.
