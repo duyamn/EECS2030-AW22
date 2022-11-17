@@ -2380,4 +2380,5 @@ There are 2 different ways to approach generic methods that we've seen thus far:
 We can also make generic methods that rely on their own generic types in addition to the class' generic type or don't use the class' generic type altogether.
 
 # Note:
-hi, I'm thinking about remaking some of these notes so look out for that.
+hi,
+I'm thinking about remaking some of these notes so look out for that.
