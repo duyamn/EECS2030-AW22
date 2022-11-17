@@ -205,9 +205,12 @@ fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mer
 </head>
 <body>
 <div class="markdown-body">
+<p>The haute couture collection has all of our cutting edge and experimental designs.</p>
+<p>This file has notes taken from lecture.</p>
+<p>For quick and easy references and explanations,
+try out our <a href="EECS2030_AW22_RW_Collection.md">autumn-winter 2022 ready-to-wear collection</a>.</p>
 <h1 id="table-of-contents">Table of contents</h1>
 <ul>
-<li><a href="#table-of-contents">Table of contents</a></li>
 <li><a href="#week-1">Week 1</a>
 <ul>
 <li><a href="#mark-breakdown">Mark Breakdown</a></li>
@@ -488,6 +491,29 @@ fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mer
 <li><a href="#compareto"><code>compareTo()</code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#lect-19-generics">Lect 19: Generics</a>
+<ul>
+<li><a href="#generic-types">Generic Types</a>
+<ul>
+<li><a href="#why">Why?</a></li>
+</ul>
+</li>
+<li><a href="#inheritance-1">Inheritance (1)</a>
+<ul>
+<li><a href="#array-of-generics">Array of Generics</a></li>
+</ul>
+</li>
+<li><a href="#inheritance-2">Inheritance (2)</a></li>
+<li><a href="#multiple-parameters">Multiple Parameters</a></li>
+<li><a href="#parameter-naming-conventions">Parameter Naming Conventions</a></li>
+<li><a href="#generic-methods">Generic Methods</a>
+<ul>
+<li><a href="#wrapper-class">Wrapper Class</a></li>
+</ul>
+</li>
+<li><a href="#generic-method-contd">Generic Method Cont’d</a></li>
 </ul>
 </li>
 </ul>
@@ -3014,6 +3040,199 @@ They are two different methods and may have different code.</p>
 <p>If <code>obj1.compareTo(obj2) == 0 &amp; obj1.equals(obj2)== true</code> then we say that <code>compareTo()</code> and <code>equals()</code> are consistent.</p>
 <p>This isn’t always the case as <code>equals()</code> and <code>compareTo()</code> will be consistent with each other.
 <code>equals()</code>, by default, compares the object references while <code>compareTo()</code>, varying by implementation, will typically compare instance variables.</p>
+<h1 id="lect-19%3A-generics">Lect 19: Generics</h1>
+<p>Recall that as programmers we want to rewrite as little code as possible.
+Generics help us to accomplish this.</p>
+<p>An example of where we would want generics would be when we use stacks.</p>
+<p>Stacks simple data structures that have a few different methods no matter the type (<code>push(e)</code>, <code>pop()</code>, <code>isEmpty()</code>, and <code>top()</code>) and are very popular for a variety of applications (memory stacks, undo history in editing software, compiler understanding parenthesis in your code, tag matching in xml or html files, etc.).</p>
+<p>All the different applications will require different versions of a stack in order to accomplish what they set out to do(integer stack, string stack, etc.)</p>
+<p>Each different version of stack could be a different implementation that deals with a different datatype or we can make a generic class for all of these to use.</p>
+<p>We make a generic stack that we can make an integer, string, etc. type stack when we instantiate it.</p>
+<h2 id="generic-types">Generic Types</h2>
+<p>Generic types allow us to avoid duplicate code.</p>
+<p>A generic type is:</p>
+<ul>
+<li>a(n):
+<ul>
+<li>interface</li>
+<li>class</li>
+<li>method</li>
+</ul>
+</li>
+<li>whose type is determined by a parameter</li>
+</ul>
+<p>In the code we pass the type that we want into the generic type instantiation as an argument then at runtime the actual type is replaced by the argument we fed in.</p>
+<p>A normal implementation of an integer stack:</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">IntegerStack</span> {
+  ArrayList&lt;Integer&gt; stack;
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">IntegerStack</span><span class="hljs-params">()</span> {
+    stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span> <span class="hljs-params">(<span class="hljs-type">int</span> element)</span> {
+    stack.add(<span class="hljs-number">0</span>, element);
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> stack.remove(<span class="hljs-number">0</span>);
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> (stack.size() == <span class="hljs-number">0</span>);
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">top</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> stack.get(<span class="hljs-number">0</span>);
+  }
+}
+</code></pre>
+<p>For different implementations of this data structure using a different data type (<code>String</code> instead of <code>int</code> for example) we would make something similar to the above code except replacing our original data type (int Integer) with the new one (String).</p>
+<p>Or we can just make a generic:</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stack</span> &lt;E&gt; {
+  ArrayList&lt;E&gt; stack;
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Stack</span><span class="hljs-params">()</span> {
+    stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;E&gt;();
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span> <span class="hljs-params">(E element)</span> {
+    stack.add(<span class="hljs-number">0</span>, element);
+  }
+  <span class="hljs-keyword">public</span> E <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> stack.remove(<span class="hljs-number">0</span>);
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> (stack.size() == <span class="hljs-number">0</span>);
+  }
+  <span class="hljs-keyword">public</span> E <span class="hljs-title function_">top</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> stack.get(<span class="hljs-number">0</span>);
+  }
+}
+
+<span class="hljs-comment">//below is a main function</span>
+
+Stack&lt;Integer&gt; integerStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;Integer&gt;();
+Stack&lt;String&gt; stringStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;String&gt;();
+</code></pre>
+<p>In the above code we ued the <code>&lt;E&gt;</code> key-phrase to make <code>Stack</code> a generic,
+we could use a different single uppercase letter from <code>E</code> as well.</p>
+<p>Throughout the class code we use <code>E</code> in place of the name of our data type.</p>
+<p>When we go to instantiate our generic, <code>Stack</code>, we pass in a data type, <code>Integer</code> and <code>String</code>, in order to make all of the</p>
+<p>Generics are very powerful and can change the types of:</p>
+<ul>
+<li>instance variables</li>
+<li>method return types</li>
+<li>parameters/args for methods</li>
+</ul>
+<p><em>only non-primitive data types can replace a generic type</em></p>
+<h3 id="why%3F-1">Why?</h3>
+<p>Generics are built into java in the form of <code>List&lt;E&gt;</code> and <code>ArrayList&lt;E&gt;</code>.</p>
+<p>We’ve used clever work arounds before where we declared a variable of type <code>Object</code> and used casting to make it point to the actual type that we wanted making use of polymorphism.</p>
+<p>However when we use workarounds like these it’s rather confusing for ourselves and others given that the casting isn’t immediately apparent and passing in an incorrect object type will make us run into an error at runtime.
+Also casting can only go so far but that’s neither here nor there.</p>
+<p>Generics is more flexible, robust, and easier to read/debug using automated built-in tools and our brains.</p>
+<p>We may still use our clever workarounds but when we can help it we should use generics for the reasons above.</p>
+<h2 id="inheritance-(1)">Inheritance (1)</h2>
+<p><img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042826349070536734/image.png" alt="">
+<img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042826468981485618/image.png" alt=""></p>
+<p>The above code is fine.</p>
+<p><img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042826586061295676/image.png" alt=""></p>
+<p>The above code is not fine.</p>
+<pre><code class="language-java"><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> objectList.get(<span class="hljs-number">0</span>);
+</code></pre>
+<p>This will attempt to store an <code>Object</code> in a <code>String</code> variable.</p>
+<p>Even if <code>type1</code> is a subclass of <code>type2</code> we cannot say that an ArrayList of <code>type1</code> is a child of an <code>ArrayList</code> of <code>type2</code>.</p>
+<p>If we try to make an <code>ArrayList</code> or any other kind of collection data structure out of the data type we can’t say that one is a child of another even if their types have an inheritance hierarchy.</p>
+<p>This is an interaction pretty specific to generics.</p>
+<h3 id="array-of-generics">Array of Generics</h3>
+<p><img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042827918390341732/image.png" alt=""></p>
+<p><code>new</code> wants to reserve space in memory which depends on the object.
+We don’t know how much space a generic type needs to be reserved so we get an error at compile time.</p>
+<p><img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042828310704558100/image.png" alt=""></p>
+<h2 id="inheritance-(2)">Inheritance (2)</h2>
+<pre><code class="language-java"><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">"John"</span>;
+<span class="hljs-type">Object</span> <span class="hljs-variable">object</span> <span class="hljs-operator">=</span> name;
+</code></pre>
+<p>The above code is fine as you can store a subtype in a variable of supertype.</p>
+<pre><code class="language-java">String[] names = {<span class="hljs-string">"John"</span>, <span class="hljs-string">"Jane"</span>};
+Object[] objects = names;
+</code></pre>
+<p>Arrays are said to be <code>covariant</code>, which means an array of type <code>T[ ]</code>, can contain
+objects of <code>S</code>, where <code>S</code> is a subtype of <code>T</code>.</p>
+<h2 id="multiple-parameters">Multiple Parameters</h2>
+<p>A generic can have more than one parameter</p>
+<ul>
+<li>interface <code>Map&lt;K,V&gt;</code></li>
+<li>class <code>HashMap&lt;K,V&gt;</code></li>
+</ul>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &lt;K, V&gt; {
+  K studentId;
+  V studentInfo;
+}
+</code></pre>
+<p>In the above code we don’t know what type <code>studentId</code> or <code>studentInfo</code> will be.
+<code>studentId</code></p>
+<h2 id="parameter-naming-conventions">Parameter Naming Conventions</h2>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E</td>
+<td>element</td>
+</tr>
+<tr>
+<td>K</td>
+<td>key for Map</td>
+</tr>
+<tr>
+<td>V</td>
+<td>value for Map</td>
+</tr>
+<tr>
+<td>N</td>
+<td>number</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“type for” 1st “generic param.”</td>
+</tr>
+<tr>
+<td>S</td>
+<td>“” 2nd “”</td>
+</tr>
+<tr>
+<td>U</td>
+<td>“” 3rd “”</td>
+</tr>
+<tr>
+<td>V</td>
+<td>“” 4th “”</td>
+</tr>
+</tbody>
+</table>
+</figure><p>Marzieh wrote <code>ADT</code> beside map but didn’t explain it.
+ADT stands for abstract data type.
+Maps are a thing in different languages,
+what she wrote is just a reference to that fact essentially.</p>
+<h2 id="generic-methods">Generic Methods</h2>
+<p>Methods can be defined as generics even if the containing class isn’t a generic.</p>
+<p><img src="https://cdn.discordapp.com/attachments/1042237707289645167/1042831420646768661/image.png" alt=""></p>
+<p>THe containing class,
+<code>GenericsMethodExample</code>,
+isn’t generic but the methods,
+<code>printMiddle()</code> and <code>getMiddle()</code>,
+are generic.</p>
+<p>When we instantiate <code>GenericsMethodExample</code> we don’t need to specify <code>E</code>.
+Even when we use <code>printMiddle()</code> and <code>getMiddle()</code> we don’t need to specify as it will see the object we passed in as an argument and take its data type to become the new data type.</p>
+<h3 id="wrapper-class">Wrapper Class</h3>
+<p>Wrapper classes are static factory methods where we put in a primitive literal and get out an object of that class.</p>
+<p>This is used for passing objects into functions that require objects (generics) but this is often handled automatically by java through autoboxing.</p>
+<h2 id="generic-method-cont%E2%80%99d">Generic Method Cont’d</h2>
+<p>There are 2 different ways to approach generic methods that we’ve seen thus far:</p>
+<ul>
+<li>the class is generic and the generic methods rely on the class’ generic type</li>
+<li>the class isn’t generic and the generic methods rely on their own generic types</li>
+</ul>
+<p>We can also make generic methods that rely on their own generic types in addition to the class’ generic type or don’t use the class’ generic type altogether.</p>
 
 </div>
 </body>

@@ -1,3 +1,10 @@
+The haute couture collection has all of our cutting edge and experimental designs.
+
+This file has notes taken from lecture.
+
+For quick and easy references and explanations,
+try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Collection.md).
+
 # Table of contents
 
 - [Week 1](#week-1)
@@ -152,7 +159,6 @@
   - [Generic Methods](#generic-methods)
     - [Wrapper Class](#wrapper-class)
   - [Generic Method Cont'd](#generic-method-contd)
-- [Note:](#note)
 
 # Week 1
 ## Mark Breakdown
@@ -2378,7 +2384,3 @@ There are 2 different ways to approach generic methods that we've seen thus far:
 - the class isn't generic and the generic methods rely on their own generic types
 
 We can also make generic methods that rely on their own generic types in addition to the class' generic type or don't use the class' generic type altogether.
-
-# Note:
-hi,
-I'm thinking about remaking some of these notes so look out for that.

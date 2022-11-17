@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.5/dist/katex.min.css" integrity="sha384-L+Gq2Cso/Y2x8fX4wausgiZT8z0QPZz7OqPuz4YqAycQJyrJT9NRLpjFBD6zlOia" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" crossorigin="anonymous">
+<meta charset="utf-8">
+<title>EECS2030_AW22_RW_Collection.md</title>
+<style>
+body {
+  font-family: Josefin Sans Light;
+}
+code {
+  font-family: "Source Code Pro", monospace;
+}
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+html{
+  line-height:1.15;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+}
+
+main{
+  display:block;
+}
+
+h1{
+  font-size:2em;
+  margin:0.67em 0;
+}
+
+hr{
+  box-sizing:content-box;
+  height:0;
+  overflow:visible;
+}
+
+pre{
+  font-family:monospace, monospace;
+  font-size:1em;
+}
+
+a{
+  background-color:transparent;
+}
+
+abbr[title]{
+  border-bottom:none;
+  text-decoration:underline;
+  text-decoration:underline dotted;
+}
+
+b,
+strong{
+  font-weight:bolder;
+}
+
+code,
+kbd,
+samp{
+  font-family:monospace, monospace;
+  font-size:1em;
+}
+
+small{
+  font-size:80%;
+}
+
+sub,
+sup{
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline;
+}
+
+sub{
+  bottom:-0.25em;
+}
+
+sup{
+  top:-0.5em;
+}
+
+img{
+  border-style:none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea{
+  font-family:inherit;
+  font-size:100%;
+  line-height:1.15;
+  margin:0;
+}
+
+button,
+input{
+  overflow:visible;
+}
+
+button,
+select{
+  text-transform:none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"]{
+  -webkit-appearance:button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner{
+  border-style:none;
+  padding:0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring{
+  outline:1px dotted ButtonText;
+}
+
+fieldset{
+  padding:0.35em 0.75em 0.625em;
+}
+
+legend{
+  box-sizing:border-box;
+  color:inherit;
+  display:table;
+  max-width:100%;
+  padding:0;
+  white-space:normal;
+}
+
+progress{
+  vertical-align:baseline;
+}
+
+textarea{
+  overflow:auto;
+}
+
+[type="checkbox"],
+[type="radio"]{
+  box-sizing:border-box;
+  padding:0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button{
+  height:auto;
+}
+
+[type="search"]{
+  -webkit-appearance:textfield;
+  outline-offset:-2px;
+}
+
+[type="search"]::-webkit-search-decoration{
+  -webkit-appearance:none;
+}
+
+::-webkit-file-upload-button{
+  -webkit-appearance:button;
+  font:inherit;
+}
+
+details{
+  display:block;
+}
+
+summary{
+  display:list-item;
+}
+
+template{
+  display:none;
+}
+
+[hidden]{
+  display:none;
+}
+fieldset{border:0;padding:0}button{all:unset;cursor:pointer}.mermaid .actor,.mermaid .labelBox{stroke:#666 !important}.mermaid svg{height:auto}.markdown-body .songbook .charter-header{position:relative;min-height:65px;margin-bottom:1em}.markdown-body .songbook .charter-title{font-size:1.5em;font-weight:bold;margin:0;padding:0}.markdown-body .songbook .charter-logo{text-align:right;height:70px}.markdown-body .songbook .charter-artist,.markdown-body .songbook .charter-subtitle,.markdown-body .songbook .charter-key{font-weight:normal;margin:0 0 3px 0;padding:0}.markdown-body .songbook .charter-artist{font-size:.8em;font-size:.9em}.markdown-body .songbook .charter-subtitle{font-size:.8em;font-size:.9em}.markdown-body .songbook .charter-key{font-weight:bold;font-size:.9em;font-size:1em}.markdown-body .songbook .charter-header-logo{position:absolute;top:0;right:0;float:right}.markdown-body .songbook .charter-header::after{content:"";clear:both;display:table}.markdown-body .songbook .charter-logo-tagline{font-size:.7em}.markdown-body .songbook .charter-section{margin-bottom:2em;page-break-inside:avoid;margin-bottom:1em}.markdown-body .songbook .charter-section-title{font-weight:bold;text-transform:uppercase;font-size:1.1em;color:#888}.markdown-body .songbook .charter-section-body{margin-left:20px}.markdown-body .songbook .charter-comment{font-style:italic}.markdown-body .songbook td.charter-chord:not(:empty){font-weight:bold;vertical-align:bottom;padding-right:14px;padding-right:8px}.markdown-body .songbook td.charter-lyric{white-space:nowrap;padding-right:2px;margin-bottom:.2em;padding-bottom:.3em;padding-right:.2em}.markdown-body .songbook th,.markdown-body .songbook td{line-height:unset;padding:0}.markdown-body .songbook td{border-top:0}.markdown-body .songbook .charter-body{margin-top:15px}.markdown-body .songbook .charter-chart{margin-bottom:.3em}.markdown-body .songbook .charter-chart td,.markdown-body .songbook .charter-chart tr{border:0}.markdown-body{box-sizing:border-box;margin:0 auto;max-width:700px;padding:30px;color:#444;line-height:1.4;position:relative;word-wrap:break-word;color:#ddd}/*!
+  Theme: Tomorrow Night
+  Author: Chris Kempson (http://chriskempson.com)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.05.0
+*/pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{color:#ccc;background:#2d2d2d}.hljs ::selection{color:#515151}.hljs-comment{color:#999}.hljs-tag{color:#b4b7b4}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#ccc}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#f2777a}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#f99157}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#fc6}.hljs-strong{font-weight:700;color:#fc6}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#9c9}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#6cc}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#69c}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#c9c}.hljs-emphasis{color:#c9c;font-style:italic}.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#a3685a}.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700}.preview-error{box-shadow:0 0 10px 2px rgba(0,0,0,.3);display:none;font-family:monospace;left:0;margin:0;position:absolute;top:0}.preview-error-wrap{position:relative}.preview-error-wrap .icon-stack{left:-1.25em;position:absolute;top:-15px;z-index:10}.preview-error-wrap .icon-invert{color:#fff}.preview-error-wrap:hover .preview-error{display:block}.markdown-body h1{font-size:2.7em;margin-block-end:.6em;margin-block-start:.6em}.markdown-body h2{font-size:2.3em}.markdown-body h3{font-size:2em}.markdown-body h4{font-size:1.8em}.markdown-body h5{font-size:1.5em}.markdown-body h6{font-size:1.2em}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{color:#111;font-weight:900;margin-block-end:1.6rem;margin-block-start:1.6rem;color:#bbb}.markdown-body hr{border:0;border-bottom:1px dashed #aaa;border-bottom-color:#666}.markdown-body img{max-width:100%}.markdown-body a{color:#4fa1cc;text-decoration:none;color:#10feff}.markdown-body a:hover{color:#226ca1;text-decoration:underline;color:#8effff}.markdown-body abbr[title]{cursor:help;text-decoration:underline dotted;text-underline-position:under}.markdown-body pre{background-color:#fafafa;border:1px solid #bbb;border-radius:3px;padding:6px 10px;white-space:pre-wrap;word-break:break-word;background-color:#282828;border-color:#444}.markdown-body code{background-color:#eaeaea;color:#cd2e47;font-size:.75em;padding:1px 2px;background-color:#444;border-radius:2px;color:#ff657d}.markdown-body pre code{background-color:inherit;color:inherit;padding:0;background-color:initial}.markdown-body dt{font-weight:bold;margin-top:1em}.markdown-body .table-wrapper{margin-left:0;margin-right:0;overflow-x:auto}.markdown-body table{border-collapse:collapse;margin-bottom:20px;transform-origin:left}.markdown-body th{text-align:left}.markdown-body th,.markdown-body td{border-left:1px solid #ccc;line-height:1.5;padding:8px}.markdown-body th:first-of-type,.markdown-body td:first-of-type{border-left:0}.markdown-body td{border-top:1px solid #ccc;border-top-color:#666}.markdown-body .task-list-item label{cursor:pointer}.markdown-body .task-list-item-checkbox{margin-right:5px}.markdown-body input[type=checkbox]{appearance:none;background-color:#fff;border:1px solid #888;border-radius:3px;cursor:pointer;height:13px;position:relative;width:13px;background-color:#111;border-color:#666}.markdown-body input[type=checkbox]:active{border-color:#333;border-color:#888}.markdown-body input[type=checkbox]:focus{outline:none}.markdown-body input[type=checkbox]:focus-visible{outline:2px solid tomato;outline-color:#f1f1bb}.markdown-body input[type=checkbox]:checked{background-color:#66f;border-color:#5151c8;background-color:#7878ea;border-color:#b2b2ff}.markdown-body input[type=checkbox]:checked:active{background-color:#8a8aff;background-color:#b2b2ff}.markdown-body input[type=checkbox]:checked::after{border-color:#fff;border-style:solid;border-width:0 0 2px 2px;bottom:5px;box-shadow:-1.5px 1.5px 1px 0 rgba(0,0,0,.4);content:"";display:block;height:3px;position:absolute;right:1px;transform:rotate(-45deg);width:7px}.markdown-body ol,.markdown-body ul{padding-inline-start:1.7em}.markdown-body ul>li::marker{font-size:1.4em}.markdown-body .text-align-center{text-align:center}.markdown-body mark{background:linear-gradient(-100deg, rgba(240, 255, 0, 0.4), rgba(240, 255, 50, 0.6) 95%, rgba(240, 255, 50, 0.1));border-radius:1em .1em;margin:0 -0.1rem;padding:.4rem .1rem;background:#cccc1a;border-radius:.2em}.markdown-body .tab circle{paint-order:stroke;stroke:#fff !important;stroke-width:2;stroke:#222 !important;stroke-width:4 !important}.rtl pre,.rtl .songbook,.rtl .abc svg,.rtl .tab svg,.rtl .mermaid svg{direction:ltr}.visually-hidden:not(:focus):not(:active){clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}.markdown-body .abc path,.markdown-body .abc text{fill:#ccc !important}.markdown-body .abc .abcjs-staff{fill:#999 !important}.markdown-body .abc .abcjs-ending{stroke:#ccc !important}.markdown-body .tab circle,.markdown-body .tab text,.markdown-body .tab text tspan{fill:#ccc !important}.markdown-body .tab path{fill:#ccc !important;stroke:#ccc !important}.markdown-body .tab .staff,.markdown-body .tab .string{stroke:#888 !important}.markdown-body .tab .fret-position,.markdown-body .tab .string-marker{stroke:#ccc !important}.markdown-body .tab .contrast-text{stroke:#222 !important}.markdown-body .tab .fingering-text tspan{fill:#000 !important}.mermaid .er.attributeBoxOdd{fill:#000 !important}.mermaid .er.attributeBoxEven{fill:none !important}.mermaid .cluster rect{fill:#333 !important}.mermaid .section.section0{fill:#888 !important}.mermaid .section.section2{fill:#080808 !important}body{background-color:#222;color:#eee}
+</style>
+</head>
+<body>
+<div class="markdown-body">
+<p>The ready(-to-)wear collection is ready to wear for anyone.</p>
+<p>This file has quick references and explanations.</p>
+<p>For notes taken from lecture,
+try out our <a href="cs%202030%20notes.md">autumn-winter 2022 haute couture collection</a>.</p>
+<h1 id="generics">Generics</h1>
+<p>Generics are any interface, class, or method
+whose type is determined by a parameter.</p>
+<p>Below is example code for a generic class <code>Stack</code> and its usage in a main method</p>
+<pre><code class="language-java"><span class="hljs-comment">// Generics.java</span>
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Stack</span> &lt;E&gt; {
+    ArrayList&lt;E&gt; stack;
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Stack</span><span class="hljs-params">()</span> {
+        stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;E&gt;();
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span> <span class="hljs-params">(E element)</span> {
+        stack.add(<span class="hljs-number">0</span>, element);
+    }
+    <span class="hljs-keyword">public</span> E <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> stack.remove(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> (stack.size() == <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-keyword">public</span> E <span class="hljs-title function_">top</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> stack.get(<span class="hljs-number">0</span>);
+    }
+} <span class="hljs-comment">// end of Stack</span>
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Generics</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        Stack&lt;Integer&gt; iStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;Integer&gt;();
+        Stack&lt;String&gt; sStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;String&gt;();
+    } <span class="hljs-comment">// end of main</span>
+}
+</code></pre>
+<h2 id="why-make-generics%3F">Why Make Generics?</h2>
+<p>Generics,
+like everything in oop,
+are made to reduce writing of duplicate code.</p>
+<p>We’ve used clever workarounds involving type casting and pointing objects to variables before.
+These workarounds come at the cost of:</p>
+<ul>
+<li>readability</li>
+<li>debuggability</li>
+<li>flexibility</li>
+<li>robustness</li>
+</ul>
+<p>The aforementioned workarounds still have their place however we’re able to gain the previously stated to be lost things when using generics.</p>
+<h2 id="generic-creation-%26-usage">Generic Creation &amp; Usage</h2>
+<p>When creating a generic type we supply a type parameter which is a single uppercase letter.</p>
+<p>By convention,
+the name of these type parameters depend on their use.</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E</td>
+<td>element</td>
+</tr>
+<tr>
+<td>K</td>
+<td>key for map</td>
+</tr>
+<tr>
+<td>V</td>
+<td>value for map</td>
+</tr>
+<tr>
+<td>N</td>
+<td>number</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“Type, for “1st” generic type parameter”</td>
+</tr>
+<tr>
+<td>S</td>
+<td>““2nd””</td>
+</tr>
+<tr>
+<td>U</td>
+<td>““3rd””</td>
+</tr>
+<tr>
+<td>V</td>
+<td>““4th””</td>
+</tr>
+</tbody>
+</table>
+</figure><h3 id="generic-classes-and-instance-variables">Generic Classes and Instance Variables</h3>
+<p>To create a generic class,
+enclose a single uppercase letter within angled brackets after the class’ name.</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stack</span> &lt;E&gt; {
+...
+</code></pre>
+<p>If there are multiple generic types to be used then they should be separated by commas and spaces within the angled brackets</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stack</span> &lt;T, S, U, V&gt; {
+...
+</code></pre>
+<p>Generic instance variables will simply replace where the original data type once was with the generic type supplied.</p>
+<pre><code class="language-java"><span class="hljs-type">int</span>[] array;
+<span class="hljs-comment">// turns into</span>
+E[] array;
+</code></pre>
+<p>When instantiating a generic class the client will put the data type that they wish to use within the angled brackets.</p>
+<pre><code class="language-java">Stack&lt;Integer&gt; iStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;Integer&gt;(); <span class="hljs-comment">// using Integer</span>
+Stack&lt;String&gt; sStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;String&gt;();   <span class="hljs-comment">// using String</span>
+</code></pre>
+<h3 id="generic-methods">Generic methods</h3>
+<p>Like classes, generic methods can also have multiple parameters.</p>
+<p>There are different types of generic methods:</p>
+<ul>
+<li>generic methods inside of generic classes that:
+<ul>
+<li>depend on the generic class’ generic type (1)</li>
+<li>don’t depend on the generic class’ generic type (2)</li>
+<li>use both it’s own generic types and the class’ generic type (3)</li>
+</ul>
+</li>
+<li>generic methods that use their own generic type inside a normal class (4)</li>
+</ul>
+<p>Making for a total of 4 different types of generic methods you’ll encounter.</p>
+<p>Here are some examples:</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">aGenericClass</span> &lt;E&gt; {
+
+  <span class="hljs-comment">// (1) a generic method that depends on the generic class' generic type</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printClass</span><span class="hljs-params">(E element)</span> {
+    System.out.println(element.getClass());
+  }
+  <span class="hljs-comment">// it only uses E</span>
+
+  <span class="hljs-comment">// (2) a generic method that doesn't depend on the generic class' generic type</span>
+  <span class="hljs-keyword">public</span> T <span class="hljs-title function_">getMiddle</span><span class="hljs-params">(T[] array)</span> {
+    <span class="hljs-keyword">return</span> array[array.length/<span class="hljs-number">2</span>];
+  }
+  <span class="hljs-comment">// it doesn't use E and instead uses T</span>
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">genericClassWithMultipleParams</span> &lt;K, V&gt; {
+  K key;
+  V value;
+
+  <span class="hljs-comment">// (3) a generic method that uses both the generic class' type(s) and its own type(s)</span>
+  <span class="hljs-keyword">public</span> &lt;S, T&gt; <span class="hljs-keyword">void</span> <span class="hljs-title function_">ParamterizedMethod</span> <span class="hljs-params">(K k, V v, S s, T t)</span> {
+    S var1;
+    T var2;
+    K var3;
+    V var4;
+  }
+  <span class="hljs-comment">// K and V can be said to belong to the class,</span>
+  <span class="hljs-comment">// their scope being the whole class,</span>
+  <span class="hljs-comment">// while S &amp; T can be said to belong to the method only,</span>
+  <span class="hljs-comment">// their scope being the whole method</span>
+  <span class="hljs-comment">// not the class</span>
+}
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">nonGenericClass</span> {
+  <span class="hljs-comment">// (4) generic methods that use their own generic type inside a normal class</span>
+  <span class="hljs-keyword">public</span> E <span class="hljs-title function_">genericMethod</span><span class="hljs-params">(E e1, E e2)</span>{
+    <span class="hljs-keyword">return</span> e1.compareTo(e2);
+  }
+}
+</code></pre>
+<p>When using a generic method one calls them as normal.
+The generic method will be fed an object as an argument,
+get the type of the fed object,
+and replace their type with that type.</p>
+<h3 id="generic-methods%2C-autoboxing%2C-and-wrapper-classes">Generic Methods, Autoboxing, and Wrapper Classes</h3>
+<p>Generics types can only be replaced by primitive types but when we create and pass primitives we usually don’t create an object of them.</p>
+<p>This is handled by a process called autoboxing where Java will just create an object for us automatically.</p>
+<p>It does this using wrapper classes which are methods belonging to the primitive type’s class.</p>
+<figure class="table-wrapper"><table>
+<thead>
+<tr>
+<th>type</th>
+<th>wrapper class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>Boolean.valueOf()</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte.valueOf()</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character.valueOf()</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>and so on for all the primitives</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</figure><p>Wrapper classes are actually just static factory methods,
+they just get a special name because they’re for primitives.</p>
+<h2 id="generic-inheritance">Generic Inheritance</h2>
+<pre><code class="language-java"><span class="hljs-comment">// Storing a String inside an Object variable</span>
+<span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">"John"</span>;
+<span class="hljs-type">Object</span> <span class="hljs-variable">object</span> <span class="hljs-operator">=</span> name;
+</code></pre>
+<p>The above code is fine as you can sotre a subtype in a variable of supertype.</p>
+<pre><code class="language-java"><span class="hljs-comment">//Storing a String[] inside an Object[] variable</span>
+String[] names = {<span class="hljs-string">"John"</span>, <span class="hljs-string">"Jane"</span>};
+Object[] objects = names;
+</code></pre>
+<p>The above code works fine because arrays are said to be <code>covariant</code>.
+We can store an array of a subtype inside of an array of supertype variable,
+in this case we stored an array of type <code>String</code> inside an array of type <code>Object</code> variable.</p>
+<p>However we cannot do the same thing with a generic like <code>ArrayList&lt;&gt;</code>.</p>
+<pre><code class="language-java">List&lt;Object&gt; objectList = stringList;
+<span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> objectList.get(<span class="hljs-number">0</span>);
+</code></pre>
+<p>The above code does not work.
+<code>String</code> is a subclass of <code>Object</code>
+but
+<code>ArrayList&lt;String&gt;</code> is not a subclass of <code>ArrayList&lt;Object&gt;</code>.</p>
+<p>In this sense there is not an inheritance relation.</p>
+<h2 id="arrays-of-generics">Arrays of Generics</h2>
+<p>When handling of generics one should be careful to note the nature of generics as a data type in memory.</p>
+<p>At compile time,
+Java doesn’t know how much space to reserve for a generic object as it’s up in the air what it will become until runtime.
+Java will then throw a compiler error.</p>
+<pre><code class="language-java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">genericArrayMaker</span> &lt;E&gt; {
+  E[] array;  <span class="hljs-comment">// this is just creating a variable so we're fine</span>
+  <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">ARRAY_SIZE</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">defaultArray</span><span class="hljs-params">()</span> {
+    array = (E[]) <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[ARRAY_SIZE];
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">copyArray</span><span class="hljs-params">(E[] input)</span> {
+    array = (E[]) <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[input.length];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; input.length; i++)
+      array[i] = input[i];
+  }
+}
+</code></pre>
+<p>We get around this by making an array of <code>Object</code> and casting it to be our generic type after the fact so that java knows how much memory to reserve when compiling.</p>
+
+</div>
+</body>
+</html>
