@@ -516,6 +516,21 @@ try out our <a href="EECS2030_AW22_RW_Collection.md">autumn-winter 2022 ready-to
 <li><a href="#generic-method-contd">Generic Method Cont’d</a></li>
 </ul>
 </li>
+<li><a href="#lect-20-generics-contd">Lect 20: Generics Cont’d</a>
+<ul>
+<li><a href="#bounded-type-parameters">Bounded Type Parameters</a>
+<ul>
+<li><a href="#wildcards">Wildcards</a>
+<ul>
+<li><a href="#upper-bound-wildcards">Upper Bound Wildcards</a></li>
+<li><a href="#lower-bound-wildcards">Lower Bound Wildcards</a></li>
+<li><a href="#how-to-use-wildcards">How To Use Wildcards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h1 id="week-1">Week 1</h1>
 <h2 id="mark-breakdown">Mark Breakdown</h2>
@@ -558,13 +573,14 @@ try out our <a href="EECS2030_AW22_RW_Collection.md">autumn-winter 2022 ready-to
 </figure><p>50% rule:
 Earn at least 50% in written assessments.</p>
 <p>Can be cumulative 50% across both written exams.</p>
+<p>Your term test mark gets dropped if you’re final exam mark is better.</p>
 <h2 id="review">Review</h2>
 <h3 id="java-structure">Java Structure</h3>
 <p>For this section we’ll use an example program called <code>myProgram</code>.</p>
 <pre><code class="language-java"><span class="hljs-comment">//myProgram.java</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">myProgram</span>{
   variable_type variable_name;
-  
+
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>{
     <span class="hljs-comment">//code</span>
   } <span class="hljs-comment">//end of main</span>
@@ -882,12 +898,12 @@ a word that is spelt the same left to right as it is right to left</p>
 <p>“racecar” is still “racecar” backwards.</p>
 <p>“racer” isn’t.</p>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(String input)</span> {
-	<span class="hljs-type">boolean</span> <span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
-	<span class="hljs-keyword">if</span> (input.length() &lt;= <span class="hljs-number">1</span> )
-		palindrome = <span class="hljs-literal">true</span>;
-	<span class="hljs-type">else</span>
-		<span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> (input.charAt(<span class="hljs-number">0</span>) == input.charAt(input.length()-<span class="hljs-number">1</span>)) &amp;&amp; isPalindrome(input.substring(<span class="hljs-number">1</span>, input.length()-<span class="hljs-number">1</span>));
-	<span class="hljs-keyword">return</span> palindrome;
+    <span class="hljs-type">boolean</span> <span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (input.length() &lt;= <span class="hljs-number">1</span> )
+        palindrome = <span class="hljs-literal">true</span>;
+    <span class="hljs-type">else</span>
+        <span class="hljs-variable">palindrome</span> <span class="hljs-operator">=</span> (input.charAt(<span class="hljs-number">0</span>) == input.charAt(input.length()-<span class="hljs-number">1</span>)) &amp;&amp; isPalindrome(input.substring(<span class="hljs-number">1</span>, input.length()-<span class="hljs-number">1</span>));
+    <span class="hljs-keyword">return</span> palindrome;
 </code></pre>
 <h2 id="basics-of-recursion">Basics of Recursion</h2>
 <p>In a recursive function there are 2 kinds of cases.
@@ -983,8 +999,8 @@ Same with <code>StringBuilder</code> and <code>StringBuffer</code>.</p>
 They don’t actually hold the data related to them,
 they hold the memory address for where the heap of the actual data is.</p>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span> <span class="hljs-params">(String[] args)</span> {
-	<span class="hljs-type">double</span> <span class="hljs-variable">grade</span> <span class="hljs-operator">=</span> <span class="hljs-number">98.4</span>;
-	<span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Marzieh"</span>;
+    <span class="hljs-type">double</span> <span class="hljs-variable">grade</span> <span class="hljs-operator">=</span> <span class="hljs-number">98.4</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Marzieh"</span>;
 }
 </code></pre>
 <p>the <code>double grade</code> stores the <code>98.5</code> in the fixed memory aka program stack.
@@ -1074,13 +1090,13 @@ they can then give it to the programmer (also us) to be created easily.</p>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">className</span> {
 
   <span class="hljs-comment">// declare instance and class variables</span>
-	
+
   <span class="hljs-comment">// make a constructor method, there can be more than one</span>
   <span class="hljs-comment">// &lt;access modifier&gt; &lt;className&gt;(&lt;arg1 type&gt; &lt;arg1 name&gt;, etc.)</span>
   <span class="hljs-keyword">public</span> <span class="hljs-title function_">className</span><span class="hljs-params">()</span>{
     <span class="hljs-comment">// constructor code</span>
   }
-  
+
   <span class="hljs-comment">// instantiate methods</span>
   <span class="hljs-comment">// &lt;access modifier&gt; &lt;static&gt; &lt;returnType/void&gt; &lt;method name&gt;(&lt;arg1 type&gt; &lt;arg1 name&gt;, …)</span>
   pubic <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getNum</span><span class="hljs-params">()</span>{
@@ -1091,7 +1107,7 @@ they can then give it to the programmer (also us) to be created easily.</p>
 </code></pre>
 <h2 id="objects">Objects</h2>
 <p>to make an <code>object</code> (<code>instance</code> of a class):</p>
-<pre><code class="language-java"><span class="hljs-comment">//&amp;lt;class name&gt; &amp;lt;variable name&gt; = new &amp;lt;class name&gt;();</span>
+<pre><code class="language-java"><span class="hljs-comment">//&lt;class name&gt; &lt;variable name&gt; = new &lt;class name&gt;();</span>
 <span class="hljs-type">person</span> <span class="hljs-variable">jane</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">person</span>();
 </code></pre>
 <p>Accessing the <code>object</code>’s property (<code>field</code>s and <code>method</code>s) uses the <code>dot</code> “.” operator.</p>
@@ -1670,17 +1686,17 @@ We design by contract and the contract has been violated.</p>
  * <span class="hljs-doctag">@exception</span> throws NumberFormatException
  */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getArea</span> <span class="hljs-params">(<span class="hljs-type">double</span> radius)</span> {
-	<span class="hljs-keyword">if</span> (((Double) radius).isNaN()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberFormatException</span>();
-	<span class="hljs-keyword">return</span> radius*radius*Math.PI;
+    <span class="hljs-keyword">if</span> (((Double) radius).isNaN()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NumberFormatException</span>();
+    <span class="hljs-keyword">return</span> radius*radius*Math.PI;
 </code></pre>
 <p>Entering a non-number or a negative number violates the contract so we throw an exception.</p>
 <h2 id="try%E2%80%A6-catch-statement">Try… Catch statement</h2>
 <p>Previously we identified the exception and just threw it to shutdown the program.</p>
 <p>We can also decide to handle the exception by using a try-catch statement.</p>
 <pre><code class="language-java"><span class="hljs-keyword">try</span> {
-	<span class="hljs-comment">// the rsiky code that may produce a run time error goes here.</span>
+    <span class="hljs-comment">// the rsiky code that may produce a run time error goes here.</span>
 } <span class="hljs-keyword">catch</span> (Exception e) {
-	<span class="hljs-comment">// ma proper error message or any other statement that should be run in case exception happens goes here</span>
+    <span class="hljs-comment">// ma proper error message or any other statement that should be run in case exception happens goes here</span>
 }
 </code></pre>
 <pre><code class="language-java"><span class="hljs-comment">/**
@@ -1690,11 +1706,11 @@ We design by contract and the contract has been violated.</p>
  * <span class="hljs-doctag">@exception</span> ArrayIndexOutofBoundsException is thrown in case the index is not in the range of zero to array.length()-1
  */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">squareIt</span><span class="hljs-params">(<span class="hljs-type">double</span>[] array, <span class="hljs-type">int</span> index)</span> {
-	<span class="hljs-keyword">try</span> {
-		array[index] = Math.pow(array[index], <span class="hljs-number">2</span>);
-	} <span class="hljs-keyword">catch</span> (ArrayIndexOutofBoundsException e) {
-		System.out.println(<span class="hljs-string">"Invalid index!"</span>);
-	}
+    <span class="hljs-keyword">try</span> {
+        array[index] = Math.pow(array[index], <span class="hljs-number">2</span>);
+    } <span class="hljs-keyword">catch</span> (ArrayIndexOutofBoundsException e) {
+        System.out.println(<span class="hljs-string">"Invalid index!"</span>);
+    }
 }
 </code></pre>
 <h2 id="junits-and-exceptions">Junits and Exceptions</h2>
@@ -1707,15 +1723,15 @@ We design by contract and the contract has been violated.</p>
 <p>Normal test cases look like so:</p>
 <pre><code class="language-java"><span class="hljs-meta">@Test</span>
 <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> {
-	<span class="hljs-type">String</span> <span class="hljs-variable">expected</span> <span class="hljs-operator">=</span> <span class="hljs-string">"rightAnswer"</span>;
-	<span class="hljs-type">String</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> testedClass.testedMethod(arg);
-	assertEquals(expected, actual);	<span class="hljs-comment">//we assert that expected is equal to actual or else the test fails</span>
+    <span class="hljs-type">String</span> <span class="hljs-variable">expected</span> <span class="hljs-operator">=</span> <span class="hljs-string">"rightAnswer"</span>;
+    <span class="hljs-type">String</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> testedClass.testedMethod(arg);
+    assertEquals(expected, actual);    <span class="hljs-comment">//we assert that expected is equal to actual or else the test fails</span>
 }
 </code></pre>
 <p>Testing for exceptions looks like this:</p>
 <pre><code class="language-java"><span class="hljs-meta">@Test</span>
 <span class="hljs-keyword">void</span> <span class="hljs-title function_">testException</span><span class="hljs-params">()</span> {
-	assertThrows(&lt;name of exception&gt;.class, ()-&gt; testedClass.testedMethod(arg));
+    assertThrows(&lt;name of exception&gt;.class, ()-&gt; testedClass.testedMethod(arg));
 }
 </code></pre>
 <p>There are a lot of different kinds of exceptions that you will have to throw or attempt to handle.</p>
@@ -1782,7 +1798,7 @@ We design by contract and the contract has been violated.</p>
 <pre><code class="language-java"><span class="hljs-type">String</span> <span class="hljs-variable">arr</span> <span class="hljs-operator">=</span> <span class="hljs-string">"John"</span>;
 <span class="hljs-type">String</span> <span class="hljs-variable">arrClone</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[arr.length];
 <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; arr.length; i++)
-	arrClone[i] = arr[i];
+    arrClone[i] = arr[i];
 </code></pre>
 <p>Memory diagram:</p>
 <figure class="table-wrapper"><table>
@@ -1869,10 +1885,10 @@ object is immutable.</p>
 </li>
 </ul>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-type">char</span> [] getPlatNumber() {
-	<span class="hljs-type">char</span> [] plateNumberCopy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-built_in">this</span>.plateNumber.length];
-	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.plateNumber.length; i++)
-		plateNumberCopy[i] = <span class="hljs-built_in">this</span>.plateNumber[i];
-	<span class="hljs-keyword">return</span> plateNumberCopy;
+    <span class="hljs-type">char</span> [] plateNumberCopy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-built_in">this</span>.plateNumber.length];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.plateNumber.length; i++)
+        plateNumberCopy[i] = <span class="hljs-built_in">this</span>.plateNumber[i];
+    <span class="hljs-keyword">return</span> plateNumberCopy;
 </code></pre>
 <h2 id="shallow-copying">Shallow Copying</h2>
 <p>Shallow copy clones an <code>object</code> and it’s components but not it’s sub-components.</p>
@@ -1911,13 +1927,16 @@ When an object of type <code>A</code> uses the properties (instance variables an
 </ul>
 <p>Difference in programming (providing access to the components of the class):</p>
 <ul>
-<li>Aggregation uses aliases or shallow copy to create the object</li>
-<li>composition: uses deep copy to crate the object</li>
-</ul>
+<li>
+<p>Aggregation uses aliases or shallow copy to create the object</p>
+</li>
+<li>
+<p>composition: uses deep copy to crate the object</p>
 <h4 id="aggregation">Aggregation</h4>
 <p>The relationship between objects is weak:</p>
-<ul>
-<li>a student has associated courses
+</li>
+<li>
+<p>a student has associated courses</p>
 <ul>
 <li>what happens when they graduate?
 <ul>
@@ -1926,7 +1945,8 @@ When an object of type <code>A</code> uses the properties (instance variables an
 </li>
 </ul>
 </li>
-<li>a doctor has patients
+<li>
+<p>a doctor has patients</p>
 <ul>
 <li>what happens when they retire?
 <ul>
@@ -1945,51 +1965,51 @@ the component is still there.</p>
 draw a line from the component to the class ending with a hollow diamond and marked with the number of that class belonging to the other class or an <code>*</code> if the number can be more than one.</p>
 <h5 id="example">Example</h5>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Patient</span> {
-	String name;
-	Calendar dob;
-	
-	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Patient</span><span class="hljs-params">(String name, Calendar dob)</span> {
-		<span class="hljs-built_in">this</span>.name = name;
-		<span class="hljs-built_in">this</span>.dob = dob;
-	}
+    String name;
+    Calendar dob;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Patient</span><span class="hljs-params">(String name, Calendar dob)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.dob = dob;
+    }
 }
 
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Doctor</span> {
-	<span class="hljs-keyword">private</span> String name;
-	<span class="hljs-keyword">private</span> ArrayList&lt;Patient&gt; patient;
-	
-	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span><span class="hljs-params">(String name, ArrayList&lt;Patient&gt; patient)</span> {
-		<span class="hljs-built_in">this</span>.name = name;
-		<span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
-		
-	}
-	
-	<span class="hljs-comment">// Aliasing/shallow copy</span>
-	<span class="hljs-comment">// we don't want to make a new patient, this patient just exists</span>
-	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span> <span class="hljs-params">(Doctor doctor)</span> {
-		<span class="hljs-built_in">this</span>.name = doctor.name;
-		<span class="hljs-built_in">this</span>.patient = doctor.patient;
-	}
-	
-	<span class="hljs-comment">//Mutators</span>
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
-		<span class="hljs-built_in">this</span>.name = name;
-	}
-	
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPatient</span><span class="hljs-params">(ArrayList&lt;Patient&gt; patient)</span> {
-		<span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
-		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; patient.size(); i++)
-			<span class="hljs-built_in">this</span>.patient.add(patient.get(i));
-	}
-	
-	<span class="hljs-comment">//Accessors</span>
-	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
-	}
-	
-	Public ArrayList&lt;Patient&gt; <span class="hljs-title function_">getPatient</span><span class="hljs-params">()</span> {
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.patient;
-	}
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> ArrayList&lt;Patient&gt; patient;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span><span class="hljs-params">(String name, ArrayList&lt;Patient&gt; patient)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
+
+    }
+
+    <span class="hljs-comment">// Aliasing/shallow copy</span>
+    <span class="hljs-comment">// we don't want to make a new patient, this patient just exists</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Doctor</span> <span class="hljs-params">(Doctor doctor)</span> {
+        <span class="hljs-built_in">this</span>.name = doctor.name;
+        <span class="hljs-built_in">this</span>.patient = doctor.patient;
+    }
+
+    <span class="hljs-comment">//Mutators</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPatient</span><span class="hljs-params">(ArrayList&lt;Patient&gt; patient)</span> {
+        <span class="hljs-built_in">this</span>.patient = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Patient&gt;();
+        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; patient.size(); i++)
+            <span class="hljs-built_in">this</span>.patient.add(patient.get(i));
+    }
+
+    <span class="hljs-comment">//Accessors</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    }
+
+    Public ArrayList&lt;Patient&gt; <span class="hljs-title function_">getPatient</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.patient;
+    }
 }
 </code></pre>
 <figure class="table-wrapper"><table>
@@ -2105,54 +2125,54 @@ draw a line from the component to the class ending with a hollow diamond and mar
 draw a line from the component to the class ending with a solid diamond and marked with the number of that class belonging to the other class or an <code>*</code> if the number can be more than one.</p>
 <h5 id="example-1">Example</h5>
 <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span> {
-	<span class="hljs-type">char</span> accoutnType;
-	<span class="hljs-type">int</span> accountNumber;
-	<span class="hljs-type">double</span> balance;
-	Date dateOpened;
+    <span class="hljs-type">char</span> accoutnType;
+    <span class="hljs-type">int</span> accountNumber;
+    <span class="hljs-type">double</span> balance;
+    Date dateOpened;
 }
 
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span> {
-	String name;
-	Calendar dob;
-	ArrayList&lt;Account&gt; account;
-	
-	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Customer</span><span class="hljs-params">(String custName, Calendar dofb, ArrayList&lt;Account&gt; acc)</span> {
-		<span class="hljs-built_in">this</span>.name = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span> (custName);
-		<span class="hljs-built_in">this</span>.dob = Calendar.getInstance();
-		<span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendary.YEAR), dofb.get(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
-		<span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
-		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
-			<span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
-	}
-	
-	<span class="hljs-comment">//Mutators</span>
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
-		<span class="hljs-built_in">this</span>.name = name; <span class="hljs-comment">//String is an immutable so we didn't have to make a new object</span>
-	}
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDob</span><span class="hljs-params">(Calendary dofb)</span> {
-		<span class="hljs-built_in">this</span>.dob = Calendar.getInstance(); <span class="hljs-comment">//make a new calendar object</span>
-		<span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendar.YEAR), dofbget(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
-	}
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">(ArrayList&lt;Account&gt; acc)</span> {
-		<span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
-		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
-			<span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
-	}
-	
-	<span class="hljs-comment">//Accessors</span>
-	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
-	}
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getDob</span><span class="hljs-params">()</span> {
-		<span class="hljs-type">Calendar</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> Calendar.getInstance();
-		db.set(<span class="hljs-built_in">this</span>.dob.get(Calendar.YEAR), <span class="hljs-built_in">this</span>.dobget(Calendar.MONTH), <span class="hljs-built_in">this</span>.dob.get(Calendar.DAY_OF_MONTH));
-	}
-	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">()</span> {
-		ArrayList&lt;account&gt; acc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
-		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.account.size(); i++)
-			acc.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(<span class="hljs-built_in">this</span>.account.get(i)));
-		<span class="hljs-keyword">return</span> acc;
-	}
+    String name;
+    Calendar dob;
+    ArrayList&lt;Account&gt; account;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Customer</span><span class="hljs-params">(String custName, Calendar dofb, ArrayList&lt;Account&gt; acc)</span> {
+        <span class="hljs-built_in">this</span>.name = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span> (custName);
+        <span class="hljs-built_in">this</span>.dob = Calendar.getInstance();
+        <span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendary.YEAR), dofb.get(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
+        <span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
+            <span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
+    }
+
+    <span class="hljs-comment">//Mutators</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> {
+        <span class="hljs-built_in">this</span>.name = name; <span class="hljs-comment">//String is an immutable so we didn't have to make a new object</span>
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDob</span><span class="hljs-params">(Calendary dofb)</span> {
+        <span class="hljs-built_in">this</span>.dob = Calendar.getInstance(); <span class="hljs-comment">//make a new calendar object</span>
+        <span class="hljs-built_in">this</span>.dob.set(dofb.get(Calendar.YEAR), dofbget(Calendar.MONTH), dofb.get(Calendar.DAY_OF_MONTH));
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">(ArrayList&lt;Account&gt; acc)</span> {
+        <span class="hljs-built_in">this</span>.account = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; acc.size(); i++)
+            <span class="hljs-built_in">this</span>.account.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(acc.get(i)));
+    }
+
+    <span class="hljs-comment">//Accessors</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getDob</span><span class="hljs-params">()</span> {
+        <span class="hljs-type">Calendar</span> <span class="hljs-variable">db</span> <span class="hljs-operator">=</span> Calendar.getInstance();
+        db.set(<span class="hljs-built_in">this</span>.dob.get(Calendar.YEAR), <span class="hljs-built_in">this</span>.dobget(Calendar.MONTH), <span class="hljs-built_in">this</span>.dob.get(Calendar.DAY_OF_MONTH));
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAccount</span><span class="hljs-params">()</span> {
+        ArrayList&lt;account&gt; acc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Account&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.account.size(); i++)
+            acc.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(<span class="hljs-built_in">this</span>.account.get(i)));
+        <span class="hljs-keyword">return</span> acc;
+    }
 }
 </code></pre>
 <figure class="table-wrapper"><table>
@@ -2380,8 +2400,7 @@ It’s only for that class.</p>
 </li>
 </ul>
 </li>
-<li>sometimes inheritance is used when there is no is-A relationship</li>
-</ol>
+<li>sometimes inheritance is used when there is no is-A relationship
 <ul>
 <li>super class and subclass have many things incommon</li>
 <li>the source code of superclass is hidden and
@@ -2392,6 +2411,8 @@ It’s only for that class.</p>
 </li>
 <li>This is not always a good idea but sometimes there’s already code ready for use that you want to take advantage of</li>
 </ul>
+</li>
+</ol>
 <h2 id="non-extendable-classes">Non-Extendable Classes</h2>
 <p>If a class is defined <code>final</code> then it can’t be <code>extends</code> by a different class.</p>
 <p>Access modifier rules still apply when defining classes.
@@ -2964,14 +2985,22 @@ all of the variables defined in an interface are <code>public static</code> impl
 Deadly Diamond of Death just doesn’t happen :)</p>
 <p>In order to ensure proper implementation and usage be sure to:</p>
 <ul>
-<li>make each subclass implement it to fit its purpose</li>
-<li>each subclass will use the same method signature</li>
-<li>only implement it on the subclasses that need it</li>
-<li>to use the interface’s methods with polymorphism use the interface as the polymorphic type</li>
-</ul>
+<li>
+<p>make each subclass implement it to fit its purpose</p>
+</li>
+<li>
+<p>each subclass will use the same method signature</p>
+</li>
+<li>
+<p>only implement it on the subclasses that need it</p>
+</li>
+<li>
+<p>to use the interface’s methods with polymorphism use the interface as the polymorphic type</p>
 <pre><code class="language-java"><span class="hljs-type">Grader</span> <span class="hljs-variable">grader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TeachingAssistant</span>();
 </code></pre>
 <p>With the above code we can call all of the methods within <code>&lt;&lt;Grader&gt;&gt;</code> and have the new <code>TeachingAssistant</code> do it.</p>
+</li>
+</ul>
 <h2 id="comparable"><code>Comparable</code></h2>
 <p>Primitives (int, double, float, char, etc.) are easily compared using <code>&lt; &gt; ==</code>.</p>
 <p>To compare objects (user-defined or otherwise):</p>
@@ -3233,6 +3262,96 @@ Even when we use <code>printMiddle()</code> and <code>getMiddle()</code> we don�
 <li>the class isn’t generic and the generic methods rely on their own generic types</li>
 </ul>
 <p>We can also make generic methods that rely on their own generic types in addition to the class’ generic type or don’t use the class’ generic type altogether.</p>
+<hr>
+<p>Lect 20 has been added before we had it because the lab requires knowledge from it.</p>
+<p>This is almost verbatim what’s in the <a href="EECS2030_AW22_RW_Collection.md">autumn-winter 2022 ready-to-wear collection</a></p>
+<hr>
+<h1 id="lect-20%3A-generics-cont%E2%80%99d">Lect 20: Generics Cont’d</h1>
+<h2 id="bounded-type-parameters">Bounded Type Parameters</h2>
+<p>Using an inheritance relationship,
+you can restrict what types are allowed to replace the generic type.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Comparable</span>&gt; <span class="hljs-type">int</span> <span class="hljs-title function_">counterGreaterThan</span><span class="hljs-params">(T[] array, T element)</span> {
+  <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (T e : array)
+    <span class="hljs-keyword">if</span> (e.compareTo(element) &gt; <span class="hljs-number">0</span>)
+      count++;
+  <span class="hljs-keyword">return</span> count;
+</code></pre>
+<p>In the above implementation our generic type <code>T</code> is bound to <code>Comparable</code>.</p>
+<p>Only objects with <code>Comparable</code> higher than it in its inheritance hierarchy can be passed into the <code>counterGreaterThan()</code> method.</p>
+<h3 id="wildcards">Wildcards</h3>
+<h4 id="upper-bound-wildcards">Upper Bound Wildcards</h4>
+<p>A similar situation would be wanting to allow a class and all of it’s subclasses to replace the generic type.</p>
+<p>In this case we use an upper bound wildcard, <code>?</code></p>
+<p>Take this inheritance hierarchy and code for example.</p>
+<div class="mermaid"><svg id="mermaid-1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="228.1398162841797" style="max-width: 293.735px; max-height: 228.14px;" viewBox="0 0 293.7350769042969 228.1398162841797"><style>#mermaid-1 {font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-1 .error-icon{fill:#a44141;}#mermaid-1 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1 .edge-thickness-normal{stroke-width:2px;}#mermaid-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1 .marker.cross{stroke:lightgrey;}#mermaid-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1 .cluster-label text{fill:#F9FFFE;}#mermaid-1 .cluster-label span{color:#F9FFFE;}#mermaid-1 .label text,#mermaid-1 span{fill:#ccc;color:#ccc;}#mermaid-1 .node rect,#mermaid-1 .node circle,#mermaid-1 .node ellipse,#mermaid-1 .node polygon,#mermaid-1 .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-1 .node .label{text-align:center;}#mermaid-1 .node.clickable{cursor:pointer;}#mermaid-1 .arrowheadPath{fill:lightgrey;}#mermaid-1 .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-1 .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-1 .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-1 .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-1 .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-1 .cluster text{fill:#F9FFFE;}#mermaid-1 .cluster span{color:#F9FFFE;}#mermaid-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g transform="translate(0, 0)"><marker id="flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M40.2461051940918,45.379940032958984L40.2461051940918,49.54660669962565C40.2461051940918,53.71327336629232,40.2461051940918,62.04660669962565,53.549844106038414,71.25162636805719C66.85358301798503,80.4566460364887,93.46106084187825,90.53335204001843,106.76479975382487,95.57170504178329L120.06853866577148,100.61005804354815" id="L-Double-Number-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-Double LE-Number" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M155.60919189453125,45.379940032958984L155.60919189453125,49.54660669962565C155.60919189453125,53.71327336629232,155.60919189453125,62.04660669962565,155.60919189453125,70.37994003295898C155.60919189453125,78.71327336629231,155.60919189453125,87.04660669962566,155.60919189453125,91.21327336629231L155.60919189453125,95.37994003295898" id="L-Integer-Number-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-Integer LE-Number" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M262.2306251525879,45.379940032958984L262.2306251525879,49.54660669962565C262.2306251525879,53.71327336629232,262.2306251525879,62.04660669962565,250.38382848103842,71.06770249517683C238.53703180948892,80.08879829072801,214.84343846638998,89.79765654849702,202.99664179484049,94.65208567738154L191.14984512329102,99.50651480626604" id="L-Byte-Number-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-Byte LE-Number" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M155.60919189453125,132.75988006591797L155.60919189453125,136.92654673258463C155.60919189453125,141.0932133992513,155.60919189453125,149.42654673258463,155.60919189453125,157.75988006591797C155.60919189453125,166.0932133992513,155.60919189453125,174.42654673258463,155.60919189453125,178.5932133992513L155.60919189453125,182.75988006591797" id="L-Number-Object-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-Number LE-Object" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default" id="flowchart-Double-8" transform="translate(40.2461051940918, 26.689970016479492)"><rect class="basic label-container" style="" rx="0" ry="0" x="-32.2461051940918" y="-18.689971923828125" width="64.4922103881836" height="37.37994384765625"></rect><g class="label" style="" transform="translate(-24.746105194091797, -11.189971923828125)"><foreignObject width="49.492210388183594" height="22.37994384765625"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Double</span></div></foreignObject></g></g><g class="node default default" id="flowchart-Number-9" transform="translate(155.60919189453125, 114.06991004943848)"><rect class="basic label-container" style="" rx="0" ry="0" x="-35.5406551361084" y="-18.689971923828125" width="71.0813102722168" height="37.37994384765625"></rect><g class="label" style="" transform="translate(-28.0406551361084, -11.189971923828125)"><foreignObject width="56.0813102722168" height="22.37994384765625"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Number</span></div></foreignObject></g></g><g class="node default default" id="flowchart-Integer-10" transform="translate(155.60919189453125, 26.689970016479492)"><rect class="basic label-container" style="" rx="0" ry="0" x="-33.11698341369629" y="-18.689971923828125" width="66.23396682739258" height="37.37994384765625"></rect><g class="label" style="" transform="translate(-25.61698341369629, -11.189971923828125)"><foreignObject width="51.23396682739258" height="22.37994384765625"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Integer</span></div></foreignObject></g></g><g class="node default default" id="flowchart-Byte-12" transform="translate(262.2306251525879, 26.689970016479492)"><rect class="basic label-container" style="" rx="0" ry="0" x="-23.504451751708984" y="-18.689971923828125" width="47.00890350341797" height="37.37994384765625"></rect><g class="label" style="" transform="translate(-16.004451751708984, -11.189971923828125)"><foreignObject width="32.00890350341797" height="22.37994384765625"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Byte</span></div></foreignObject></g></g><g class="node default default" id="flowchart-Object-15" transform="translate(155.60919189453125, 201.44985008239746)"><rect class="basic label-container" style="" rx="0" ry="0" x="-31.777801513671875" y="-18.689971923828125" width="63.55560302734375" height="37.37994384765625"></rect><g class="label" style="" transform="translate(-24.277801513671875, -11.189971923828125)"><foreignObject width="48.55560302734375" height="22.37994384765625"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Object</span></div></foreignObject></g></g></g></g></g></svg></div><pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">sumOfList</span><span class="hljs-params">(List&lt;? extends Number&gt; list)</span> {
+  <span class="hljs-type">double</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0</span>;
+  <span class="hljs-keyword">for</span> (Number number: list)
+    sum += number.doubleVaulue();
+  <span class="hljs-keyword">return</span> sum;
+}
+</code></pre>
+<p>Using the <code>?</code> wildcard we’re able to except objects of type <code>Number</code> as well as objects of types that extend <code>Number</code>.</p>
+<p>We’re able to accept objects of type <code>Double</code>, <code>Integer</code>, <code>Byte</code>, and <code>Number</code>.</p>
+<p>*Note: simply writing <code>List&lt;Number&gt;</code> will not allow us to pass in <code>List&lt;&gt;</code>s of a subtype as covered previously in <a href="#generic-inheritance">Generic Inheritance</a></p>
+<h4 id="lower-bound-wildcards">Lower Bound Wildcards</h4>
+<p>We can even do the inverse.</p>
+<p>A situation where we want to allow a class and it’s supertypes to be accepted as replacing the generic type.</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNumbers</span><span class="hljs-params">(List&lt;? <span class="hljs-built_in">super</span> Integer&gt; list)</span> {
+  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)
+    list.add(i);
+}
+</code></pre>
+<p>Here <code>&lt;? super Integer&gt;</code> will allow us to pass <code>Integer</code> and objects of type that <code>Integer</code> extends.</p>
+<p>We’re able to accept objects of type <code>Integer</code>, <code>Number</code>, and <code>Object</code>.</p>
+<hr>
+<p>We can even allow anything using an unbounded wildcard,
+<code>&lt;?&gt;</code>.</p>
+<p>This is used when we’re either:</p>
+<ul>
+<li>only using <code>Object</code>’s methods.</li>
+<li>or when the used methods are independent of type</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(List&lt;?&gt; list1, List&lt;?&gt; list2)</span> {
+  <span class="hljs-type">boolean</span> <span class="hljs-variable">equal</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">if</span> (list1.size() != list2.size()) equal = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (list.getClass() != list2.getClass()) equal = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (list1 == <span class="hljs-literal">null</span> || list2 == <span class="hljs-literal">null</span>) equal = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">else</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">for</span> <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; list1.size(); i++)
+      <span class="hljs-keyword">if</span> (list1.get(i).equals(list2.get(<span class="hljs-number">2</span>))) {
+        equal = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+      }
+  <span class="hljs-keyword">return</span> equal;
+}
+</code></pre>
+<p>In the above code we used <code>getClass()</code> and <code>equals()</code> which are <code>Object</code>’s methods.
+We also used <code>size()</code> which isn’t a method from <code>Object</code> but is a part of <code>List</code> which we’re working with as well.</p>
+<h4 id="how-to-use-wildcards">How To Use Wildcards</h4>
+<p>Suppose we have a variable who has a generic type.</p>
+<p>If it’s an:</p>
+<ul>
+<li>
+<p>IN-variable(producer): a variable whose data is used in the code</p>
+<ul>
+<li>use upper bound wildcards <code>&lt;? extends T&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>OUT-variable(consumer): a variable who receives data in the code</p>
+<ul>
+<li>use lower bound wildcards <code>&lt;? Super T&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>IN/OUT-variable: a variable that gives and receives data in the code</p>
+<ul>
+<li>don’t use wildcards</li>
+</ul>
+</li>
+</ul>
+<p>If we the only methods used are from <code>Object</code> or independent of type -&gt; unbounded wildcard <code>&lt;?&gt;</code></p>
 
 </div>
 </body>
