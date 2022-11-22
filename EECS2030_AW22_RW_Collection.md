@@ -99,19 +99,17 @@ If a data type is too small to fill out a whole address it still occupies that w
 When a variable of a certain data type is defined,
 the correct amount of spaces are reserved to accommodate the data.
 
-There are two main sections to the memory that we're concenred about in this course,
+There are two main sections to the memory that we're concerned about in this course,
 the garbage collectible heap and the main stack.
 The garbage collectible heap is an area in the method that java looks over periodically and cleans up when it finds data that isn't being used/referenced by the main stack,
 this process is known as garbage collection.
 [non-primitive/reference types and their interaction with memory are covered more in their own section.](#non-primitivesreferences)
 
-## Examples
-
 ### Primitives
 
 Code:
 
-```
+```java
 int height = 165;
 double weight = 58.5;
 char initial = 'D';
@@ -129,11 +127,13 @@ boolean found = true;
 
 With non-primitives/references we're actually pointing to another object in the memory elsewhere in the garbage collectible heap.
 
-```
+---
+
+arrays are a simple example of non-primitive/reference types.
+
+```java
 int [] height = {165, 170};
 double [] weight = {58.5, 70.4};
-char [] initial = {‘D’, ‘A’};
-boolean [] found = {true, false};
 ```
 
 | var name | memory address | memory spaces | memory area |
@@ -154,6 +154,139 @@ The address that we store points to somewhere within the GCH.
 This is also how objects of classes that we instantiate are stored.
 
 Reference types have zero or more states that are represented by their instance variables aka fields or attributes.
+
+--- 
+
+Objects are also reference types.
+
+Class code:
+
+```java
+public class Student {
+  char initial;
+  int studentId;
+  int enrolmentYear;
+  
+  public Student (Student st) {
+    this.initial = st.initial;
+    this.studentId = st.studentId;
+    this.enrolmentYear = st.enrolmentYear;
+  }
+}
+```
+Our code using the `Student` class:
+```java
+Student alice = new Student('A', 1256, 2016);
+Student rose = new Student(alice);
+```
+
+memory diagram:
+
+| address | stored |               | memory area |
+|---------|--------|---------------|-------------|
+| 100     | 2000a  | alice         | Stack       |
+|         | 3000a  | rose          |             |
+| ...     | ...    | ...           |             |
+| 2000    | A      | initial       | GCH         |
+|         | 1256   | studnetId     |             |
+|         | 2016   | enrolmentYear |             |
+| ...     | ...    | ...           |             |
+| 3000    | R      | intial        | GCH         |
+|         | 1256   | studentId     |             |
+|         | 2016   | enrolmentYear |             |
+
+Similarly to arrays,
+the main stack merely holds a reference to an address in the GCH where the data is actually stored.
+
+We can even have variables that point towards the same address
+```java
+// rose is an object of Student
+rose.initial = 'R';
+rose.studentId = 1000;
+rose.enrolmentYear = 2020;
+Student julia = rose;
+```
+
+memory diagram:
+
+| address | stored |               |
+|---------|--------|---------------|
+| 100     | 2000a  | rose          |
+|         | 2000a  | julia         |
+| ...     | ...    | ...           |
+| 2000    | A      | initial       |
+|         | 1256   | studnetId     |
+|         | 2016   | enrolmentYear |
+
+#### References, Object Reachability, and Garbage Collection
+
+There are 2 different kinds of references:
+- active
+  - points to an object in the memory
+- null
+  - doesn't point to anything
+
+There are 2 different kinds of objects:
+- reachable
+  - is pointed to by at least 1 active reference
+  - the components in memory can be accesses/reached
+- unreachable
+  - isn't pointed to by any references
+  - the components in memory cannot be accesses/reached
+
+The garbage collection system finds these unreachable objects and declares them as free space to be overwritten by the program.
+
+---
+
+```java
+Student john = new Student(); //1
+Student jane = new Student(); //2
+john = jane;                  //3
+jane = null;                  //4
+```
+
+Line 1:
+
+| address | stored                   |               |
+|---------|--------------------------|---------------|
+| 100     | 2000a                    | object `john` |
+| ...     | ...                      | ...           |
+| 2000    | \<all of `john`'s stuff> |               |
+
+Line 2:
+
+| address | stored                   |               |
+|---------|--------------------------|---------------|
+| 100     | 2000a                    | object `john` |
+|         | 3000a                    | object `jane` |
+| ...     | ...                      | ...           |
+| 2000    | \<all of `john`'s stuff> |               |
+| ...     | ...                      | ...           |
+| 3000    | \<all of `jane`'s stuff> |               |
+
+Line3:
+
+| address | stored                   |               |
+|---------|--------------------------|---------------|
+| 100     | 3000a                    | object `john` |
+|         | 3000a                    | object `jane` |
+| ...     | ...                      | ...           |
+| 2000    | \<all of `john`'s stuff> |               |
+| ...     | ...                      | ...           |
+| 3000    | \<all of `jane`'s stuff> |               |
+
+Line4:
+
+| address | stored                   |               |
+|---------|--------------------------|---------------|
+| 100     | 3000a                    | object `john` |
+|         | null                     | object `jane` |
+| ...     | ...                      | ...           |
+| 2000    | \<all of `john`'s stuff> |               |
+| ...     | ...                      | ...           |
+| 3000    | \<all of `jane`'s stuff> |               |
+
+The data stored in `2000` which was `john`'s old data is now unreachable so it's garbage collectable.
 
 ## Function Calls - Memory and Pass by Value vs Reference
 Whenever a function is called in Java,
@@ -191,6 +324,7 @@ Here are the most common/useful pieces of JavaDoc:
 Most Java focused IDEs have an option to export JavaDoc to an html api as well as generate block comments.
 
 General use IDEs, like visual studio code, can do the same with the help of plugins.
+
 
 ```java
 /**
@@ -289,6 +423,50 @@ the purpose being to bundle together functions and information as well as avoid 
 Many classes are instantiable meaning that we are able to create objects of them.
 Objects of classes are non-primitive/reference data types
 
+## Constructors
+Constructors are special methods
+- they have no return value but are not void
+- they have the same name as the class
+- they are used to initialize the instance variables
+
+We can initialize instance variables with arguments from the user like we would with any normal method.
+
+When writing class methods,
+constructor included,
+the `this` keyword allows us to refer to the current object.
+A line like `this(arg)` calls the current object's constructor using the fed in argument `arg`.
+When used with the dot `.` operator we can designate variables and methods that belong to the object specifically,
+though this isn't strictly necessary unless we're dealing with an argument and an instance variable that share a name.
+
+When making an instance of an object whose class code makes use of `this.`, a sort of translation happens.
+An instance of the class `student` that we call `jade` will turn statements like `this.name` into `jade.name`.
+***`this` refers to the `object` not the `class`.***
+
+### Overloaded Constructors
+
+A class can have multiple constructors to give options in object creation.
+These constructors can take more or less or different arguments in order to avoid or achieve specifying specific aspects of the object.
+When we use these more specific constructors we can easily differentiate it in our use cases.
+
+It's important to note that when overloading constructors,
+2 constructors need to have at least 1 difference in their arguments list or else the compiler won't be able to tell which constructor is being called.
+
+### Constructor Chaining
+
+We may run into scenarios where we have duplicate code in all of our constructors.
+In these scenarios we could make a (set of) basic constructor(s) that are called by other more advanced/specialized constructors depending on the args.
+We call the class' constructor inside a class' code by using
+```java
+this(arg1, arg2, arg3, ..., argN);
+```
+
+Where the list of args are teh required args for the constructor that we want.
+
+### Clone/Copy Constructor
+
+These are class constructors that take an existing object of the class as the input argument then copies over the attributes to a new instance of the class,
+creating a new object in the process.
+
 # Generics
 
 Generics are any interface, class, or method
@@ -327,6 +505,120 @@ public class Generics {
     } // end of main
 }
 ```
+
+# Encapsulation
+
+Data encapsulation refers to hiding the internal states of an object in oop.
+An implementer controls the client's access to the methods and instance variables.
+
+This is done through access modifiers
+
+## Access Modifiers
+
+| Access Modifier    | class | Subclass Same Package | Subclass Outside Package | package | World (outside the package) |
+|--------------------|-------|-----------------------|--------------------------|---------|-----------------------------|
+| public             | Y     | Y                     | Y                        | Y       | Y                           |
+| protected          | Y     | Y                     | Y                        | N       | N                           |
+| no access modifier | Y     | Y                     | N                        | Y       | N                           |
+| private            | Y     | N                     | N                        | N       | N                           |
+
+- `public` - anyone can access
+- `protected` - only accessible by subclasses
+- `no access modifier`/`default`/`package` -  only accessible by the package
+- `private` - inaccessible outside of the class
+
+Which access modifiers to use are up to the programmer/designer/contractor/boss' discretion.
+
+A good general rule of thumb is to make a variable invisible and provide access using mutator methods as it is easier to change things afterwards that way.
+
+## Mutators & Accessors - Setters & Getters
+
+When data is encapsulated,
+the only way to access that data is via the object methods.
+
+Accessors(getters): return the value of the instance variable.
+
+Mutators(setters): update the value of the instance variable.
+
+# Object Oriented Programming - OOP
+
+# UML - Unified Modelling Language
+
+To present a class we use notation called **Unified Modelling Language (UML)**.
+When the designer (us) makes this, they can then give it to the programmer (also us) to be created easily.
+
+Notation (member = method/variable):
+- `+` - public member
+- `-` - private member
+- `#` - protected member
+
+We can even use UML to denote inheritance hierarchies and possessive/has-a relationships between objects.
+
+Subclasses will have an arrow with a white head pointing towards their superclass and/or interface(s).
+
+```mermaid
+classDiagram
+
+Comparable <|-- Account : implements
+Account <|-- Current : extends
+Exception <|-- TransferNotAllowedException : extends
+Exception <|-- NotEnoughMoneyException : extends
+Account -- TransferNotAllowedException : throws
+Account -- NotEnoughMoneyException : throws
+
+class Comparable {
+  <<Interface>>
+  + abstract int CompareTo(Object)
+}
+class Account {
+  <<abstract>>
+  # accountNo: int
+  # balance: balance
+  # fullName: String
+  # dateOpened: Date
+  # maxTransferable: double
+  + abstract void deposit(double)
+  + abstract boolean withdraw(double)
+  + boolean transferFrom(Account, double)
+  + int getAccountNo()
+  + double getBalance()
+  + String getFullname()
+  + Date getDateOpened()
+  + double getMaxTransferable()
+}
+class Current {
+  + Current(int, double, String, Date, double)
+  + boolean equals(Object)
+  + int hashCode()
+}
+class Exception
+
+class TransferNotAllowedException{
+  + TransferNotAllowedException()
+  + TransferNotAllowedException(String)
+}
+class NotEnoughMoneyException{
+  + NotEnoughMoneyException()
+  + NotEnoughMoneyException(String)
+}
+```
+
+Possessive/has-a relationships:
+- aggregation - hollow diamond on possessive object
+- composition - solid diamond on possessive object
+
+```mermaid
+classDiagram
+Game *-- Player
+Player o-- Role
+Game *-- Map
+```
+
+`Game` has a composition relationship with `Map` and `Player`.
+
+`Player` has a aggregation relationship with `Role`.
+
+# /
 
 ## Why Make Generics?
 
@@ -460,7 +752,7 @@ and replace their type with that type.
 
 ### Generic Methods, Autoboxing, and Wrapper Classes
 
-Generics types can only be replaced by primitive types but when we create and pass primitives we usually don't create an object of them.
+Generics types are typically only replaced by primitive types but when we create and pass primitives we usually don't create an object of them.
 
 This is handled by a process called autoboxing where Java will just create an object for us automatically.
 
@@ -556,6 +848,11 @@ Only a type that is a subtype of `Comparable` can be used in this case.
 
 Only types with `Comparable` higher than it in its inheritance hierarchy can be passed into the `counterGreaterThan()` method.
 
+```mermaid
+classDiagram
+Comparable <|-- T : extends
+```
+
 ### Wildcards
 #### Upper Bound Wildcards
 
@@ -565,11 +862,12 @@ In this case we use an upper bound wildcard, `?`
 
 Take this inheritance hierarchy and code for example.
 ```mermaid
-graph TD
-  Double-->Number
-  Integer-->Number
-  Byte-->Number
-  Number-->Object
+classDiagram
+
+Number <|-- Double : extends
+Number <|-- Integer : extends
+Number <|-- Byte : extends
+Object <|-- Number : extends
 ```
 ```java
 public double sumOfList(List<? extends Number> list) {
@@ -608,9 +906,9 @@ We're able to accept objects of type `Integer`, `Number`, and `Object`.
 We can even allow anything using an unbounded wildcard,
 `<?>`.
 
-This is used when we're either:
+This is used when any of the following is happening:
 - only using `Object`'s methods.
-- or when the used methods are independent of type
+- the used methods are independent of type
 
 ```java
 public static boolean equals(List<?> list1, List<?> list2) {
