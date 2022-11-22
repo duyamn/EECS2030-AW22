@@ -552,7 +552,9 @@ public static <T extends Comparable> int counterGreaterThan(T[] array, T element
 
 In the above implementation our generic type `T` is bound to `Comparable`.
 
-Only objects with `Comparable` higher than it in its inheritance hierarchy can be passed into the `counterGreaterThan()` method.
+Only a type that is a subtype of `Comparable` can be used in this case.
+
+Only types with `Comparable` higher than it in its inheritance hierarchy can be passed into the `counterGreaterThan()` method.
 
 ### Wildcards
 #### Upper Bound Wildcards
@@ -562,13 +564,12 @@ A similar situation would be wanting to allow a class and all of it's subclasses
 In this case we use an upper bound wildcard, `?`
 
 Take this inheritance hierarchy and code for example.
-```
-flowchart TD
-
-Double-->Number
-Integer-->Number
-Byte-->Number
-Number-->Object
+```mermaid
+graph TD
+  Double-->Number
+  Integer-->Number
+  Byte-->Number
+  Number-->Object
 ```
 ```java
 public double sumOfList(List<? extends Number> list) {
