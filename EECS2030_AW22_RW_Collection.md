@@ -11,16 +11,26 @@ try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
 - [Java Basics Review](#java-basics-review)
   - [Packages](#packages)
   - [Memory Model](#memory-model)
-  - [Examples](#examples)
     - [Primitives](#primitives)
     - [Non-Primitives/References](#non-primitivesreferences)
+      - [References, Object Reachability, and Garbage Collection](#references-object-reachability-and-garbage-collection)
   - [Function Calls - Memory and Pass by Value vs Reference](#function-calls---memory-and-pass-by-value-vs-reference)
 - [JavaDoc](#javadoc)
 - [Testing, Unit Testing, & JUnit](#testing-unit-testing--junit)
 - [Design by Contract](#design-by-contract)
 - [Recursion](#recursion)
 - [Classes](#classes)
+  - [Constructors](#constructors)
+    - [Overloaded Constructors](#overloaded-constructors)
+    - [Constructor Chaining](#constructor-chaining)
+    - [Clone/Copy Constructor](#clonecopy-constructor)
 - [Generics](#generics)
+- [Encapsulation](#encapsulation)
+  - [Access Modifiers](#access-modifiers)
+  - [Mutators & Accessors - Setters & Getters](#mutators--accessors---setters--getters)
+- [Object Oriented Programming - OOP](#object-oriented-programming---oop)
+- [UML - Unified Modelling Language](#uml---unified-modelling-language)
+- [/](#)
   - [Why Make Generics?](#why-make-generics)
   - [Generic Creation & Usage](#generic-creation--usage)
     - [Generic Classes and Instance Variables](#generic-classes-and-instance-variables)
@@ -32,6 +42,7 @@ try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
     - [Wildcards](#wildcards)
       - [Upper Bound Wildcards](#upper-bound-wildcards)
       - [Lower Bound Wildcards](#lower-bound-wildcards)
+    - [Unbounded Wildcards](#unbounded-wildcards)
       - [How To Use Wildcards](#how-to-use-wildcards)
 
 # Mark Breakdown
@@ -551,10 +562,13 @@ Notation (member = method/variable):
 - `+` - public member
 - `-` - private member
 - `#` - protected member
+- `~` - package member
 
 We can even use UML to denote inheritance hierarchies and possessive/has-a relationships between objects.
 
 Subclasses will have an arrow with a white head pointing towards their superclass and/or interface(s).
+
+Note: typically UML diagrams like the ones in class will specify a method is abstract but here I can only show that using italicization.
 
 ```mermaid
 classDiagram
@@ -563,43 +577,43 @@ Comparable <|-- Account : implements
 Account <|-- Current : extends
 Exception <|-- TransferNotAllowedException : extends
 Exception <|-- NotEnoughMoneyException : extends
-Account -- TransferNotAllowedException : throws
-Account -- NotEnoughMoneyException : throws
+Account --> TransferNotAllowedException : throws
+Account --> NotEnoughMoneyException : throws
 
 class Comparable {
   <<Interface>>
-  + abstract int CompareTo(Object)
+  +CompareTo(Object)* int
 }
 class Account {
   <<abstract>>
-  # accountNo: int
-  # balance: balance
-  # fullName: String
-  # dateOpened: Date
-  # maxTransferable: double
-  + abstract void deposit(double)
-  + abstract boolean withdraw(double)
-  + boolean transferFrom(Account, double)
-  + int getAccountNo()
-  + double getBalance()
-  + String getFullname()
-  + Date getDateOpened()
-  + double getMaxTransferable()
+  #accountNo: int
+  #balance: balance
+  #fullName: String
+  #dateOpened: Date
+  #maxTransferable: double
+  +deposit(double)* void
+  +withdraw(double)* boolean
+  +transferFrom(Account, double) boolean
+  +getAccountNo() int
+  +getBalance() double
+  +getFullname() String
+  +getDateOpened() Date
+  +getMaxTransferable() double
 }
 class Current {
-  + Current(int, double, String, Date, double)
-  + boolean equals(Object)
-  + int hashCode()
+  +Current(int, double, String, Date, double)
+  +boolean equals(Object)
+  +int hashCode()
 }
 class Exception
 
 class TransferNotAllowedException{
-  + TransferNotAllowedException()
-  + TransferNotAllowedException(String)
+  +TransferNotAllowedException()
+  +TransferNotAllowedException(String)
 }
 class NotEnoughMoneyException{
-  + NotEnoughMoneyException()
-  + NotEnoughMoneyException(String)
+  +NotEnoughMoneyException()
+  +NotEnoughMoneyException(String)
 }
 ```
 
@@ -618,7 +632,9 @@ Game *-- Map
 
 `Player` has a aggregation relationship with `Role`.
 
-# /
+# -
+
+# Generics
 
 ## Why Make Generics?
 
@@ -777,7 +793,7 @@ String name = "John";
 Object object = name;
 ```
 
-The above code is fine as you can sotre a subtype in a variable of supertype.
+The above code is fine as you can store a subtype in a variable of supertype.
 
 ```java
 //Storing a String[] inside an Object[] variable
@@ -856,7 +872,7 @@ Comparable <|-- T : extends
 ### Wildcards
 #### Upper Bound Wildcards
 
-A similar situation would be wanting to allow a class and all of it's subclasses to replace the generic type.
+A similar situation would be wanting to allow a type and all of it's subtypes (anything lower down on the inheritance hierarchy) to replace the generic type.
 
 In this case we use an upper bound wildcard, `?`
 
@@ -888,7 +904,7 @@ We're able to accept objects of type `Double`, `Integer`, `Byte`, and `Number`.
 
 We can even do the inverse.
 
-A situation where we want to allow a class and it's supertypes to be accepted as replacing the generic type.
+A situation where we want to allow a class and it's supertypes (anything higher up on the inheritance hierarchy) to be accepted as replacing the generic type.
 
 ```java
 public void addNumbers(List<? super Integer> list) {
@@ -901,7 +917,7 @@ Here `<? super Integer>` will allow us to pass `Integer` and objects of type tha
 
 We're able to accept objects of type `Integer`, `Number`, and `Object`.
 
----
+### Unbounded Wildcards
 
 We can even allow anything using an unbounded wildcard,
 `<?>`.
