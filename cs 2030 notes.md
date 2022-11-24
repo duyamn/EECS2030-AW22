@@ -7,6 +7,9 @@ try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Colle
 
 # Table of contents
 
+# Table of contents
+
+- [Table of contents](#table-of-contents)
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -165,13 +168,23 @@ try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Colle
       - [Upper Bound Wildcards](#upper-bound-wildcards)
       - [Lower Bound Wildcards](#lower-bound-wildcards)
       - [How To Use Wildcards](#how-to-use-wildcards)
+- [Lect 21: Abstract Data Types (Collections)](#lect-21-abstract-data-types-collections)
+  - [Abstract Data Type - ADT](#abstract-data-type---adt)
+    - [ADT Example: Stack](#adt-example-stack)
+  - [ADT & Abstract & Interface](#adt--abstract--interface)
+  - [ADT in Java - Collections, Lists and Sets](#adt-in-java---collections-lists-and-sets)
+    - [Collections](#collections)
+      - [Optional Methods](#optional-methods)
+  - [List](#list)
+  - [Set ADT](#set-adt)
+    - [Applications](#applications)
 
 # Week 1
 
 ## Mark Breakdown
 
 |                    | weight | comment                                          |
-| ------------------ | ------ | ------------------------------------------------ |
+|--------------------|--------|--------------------------------------------------|
 | in-class (iCocker) | 10%    | opens during lecture, usually open till midnight |
 | Labs               | 10%    | 10 labs, 1%/each, take home, 1 week              |
 | Programming Exams  | 40%    | 2 exams, 20%/each, take home, 1 week             |
@@ -2654,15 +2667,10 @@ There are 2 different ways to approach generic methods that we've seen thus far:
 
 We can also make generic methods that rely on their own generic types in addition to the class' generic type or don't use the class' generic type altogether.
 
----
-
-Lect 20 has been added before we had it because the lab requires knowledge from it.
-
-This is almost verbatim what's in the [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Collection.md) 
-
----
-
 # Lect 20: Generics Cont'd
+
+If more than 60% of the class does course evaluations the we get +3% to all our final marks.
+
 ## Bounded Type Parameters
 
 Using an inheritance relationship,
@@ -2774,3 +2782,368 @@ If it's an:
 
 
 If we the only methods used are from `Object` or independent of type -> unbounded wildcard `<?>`
+
+# Lect 21: Abstract Data Types (Collections)
+
+The Stages/Steps of Software Engineering:
+- Requirement Engineering
+  - looking at what requirements need to be fulfilled by our software
+- Software Architecture Design
+  - designing the woftware
+- Implementation
+  - making the software
+- Testing
+  - testing the software
+- Maintenance
+  - fixing bugs and maintaining for the future
+
+The cost of changing something in the code will dramatically increase in the later stages.
+
+In a perfect world we would have perfection at the design leecl so that if we need to change anything at the implementation level it would have minimal effect on the rest of the code.
+
+However in reality there will always be changed required of us and with it come costs.
+
+Modularity and therefore creating ADTs is the solution to minimizing the cost.
+
+## Abstract Data Type - ADT
+
+An ADT is a _type_ in which the _organization of data_ and the _operations_ on data is specified.
+
+In java, an ADT is a _class_ that works as a _data structure_ and has specific associated _methods and exceptions_.
+
+It explains what data is required for the type, how we organize the data, the operations we use with the data, what's supposed to happen when we use the operations, and what we do when it goes wrong
+
+With ADTs we focus on the operations rather than the implementation.
+As long as we achieve the desired end result from the design stage.
+
+`abstract classes` and `interfaces` are often used to create ADTs
+
+Examples of data and their operations:
+- Student
+  - ID
+  - name
+  - courses[]
+  - grades
+  - takeCourse(Course course)
+  - dropCourse(Course course)
+  - TooManyCoursesException
+  - NotACourseException
+  - IsNotEnrolledException
+
+
+### ADT Example: Stack
+  - follows the first in last out (FILO) rule for insertion and removal
+  - organizes data like `Array` or `arrayList`
+  - Operations:
+    - main opertaions:
+      - push(object)
+        - add an item to the top of the stack
+      - pop()
+        - remove an item from the top of the stack
+    - auxilary methods:
+      - size()
+        - return the size of the stack
+      - top()
+        - show what is on top of the stack
+  - Exceptions are thrown:
+    - when there is no item in stack
+      - pop()
+      - top()
+    - when there isn't enough space in the momory
+      - push()
+
+There are different ways to go about implementing something like stack but at this level we're not concerned with.
+
+The following are incomplete implementations, as they do not handle exceptions like the design outlines above.
+
+```java
+class StackADT_1 {  // implementation 1
+  ArrayList<Integer> stack;
+  public StackADT_1() {
+    stack = new ArrayList<Integer>();
+  }
+  public void push (Integer element) {
+    stack.add(element);
+  }
+  
+  public Integer pop() {
+    return stack.remove(size()-1);
+  }
+  public int size() {
+    return stack.size();
+  }
+  public Integer top() {
+    return stack.get(size()-1);
+  }
+}
+
+class StackADT_2 {  // implementation 2
+  ArrayList<Integer> stack;
+  public StackADT_2() {
+    stack = new ArrayList<Integer>();
+  }
+  public void push (Integer element) {
+    stack.add(0, element);
+  }
+  
+  public Integer pop() {
+    return stack.remove(0);
+  }
+  public int size() {
+    return stack.size();
+  }
+  public Integer top() {
+    return stack.get(0);
+  }
+}
+```
+
+Not the use of `Integer` vs `int` in the return types of the methods.
+When we return `Integer` we return an object of type `Integer` but when we return `int` we just return the primitive.
+
+Here is some sample code using both implementations
+```java
+StackADT_1 stack1 = new StackADT_1();
+StackADT_2 stack2 = new StackADT_2();
+for(int i = 0; i < 5; i++) {
+  stack1.push(i);
+  stack2.push(i);
+}
+```
+
+Memory model:
+| `ArrayList` indices | `StackADT_1` | `StackADT_2` |
+|---------------------|--------------|--------------|
+| 10                  |              |              |
+| 9                   |              |              |
+| 8                   |              |              |
+| 7                   |              |              |
+| 6                   |              |              |
+| 5                   |              |              |
+| 4                   | 4            | 0            |
+| 3                   | 3            | 1            |
+| 2                   | 2            | 2            |
+| 1                   | 1            | 3            |
+| 0                   | 0            | 4            |
+
+Here we see that the implementations work with the memory and indices rather differently.
+
+Here the code continues
+```java
+System.out.println("stack 1's pop() -> " + stack1.pop() + " \t" + "stack 2's pop() -> " + stack2.pop() );
+System.out.println("stack 1's top() -> " + stack1.top() + " \t" + "stack 2's top() -> " + stack2.top() );
+```
+Outputs:
+```
+stack 1's pop() -> 4  stack 2's pop() -> 4
+stack 1's top() -> 3  stack 2'd top() -> 3
+```
+
+Here we see that even though the implementations are different,
+the results are the same.
+We've reached the desired end result from the design stage.
+
+The specific implementation chosen is irrelevant.
+## ADT & Abstract & Interface
+
+```java
+abstract class StackADT {
+  ArrayList<Integer> stack;
+  public abstract void push(Integer element);
+  public abstract Integer pop();
+  public abstract int size();
+  public abstract Integer top();
+}
+
+interface Stack{
+  ArrayList<Integer> stack = new ArrayList<Integer>();
+  public abstract void push(Integer element);
+  public abstract Integer pop();
+  public abstract int size();
+  public abstract Integer top();
+}
+```
+
+ADTs, abstract classes, and interfaces aren't inherently each other.
+
+Abstract classes and interfaces are what we use to implement abstract data types.
+This approach guarantees the creation of an ADT since we're in a position where we're either obligated or forced to use abstract methods with no bodies.
+
+## ADT in Java - Collections, Lists and Sets
+### Collections
+Requirements:
+- containers hold >=1 object
+- depending on the application the following are optional
+  - duplicate data/elements
+  - sequential access (numbered indexes)
+- provide all operations needed to access data
+  - insertino
+  - removal
+  - processing
+  - searching
+  - sorting
+- able to be used by Java for polymorphism
+
+Collection in Java:
+1. a framework that satisfies the above
+2. An inheritance family of `interface`s and `abstract class`es
+3. stored object = _elements_
+4. couple of algos for sorting and searching
+
+```mermaid
+classDiagram
+
+class Collection~E~{
+  <<Interface>>
+  +add(E e) boolean
+  +addAll(Collection~? extends E> c) boolean
+  +clear() void
+  +contains(Object o) boolean
+  and many many more ()
+}
+class Queue~E~{
+  <<Interface>>
+}
+class List~E~{
+  <<Interface>>
+  <<generic>>
+}
+class AbstractCollection~E~{
+  <<Abstract>>
+}
+class set~E~{
+  <<Interface>>
+}
+class AbstractList~E~{
+  <<Abstract>>
+}
+class AbstractSet~E~{
+  <<Abstract>>
+}
+class ArrayList~E~{
+  
+}
+class HashSet~E~{
+  
+}
+
+Collection<|--List : extends
+Collection<|--Queue : extends
+Collection<|--set : extends
+Collection<|--AbstractCollection : extends
+
+List <.. ArrayList : implements
+List <.. AbstractList : implements
+AbstractList <|-- ArrayList: extends
+AbstractCollection <|-- AbstractList : extends
+AbstractCollection <|-- AbstractSet : extends
+set <.. AbstractSet : implements
+set <.. HashSet : implements
+AbstractSet <|-- HashSet : extends
+```
+Collection has (basically) all the methods that you need for all the ADTs.
+None of this nor the methods need to be memorized since you'll always have java api at your disposal.
+
+#### Optional Methods
+
+Some methods that are inherited are not useful for the class that inherited it
+- searching for ADTs that don't support it
+- indexing for ADTs that don't have indexing
+- sorting for ADTs that don't support sorting due to not supporting the above
+
+Since the method signature remains we have to do something about it.
+
+A concrete class that implements an interface MUST implement all the methods, including the ones that are marked as optional.
+
+Although it works,
+it is seen as bad practice to leave the method body empty even though the method is useless.
+This is because the client is still able to use the method with no feedback causing confusion.
+
+If an optional method is unnecessary then `UnsupportedOperationException` should be thrown.
+This is a `RuntimeException` so it can be thrown and handled in the ways covered before.
+
+## List
+
+An ordered collection meaning data is added sequentially.
+
+Data can be accessed by the position (index) of the element(`List[i]`).
+
+Duplicate elements are allowed.
+
+Are zero based like arrays.
+
+Extends Collection 
+
+```mermaid
+classDiagram
+Iterable <|-- Collection : extends
+Collection <-- List : extends
+```
+
+This lets us use things like `for-each` loops,
+iterating through each item in the `List`.
+
+```java
+List<String> str = new ArrayList<String>;
+
+// add a ton of elements
+
+// for (<data type> <name of variable>: <iterable>)
+for (String obj: str) // str is a List<String>
+  ...
+```
+
+`List` has a lot of methods, even optional ones, though we're mainly concerned with a few of them.
+
+## Set ADT
+- models the mathematical set
+- not an ordered collection
+- data cannot be accessed by their position
+  - data is hashed
+- duplicate elements arenot allowed
+- main operations:
+  - intersection
+  - union
+  - difference
+
+`HashSet`
+- is normally used to crate a set
+- is created using a hash table
+  - uses an instance of `HashMap`
+  - therefore not an ordered collection
+
+```mermaid
+classDiagram
+set <.. AbstractSet : implements
+AbstractSet <|-- HashSet : extends
+set <.. HashSet : implements
+```
+
+The reason for this inheritance arrangement is to "make the code more rigorous",
+whatever that means.
+
+Operations:
+- declaration
+  - `Set<String> aSet = newHashSet<String>();`
+    - we can use any concrete subclass of `set<E>`
+    - `<type>` can be any type of object reference
+- insertion
+  - `add()`
+- union
+  - `addAll(otherSet)`
+- Deletion
+  - `remove(<element>)`
+- access
+  - create an iterator and go through the set
+- search
+  - `contains(<element)`
+  - `containsAll(otherSet)`
+- intersection
+  - `retrainAll(otherSet)`
+- difference
+  - `removeAll(otherSet)`
+
+### Applications
+- remove all duplicates from a list
+- find all duplicate data in a list
+- find all shared elements in 2 sets/lists
