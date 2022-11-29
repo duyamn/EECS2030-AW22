@@ -7,8 +7,6 @@ try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Colle
 
 # Table of contents
 
-# Table of contents
-
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
