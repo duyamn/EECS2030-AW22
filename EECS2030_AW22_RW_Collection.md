@@ -31,6 +31,9 @@ try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
 - [Object Oriented Programming - OOP](#object-oriented-programming---oop)
 - [UML - Unified Modelling Language](#uml---unified-modelling-language)
 - [-](#-)
+- [Inheritance](#inheritance)
+  - [Optional Methods](#optional-methods)
+- [-](#-)
 - [Generics](#generics)
   - [Why Make Generics?](#why-make-generics)
   - [Generic Creation & Usage](#generic-creation--usage)
@@ -45,6 +48,13 @@ try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
       - [Lower Bound Wildcards](#lower-bound-wildcards)
     - [Unbounded Wildcards](#unbounded-wildcards)
       - [How To Use Wildcards](#how-to-use-wildcards)
+- [Abstract Data Types (ADTs) - Collections/Data Structures](#abstract-data-types-adts---collectionsdata-structures)
+  - [Why Make ADTs?](#why-make-adts)
+  - [Java ADTs](#java-adts)
+    - [ADT Example: Stack](#adt-example-stack)
+    - [Java's Built-in ADTs - Collections, Lists, and Sets](#javas-built-in-adts---collections-lists-and-sets)
+      - [List](#list)
+      - [Set](#set)
 
 # Mark Breakdown
 
@@ -578,8 +588,8 @@ Comparable <|-- Account : implements
 Account <|-- Current : extends
 Exception <|-- TransferNotAllowedException : extends
 Exception <|-- NotEnoughMoneyException : extends
-Account --> TransferNotAllowedException : throws
-Account --> NotEnoughMoneyException : throws
+Account .. TransferNotAllowedException : throws
+Account .. NotEnoughMoneyException : throws
 
 class Comparable {
   <<Interface>>
@@ -635,6 +645,24 @@ Game *-- Map
 
 # -
 
+# Inheritance
+
+## Optional Methods
+
+Methods that are not useful/required for the class inherited it are referred to as "optional".
+We see this often within our own code but also within the code of Java's built-in `Collection` class and it's child classes.
+
+Since the method is still inherited we must do something about it as a concrete class that implements an interface MUST implement every method.
+
+If an optional method is unnecessary then `UnsupportedOperationException` should be thrown.
+This is a `RuntimeException` so it can be thrown and handled in the ways covered before.
+
+Although it works,
+it is seen as bad practice to simply leave the method body empty.
+Doing so will allow the client to use the method without receiving any feedback letting them know that the operation is unsupported.
+
+# -
+
 # Generics
 
 ## Why Make Generics?
@@ -661,7 +689,7 @@ By convention,
 the name of these type parameters depend on their use.
 
 | name | use                                      |
-| ---- | ---------------------------------------- |
+|------|------------------------------------------|
 | E    | element                                  |
 | K    | key for map                              |
 | V    | value for map                            |
@@ -776,7 +804,7 @@ This is handled by a process called autoboxing where Java will just create an ob
 It does this using wrapper classes which are methods belonging to the primitive type's class.
 
 | type                             | wrapper class       |
-| -------------------------------- | ------------------- |
+|----------------------------------|---------------------|
 | boolean                          | Boolean.valueOf()   |
 | byte                             | Byte.valueOf()      |
 | char                             | Character.valueOf() |
@@ -963,3 +991,275 @@ If it's an:
 
 
 If we the only methods used are from `Object` or independent of type -> unbounded wildcard `<?>`
+
+# Abstract Data Types (ADTs) - Collections/Data Structures
+
+Data structures are a way of organizing data so that we can use them efficiently.
+What makes the data structure a data structure is the rules with which it organizes data and allows data to be worked with.
+There is the logical side which just describes the rules of the data structure then there is the implementation side that entails making the data structure in some programming language.
+
+These data structures allow us to create algos, store/manage/organize data, and clean up our code to understand it all better.
+
+An abstract data type is the abstract logical side to the data structure.
+It defines all the rules of data and operations that can take place but don't have the implementation details.
+
+## Why Make ADTs?
+
+Changing code function is expensive but is less expensive at the design level.
+
+Changing code is an inevitability however so in order to minimize these incurred costs w use modularity in our design and create ADTs.
+
+## Java ADTs
+
+Arrays, `List`s, and `ArrayList`s are common ADTs that we work with in Java.
+
+In Java we're creating/using classes that can store a collection of elements then work on those stored elements using the class methods.
+If the client tries to do something that is disallowed by the design of the ADT or Java then we throw and handle exceptions.
+
+To create an ADT in java we use `abstract` classes and `interface`s.
+Since we have an idea of what the design (what can/cannot be stored and what can/cannot be done to what's stored) is for our ADT but we're not concerned with the specific implementation,
+the ADT will only have abstract methods with empty bodies so using `abstract class`es and `interface`s.
+
+This allows us flexibility in our implementation while still having the idea of the ADT (what it contains, what it can do, what it can't do, etc.) that anyone can reference in our code.
+
+Abstract classes and interfaces aren't inherently ADTs,
+they're just the tools that we use to make ADTs among other things.
+
+Recall that in an `interface` there can be no concrete methods and while an `abstract class` can have concrete methods,
+neither can be instantiated.
+Both need to be implemented or extended by a concrete (instantiable) class in order to be useful.
+
+### ADT Example: Stack
+
+There is the idea of a stack as a data structure.
+- follows FILO for insertion and removal
+  - first in, last out
+- optionally one can limit the amount of objects in a stack
+- operations:
+  - main
+    - push - add an object to the top of the stack
+    - pop - remove an object from the top of the stack
+  - auxilary
+    - size - return the size of the stack
+    - top - return the element on the top of the stack
+- You can't
+  - pop an empty tack
+  - check the top of an empty stack
+  - push onto a stack if we're at the limit of objects that can be on the stack
+
+To create this ADT in java we would do something like one of the following pieces of code.
+```java
+abstract class StackADT {
+  ArrayList<Integer> stack;
+  public abstract void push(Integer element);
+  public abstract Integer pop();
+  public abstract int size();
+  public abstract Integer top();
+}
+
+interface Stack{
+  ArrayList<Integer> stack = new ArrayList<Integer>();
+  public abstract void push(Integer element);
+  public abstract Integer pop();
+  public abstract int size();
+  public abstract Integer top();
+}
+```
+We're using `abstract class` and `interface` with no concrete methods.
+
+an implementation may look as follows:
+```java
+class StackADT_1 implements Stack {  // implementation 1
+  ArrayList<Integer> stack;
+  public StackADT_1() {
+    stack = new ArrayList<Integer>();
+  }
+  public void push (Integer element) {
+    stack.add(element);
+  }
+  
+  public Integer pop() {
+    return stack.remove(size()-1);
+  }
+  public int size() {
+    return stack.size();
+  }
+  public Integer top() {
+    return stack.get(size()-1);
+  }
+}
+
+class StackADT_2 implements Stack {  // implementation 2
+  ArrayList<Integer> stack;
+  public StackADT_2() {
+    stack = new ArrayList<Integer>();
+  }
+  public void push (Integer element) {
+    stack.add(0, element);
+  }
+  
+  public Integer pop() {
+    return stack.remove(0);
+  }
+  public int size() {
+    return stack.size();
+  }
+  public Integer top() {
+    return stack.get(0);
+  }
+}
+```
+*Note: the above are incomplete as they do not handle exceptions
+
+The implementations are slightly different as pushing using one will result in the item being placed at the front of the `ArrayList` while the other will put it at the back.
+However the same end results are achieved as outlined in the design stage.
+
+But it's crucial to note that at this point it is no longer an ADT as we've implemented it.
+Now it's just an implementation of the stack data structure.
+
+### Java's Built-in ADTs - Collections, Lists, and Sets
+
+Requirements for Collections:
+- containers hold >=1 object
+- depending on the application, the following are optional:
+  - duplicate data/elements
+    - `ArrayList` vs `Set`
+  - sequential access
+    - `ArrayList` vs `Set`
+- provide all operations needed to access data
+  - insertion
+  - removal
+  - processing
+  - searching
+  - sorting
+- able to be used for polymorphism
+
+Java's built-in collections:
+- satisfy the above framework
+- is part of an inheritance family of `interface`s and `abstract class`es
+- stored objects are referred to as elements
+
+```mermaid
+classDiagram
+
+class Collection~E~{
+  <<Interface>>
+  +add(E e) boolean
+  +addAll(Collection~? extends E> c) boolean
+  +clear() void
+  +contains(Object o) boolean
+  and many many more ()
+}
+class Queue~E~{
+  <<Interface>>
+}
+class List~E~{
+  <<Interface>>
+  <<generic>>
+}
+class AbstractCollection~E~{
+  <<Abstract>>
+}
+class set~E~{
+  <<Interface>>
+}
+class AbstractList~E~{
+  <<Abstract>>
+}
+class AbstractSet~E~{
+  <<Abstract>>
+}
+class ArrayList~E~{
+  
+}
+class HashSet~E~{
+  
+}
+
+Collection<|--List : extends
+Collection<|--Queue : extends
+Collection<|--set : extends
+Collection<|--AbstractCollection : extends
+
+List <.. ArrayList : implements
+List <.. AbstractList : implements
+AbstractList <|-- ArrayList: extends
+AbstractCollection <|-- AbstractList : extends
+AbstractCollection <|-- AbstractSet : extends
+set <.. AbstractSet : implements
+set <.. HashSet : implements
+AbstractSet <|-- HashSet : extends
+```
+
+`Collection` has (almost) all the methods that you need to harness the power of Java's built-in ADTs overridden to meet each of their needs.
+None of this nor the methods need to be memorized as you will always have java api at your disposal.
+
+#### List
+A list is:
+- an ordered collection
+  - data is added sequentially
+- data can be accessed by the position (index) of the element(`List[i]`)
+- duplicate elements are allowed
+- zero based
+  - start counting at 0
+  - like arrays
+
+Inheritance Hierarchy
+```mermaid
+classDiagram
+
+Iterable <|-- Collection : extends
+Collection <|-- List : extends
+```
+
+The inheritance relation with `Iterable` allows us to use things like `for-each` and `for` loops,
+iterating through each item in the `List`.
+
+#### Set
+
+A set in Java:
+- models the mathematical idea of a set
+- not an ordered collection
+- data cannot be accessed by their position
+  - data is hashed and accessed directly
+- duplicate elements are not allowed
+- main operations:
+  - intersection
+  - union
+  - difference
+
+`HashSet`
+  - normally used to create a set
+  - is created using a hash table
+    - uses an instance of `HashMap`
+    - therefore not an ordered collection
+
+Inheritance Hierarchy:
+```mermaid
+classDiagram
+
+Set <.. AbstractSet : implements
+AbstractSet <|-- HashSet : extends
+Set <.. HashSet : implements
+```
+
+| operation    | method                                             | note                                                                                  |
+|--------------|----------------------------------------------------|---------------------------------------------------------------------------------------|
+| declaration  | `Set<DataType> setName = new HashSet<DataType>();` | we can use any concrete subclass of `set<E>`                                          |
+|              |                                                    | `<DataType>` can be any type of object reference                                      |
+| insertion    | `add(<element>)`                                   |                                                                                       |
+| union        | `addAll(otherSet)`                                 |                                                                                       |
+| access       |                                                    | create and iterator and use its methods                                               |
+|              |                                                    | use a `for-each` loop                                                                 |
+| search       | `contains(<element>)`                              |                                                                                       |
+|              | `containsAll(otherSet)`                            | `true` if it contains all the elements that the other set has                         |
+| intersection | `retainAll(otherSet)`                              |                                                                                       |
+| difference   | `removeAll(otherSet)`                              |                                                                                       |
+| ---          | ---                                                | ---                                                                                   |
+|              | `Object[] toArray()`                               | turns set into an array of `Object`                                                   |
+|              | `T[] toArray(<T>[] t)`                             | stores elements of set into the fed in array if there is space and returns the result |
+
+Sets can be used to:
+- remove all duplicates from a list
+- find all duplicate data in a list
+- find all shared elements in 2 sets/lists
