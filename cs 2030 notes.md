@@ -9,7 +9,6 @@ try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Colle
 
 # Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Week 1](#week-1)
   - [Mark Breakdown](#mark-breakdown)
   - [Review](#review)
@@ -178,6 +177,16 @@ try out our [autumn-winter 2022 ready-to-wear collection](EECS2030_AW22_RW_Colle
   - [List](#list)
   - [Set ADT](#set-adt)
     - [Applications](#applications)
+- [Lect 22: Searching and Sorting](#lect-22-searching-and-sorting)
+  - [Searching](#searching)
+    - [Linear Search](#linear-search)
+    - [List-Based Binary Search](#list-based-binary-search)
+  - [Sorting](#sorting)
+    - [Selection sort](#selection-sort)
+    - [Merging Operation & Merge Sort](#merging-operation--merge-sort)
+      - [Merging Operation](#merging-operation)
+      - [Merge Sort](#merge-sort)
+  - [hw](#hw)
 
 # Week 1
 
@@ -3147,3 +3156,242 @@ Operations:
 - remove all duplicates from a list
 - find all duplicate data in a list
 - find all shared elements in 2 sets/lists
+
+# Lect 22: Searching and Sorting
+
+## Searching
+
+Searching is an important operation for many data structures and is an operation used often during software development.
+
+Types of Searching:
+- linear
+- binary search
+  - list-based binary search
+  - Binary Search Trees (BSTs) -> more in the Data Structures Course
+    - major part of that course
+- Hashing Technique -> more in the Data Structures Course
+  - We have seen simplified versions of hashing in java with hash tables and hash sets
+  - major part of the data structures course
+
+Differentiated by the time it takes to find the item in their applicable situations under the worst case scenario.
+Some are faster than other.
+
+### Linear Search
+
+This works on any kind of list, sorted or unsorted, that can be iterated through.
+
+Go through the elements in order of from the start of the list to the end of the list.
+
+```java
+public static boolean linaerSearch(List<String> list, String element) {
+  boolean found = false;                          // nothing has been found yet
+  for (int i = 0; i < list.size(); i++) {
+    if ((list.get(i)).compareTo(element) == 0) {  // the element has been found
+      found = true;
+      break;
+    }
+  }
+  return found;
+}
+```
+
+Another implementation of the above may return the index of the element instead of a boolean value representing whether or not the element was found
+
+This is inefficient as in a worst-case scenario
+
+### List-Based Binary Search
+An algorithm that can only be used on a __sorted list__.
+
+Terms:
+- key = element that we're searching for
+- Two pointers are needed
+  1. start - points to the start of the list
+  2. end - points to the end of the list
+
+iteratively or recursively:
+- find the middle of the list
+  - (start + end) / 2
+- compare our key with the middle element
+  - if key == middle element, search is done
+    - return the found=true boolean or the index
+  - key > middle element, search the right sub-list
+    - start now points to the the element to the right of the middle element
+    - end still points to what it was pointing to
+    - repeat from first step
+  - key <= middle element, search the left sub-list
+    - start still points to what it was pointing to
+    - end now points to the element to the left of the middle element
+    - repeat from first step
+- stop when start > end
+  - the key was not found
+
+Below is an iterative (non-recursive) implementation of binary search in java that returns a boolean `found` which states whether or not the element was found.
+```java
+public static boolean binarySearch(List<String> list, String element) {
+  boolean found = false;
+  int lowerbound = 0;
+  int upperBound = list.size() - 1;
+  int mid = (lowerBound + upperBound)/2;
+  while (lowerBound <= upperBound) {
+    if (list.get(mid).compareTo(element) == 0) {
+      found = true;
+      break;
+    }
+    else if (list.get(mid).compareTo(element) > 0) {
+      upperBound = mid - 1;
+      mid = (lowerBound + upperBound)/2;
+    }
+    else {
+      lowerBound = mid + 1;
+      mid = (lowerBound + upperBound)/2;
+    }
+  }
+  return found;
+}
+```
+
+Below is a recrusive implementation that returns the boolean.
+```java
+public static boolean rcb(List<String> list, String key, int start, int end) {
+  int mid = (start + end)/2;
+  if (list.get(mid).compareTo(key) == 0) return true;
+  if (start <= end) {
+    if (list.get(mid.compareTo(key) > 0)
+        return rcb(list, key, start, end - 1);
+    return rcb(list, element, mid + 1, end);
+    }
+    return false;
+}
+```
+
+## Sorting
+
+Many algos:
+- bubble sort
+- selection sort
+- quick sort
+- merge sort
+- insertion sort
+- heap sort
+- parallel sort
+- bucket sort
+
+Differentiated by the time it takes to sort a list.
+
+The fastest algorithm may not be the best to use all the time due to various factors.
+Recursive sorting methods are typically very fast however they can run into memory problems that make them slower.
+
+### Selection sort
+
+1. scan the unsorted elements in the list and find the largest elment
+   - in the first iteration the whole list is unsorted
+2. swap the largest element with the last unsorted element
+3. mark that last unsorted element as sorted
+4. repeat
+
+```java
+public static void selectionSort(List<Integer> list) {
+  for (int i = list.size() - 1; i >= 0; i--) {
+    int maxPosition = 0;
+    for (int j = 0; j <= i; j++) {
+      if (list.get(j) > list.get(maxPosition))
+        maxPosition = j;
+    int temp - list.get(maxPosition);
+    list.set(maxPosition, list.get(i));
+    list.set(i, temp);
+    }
+  }
+}
+
+public static void selectionSort(int[] arr) {
+  for (int i = 0; i < arr.length; i++)
+    for (int j = i + 1; j < arr.length; j++)
+      if (arr[j] < arr[i])
+        swap(arr, i, j);
+}
+```
+
+### Merging Operation & Merge Sort
+#### Merging Operation
+- given two ___sorted___ lists `A` & `B`
+- Create a merged list `C` by removing the lower item from the top of either A or B
+
+`A`: 1, 31, 57
+
+`B`: 28, 36, 47, 58
+
+| a   | ==1==  | 31     | 57     |        |     |     |     |
+|-----|--------|--------|--------|--------|-----|-----|-----|
+| b   | ==28== | 36     | 47     | 58     |     |     |     |
+| c   | 1      |        |        |        |     |     |     |
+| --- | ---    | ---    | ---    | ---    | --- | --- | --- |
+| a   | ~~1~~  | ==31== | 57     |        |     |     |     |
+| b   | ==28== | 36     | 47     | 58     |     |     |     |
+| c   | 1      | 28     |        |        |     |     |     |
+| --- | ---    | ---    | ---    | ---    | --- | --- | --- |
+| a   | ~~1~~  | ==31== | 57     |        |     |     |     |
+| b   | ~~28~~ | ==36== | 47     | 58     |     |     |     |
+| c   | 1      | 28     | 31     |        |     |     |     |
+| --- | ---    | ---    | ---    | --     | --- | --- | --- |
+| a   | ~~1~~  | ~~31~~ | ==57== |        |     |     |     |
+| b   | ~~28~~ | ==36== | 47     | 58     |     |     |     |
+| c   | 1      | 28     | 31     | 36     |     |     |     |
+| --- | ---    | ---    | ---    | ---    | --- | --- | --- |
+| a   | ~~1~~  | ~~31~~ | ==57== |        |     |     |     |
+| b   | ~~28~~ | ~~36~~ | ==47== | 58     |     |     |     |
+| c   | 1      | 28     | 31     | 36     | 47  |     |     |
+| --- | ---    | ---    | ---    | ---    | --- | --- | --- |
+| a   | ~~1~~  | ~~31~~ | ==57== |        |     |     |     |
+| b   | ~~28~~ | ~~36~~ | ~~47~~ | ==58== |     |     |     |
+| c   | 1      | 28     | 31     | 36     | 47  | 57  | 58  |
+
+```java
+public static List <Integer> merge(List<Integer> lefftList, list<Integer> rightList) {
+  ArrayList<Integer> aList = new ArrayList<Integer>();
+  while (leftList.size() > 0 && rightList.size() > 0) {
+    if (leftList.get(0) < rightList.get(0))
+      aList.add(leftList.remove(0));
+    else
+      aList.add(rightList.remove(0));
+  }
+  if(!leftList.Isempty())
+    aList.addAll(LeftList);
+  if(!rightList.isEmpty())
+    aList.addAll(rightList);
+  return aList;
+}
+```
+
+#### Merge Sort
+1. break the list down into the 2 sub-lists
+2. look at each resultant sub-list
+3. if the sub-list isn't 1 element then repeat from step 1
+4. repeat step 1-3 until you have 1-element sublists
+5. merge the 1-element lists to make 2-element lists
+6. merge the 2-element lists to make 4-element lists
+7. ...
+8. merge the 1/4n-element lists to make 1/2n-element lists
+9. merge the 1/2n-element to make the original list but now sorted
+
+```java
+public static list<Integer> mergeSort(List<Integer> aList) {
+  if (aList.size() <= 1) return aList;
+  
+  int mid = aList.size() / 2;
+  List<Integer> left = new ArrayList<integer (aList.sublist(0,mid));
+  List<Integer> right = new ArrayList<Integer> (aList.subList(mid, aList.size()));
+  left = mergeSort(left);
+  right = mergeSort(right);
+  aList = merge(left, right);
+  return aList;
+}
+```
+
+## hw
+`java.util.Arrays.sort()` has sorting methods on arrays
+
+`java.util.Arrays.parallelSort()` has parallel sort for arrays
+
+The base algo for the above is quick-sort with two pivots.
+
+`java.util.Collections.sort()` is a static method that can be used to sort a list.
