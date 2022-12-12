@@ -5,7 +5,7 @@ This file has quick references and explanations.
 For notes taken from lecture,
 try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
 
-# Table of Contents
+# Table of contents
 
 - [Mark Breakdown](#mark-breakdown)
 - [Java Basics Review](#java-basics-review)
@@ -24,12 +24,12 @@ try out our [autumn-winter 2022 haute couture collection](cs%202030%20notes.md).
     - [Overloaded Constructors](#overloaded-constructors)
     - [Constructor Chaining](#constructor-chaining)
     - [Clone/Copy Constructor](#clonecopy-constructor)
-- [Generics](#generics)
 - [Encapsulation](#encapsulation)
   - [Access Modifiers](#access-modifiers)
   - [Mutators & Accessors - Setters & Getters](#mutators--accessors---setters--getters)
 - [Object Oriented Programming - OOP](#object-oriented-programming---oop)
 - [UML - Unified Modelling Language](#uml---unified-modelling-language)
+- [Static vs Non-Static Methods & Variables](#static-vs-non-static-methods--variables)
 - [-](#-)
 - [Inheritance](#inheritance)
   - [Optional Methods](#optional-methods)
@@ -489,45 +489,6 @@ Where the list of args are teh required args for the constructor that we want.
 These are class constructors that take an existing object of the class as the input argument then copies over the attributes to a new instance of the class,
 creating a new object in the process.
 
-# Generics
-
-Generics are any interface, class, or method
-whose type is determined by a parameter.
-
-Below is example code for a generic class `Stack` and its usage in a main method
-
-```java
-// Generics.java
-import java.util.ArrayList;
-
-class Stack <E> {
-    ArrayList<E> stack;
-    public Stack() {
-        stack = new ArrayList<E>();
-    }
-    public void push (E element) {
-        stack.add(0, element);
-    }
-    public E pop() {
-        return stack.remove(0);
-    }
-    public boolean isEmpty() {
-        return (stack.size() == 0);
-    }
-    public E top() {
-        return stack.get(0);
-    }
-} // end of Stack
-
-
-public class Generics {
-    public static void main(String[] args) {
-        Stack<Integer> iStack = new Stack<Integer>();
-        Stack<String> sStack = new Stack<String>();
-    } // end of main
-}
-```
-
 # Encapsulation
 
 Data encapsulation refers to hiding the internal states of an object in oop.
@@ -643,6 +604,27 @@ Game *-- Map
 
 `Player` has a aggregation relationship with `Role`.
 
+# Static vs Non-Static Methods & Variables
+
+The `static` keyword is used in variable declarations and method signatures in order to make that variable or method belong to the class rather than to any specific instance.
+
+Static variables and methods are accessed/called using the dot `.` operator with the name of the class rather than the name of any given instance.
+
+Static methods operate based off of their own internal logic (and optionally the fed in arguments) rather than any instance variables.
+A method should only be made static if it won't make use of any instance variables.
+
+Use cases:
+- counter of instances created
+- static factory methods
+  - `getInstance()`
+  - return a specific instance of an object
+- various methods inside of `Math`
+  - `Math.sqrt(a)`
+  - `Math.pow(a,b)`
+  - `Math.min(a,b)`
+
+
+
 # -
 
 # Inheritance
@@ -664,6 +646,43 @@ Doing so will allow the client to use the method without receiving any feedback 
 # -
 
 # Generics
+
+Generics are any interface, class, or method
+whose type is determined by a parameter.
+
+Below is example code for a generic class `Stack` and its usage in a main method
+
+```java
+// Generics.java
+import java.util.ArrayList;
+
+class Stack <E> {
+    ArrayList<E> stack;
+    public Stack() {
+        stack = new ArrayList<E>();
+    }
+    public void push (E element) {
+        stack.add(0, element);
+    }
+    public E pop() {
+        return stack.remove(0);
+    }
+    public boolean isEmpty() {
+        return (stack.size() == 0);
+    }
+    public E top() {
+        return stack.get(0);
+    }
+} // end of Stack
+
+
+public class Generics {
+    public static void main(String[] args) {
+        Stack<Integer> iStack = new Stack<Integer>();
+        Stack<String> sStack = new Stack<String>();
+    } // end of main
+}
+```
 
 ## Why Make Generics?
 
